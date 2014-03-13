@@ -1,6 +1,8 @@
 SSC::Application.routes.draw do
-  get "home/index"
+  root 'home#index'
+  get "setup/page1"
   get "home/about"
+  get "login/page1"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
