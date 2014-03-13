@@ -1,6 +1,10 @@
 SSC::Application.routes.draw do
   root 'home#index'
   get "setup/page1"
+  get "setup/page2"
+  get "setup/page3"
+  get "setup/page4"
+  get "setup/page5"
   get "home/about"
   get "login/page1"
   # The priority is based upon order of creation: first created -> highest priority.
