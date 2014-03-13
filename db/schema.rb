@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140311190200) do
     t.text     "middle_name"
     t.text     "last_name"
     t.date     "dob"
+    t.text     "ssn"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,8 +40,7 @@ ActiveRecord::Schema.define(version: 20140311190200) do
     t.text     "state"
     t.text     "country"
     t.text     "ssc_value"
-    t.integer  "ct_mask"
-    t.integer  "lifetime"
+    t.text     "ct_mask"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
