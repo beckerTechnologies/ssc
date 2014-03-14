@@ -1,12 +1,29 @@
 SSC::Application.routes.draw do
+  #resources :setup, :only => [:page1, :page2, :page3, :page4, :page5]
+  #resources :login, :only => [:page1, :page2, :page3]
+  #root :to => redirect('/home/index')
   root 'home#index'
+
   get "setup/page1"
   get "setup/page2"
   get "setup/page3"
   get "setup/page4"
   get "setup/page5"
+  put "setup/page1"
+  put "setup/page2"
+  put "setup/page3"
+  put "setup/page4"
+  put "setup/page5"
+
   get "home/about"
+
   get "login/page1"
+  get "login/page2"
+  get "login/page3"
+  put "login/page1"
+  put "login/page2"
+  put "login/page3"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

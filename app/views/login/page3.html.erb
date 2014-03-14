@@ -1,0 +1,13 @@
+<h1>Login</h1>
+<p>File your tax return</p> 
+<% if flash[:error].present?  %>
+  <p style='color:red' class='error-messages'>
+  <%= flash[:error] %>.
+  </p>
+<% end %>
+
+<p>content comes here</p>
+</br>
+<%= form_tag("/home/index", method: "get") do %>
+  <%= submit_tag("back to Home") %>
+<% end %>

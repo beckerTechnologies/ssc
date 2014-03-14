@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140311190200) do
+ActiveRecord::Schema.define(version: 20140314175533) do
 
   create_table "auth_options", force: true do |t|
     t.text     "name"
@@ -30,8 +30,11 @@ ActiveRecord::Schema.define(version: 20140311190200) do
     t.datetime "updated_at"
   end
 
+  add_index "basic_infos", ["ssn"], name: "index_basic_infos_on_ssn", unique: true
+
   create_table "profiles", force: true do |t|
     t.text     "email"
+    t.text     "password"
     t.integer  "phone_number"
     t.text     "street_addr"
     t.text     "apartment_no"
@@ -45,11 +48,15 @@ ActiveRecord::Schema.define(version: 20140311190200) do
     t.datetime "updated_at"
   end
 
+  add_index "profiles", ["email"], name: "index_profiles_on_email", unique: true
+
   create_table "ssc_banks", force: true do |t|
     t.text     "ssc"
     t.integer  "lifetime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "ssc_banks", ["ssc"], name: "index_ssc_banks_on_ssc", unique: true
 
 end
