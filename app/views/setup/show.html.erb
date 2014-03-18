@@ -1,0 +1,104 @@
+<h1>Listing profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Phone number</th>
+      <th>Street addr</th>
+      <th>Apartment no</th>
+      <th>City</th>
+      <th>Zip code</th>
+      <th>State</th>
+      <th>Country</th>
+      <th>Ssc value</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @profiles.each do |profile| %>
+      <tr>
+        <td><%= profile.id %></td>
+        <td><%= profile.email %></td>
+        <td><%= profile.password %></td>
+        <td><%= profile.phone_number %></td>
+        <td><%= profile.street_addr %></td>
+        <td><%= profile.apartment_no %></td>
+        <td><%= profile.city %></td>
+        <td><%= profile.zip_code %></td>
+        <td><%= profile.state %></td>
+        <td><%= profile.country %></td>
+        <td><%= profile.ssc_value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<h1>Listing basic Info </h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First name </th>
+      <th>Middle name</th>
+      <th>Last name</th>
+      <th>dob</th>
+      <th>ssn</th>
+      <th>profile_id</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @basic.each do |basic| %>
+      <tr>
+        <td><%= basic.id %></td>
+        <td><%= basic.first_name %></td>
+        <td><%= basic.middle_name %></td>
+        <td><%= basic.last_name %></td>
+        <td><%= basic.dob %></td>
+        <td><%= basic.ssn %></td>
+        <td><%= basic.profile_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<br>
+<h1>Listing SSC Bank </h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Profile id </th>
+      <th>ssc</th>
+      <th>ct mask</th>
+      <th>expiry</th>
+      <th>lifetime</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sscbank.each do |bank| %>
+      <tr>
+        <td><%= bank.id %></td>
+        <td><%= bank.profile_id %></td>
+        <td><%= bank.ssc %></td>
+        <td><%= bank.ct_mask %></td>
+        <td><%= bank.expiry %></td>
+        <td><%= bank.lifetime %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

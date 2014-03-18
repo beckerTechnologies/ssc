@@ -10,8 +10,9 @@ class CreateProfiles < ActiveRecord::Migration
       t.text :zip_code
       t.text :state
       t.text :country #change it to integer and make country a drop down. $$
+      t.integer :auth_option_id # FK
       t.text :ssc_value # the value for the selected authOption. $$
-      t.text :ct_mask # n letters showing the box positions for challenge text. $$
+      t.integer :ssc_lifetime #when ever ssc is created, its expiry is set to now+life_time
       t.timestamps
     end
   end

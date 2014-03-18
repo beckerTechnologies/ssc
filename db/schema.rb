@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20140314175533) do
   end
 
   create_table "basic_infos", force: true do |t|
+    t.integer  "profile_id"
     t.text     "first_name"
     t.text     "middle_name"
     t.text     "last_name"
@@ -29,8 +30,6 @@ ActiveRecord::Schema.define(version: 20140314175533) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "basic_infos", ["ssn"], name: "index_basic_infos_on_ssn", unique: true
 
   create_table "profiles", force: true do |t|
     t.text     "email"
@@ -42,21 +41,21 @@ ActiveRecord::Schema.define(version: 20140314175533) do
     t.text     "zip_code"
     t.text     "state"
     t.text     "country"
+    t.integer  "auth_option_id"
     t.text     "ssc_value"
-    t.text     "ct_mask"
+    t.integer  "ssc_lifetime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "profiles", ["email"], name: "index_profiles_on_email", unique: true
-
   create_table "ssc_banks", force: true do |t|
+    t.integer  "profile_id"
     t.text     "ssc"
+    t.text     "ct_mask"
+    t.datetime "expiry"
     t.integer  "lifetime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "ssc_banks", ["ssc"], name: "index_ssc_banks_on_ssc", unique: true
 
 end

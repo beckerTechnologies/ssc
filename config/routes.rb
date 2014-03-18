@@ -2,6 +2,7 @@ SSC::Application.routes.draw do
   #resources :setup, :only => [:page1, :page2, :page3, :page4, :page5]
   #resources :login, :only => [:page1, :page2, :page3]
   #root :to => redirect('/home/index')
+  #TODO clean up 
   root 'home#index'
 
   get "setup/page1"
@@ -10,12 +11,18 @@ SSC::Application.routes.draw do
   get "setup/page4"
   get "setup/page5"
   put "setup/page1"
-  put "setup/page2"
+  post "setup/page1"
+  post "setup/create"
+  post "setup/page2"
+  post "setup/page3"
   put "setup/page3"
   put "setup/page4"
+  post "setup/page4"
   put "setup/page5"
+  post "setup/page5"
 
   get "home/about"
+  get "setup/show"
 
   get "login/page1"
   get "login/page2"

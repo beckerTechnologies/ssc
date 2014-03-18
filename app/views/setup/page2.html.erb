@@ -4,4 +4,8 @@
 <p>(developers comment: content of this page will be provided by Hannah)
 </br>
 </br>
-<button>Proceed</button>
+<%= form_tag('./page3', :method=>'put') do %>
+  <p>
+  <%= submit_tag 'Proceed' %>
+  </p>
+<% end %>

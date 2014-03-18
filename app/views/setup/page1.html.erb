@@ -1,5 +1,65 @@
 <h1>Setup</h1>
 <p>welcome to setup. </p>
-<p>bunch of input fileds.</p>
-
-<button>Submit Request</button>
+<% if flash[:error].present?  %>
+  <p style='color:red' class='error-messages'>
+  <%= flash[:error] %>.
+  </p>
+<% end %>
+<% debug(params) if Rails.env.development? %>  
+<div style="width:500px;height:120px;border:1px solid;" align='center'>
+  </br>
+  <%= form_for :profile, :url => "./create" do |p| %>
+    <%= p.fields_for :basic_info do |a| %>
+      First Name: <%= a.text_field :first_name %>
+      </br>
+      Middle Name: <%= a.text_field :middle_name %>
+      </br>
+      Last Name: <%= a.text_field(:last_name) %>
+      </br>
+      Date of Birth: <%= a.date_field( :dob) %>
+      </br>
+      SSN: <%= a.text_field(:ssn) %>
+      </br>
+    <% end %>
+  </div>
+  <div style="width:500px;height:210px;border:1px solid;" align='center'>
+    </br>
+    <%= p.label(:email,"Email address:") %>
+    <%= p.email_field(:email) %>
+    </br>
+    Password: <%= p.password_field(:password) %>
+    </br>
+    Confirm Password: <%= p.password_field(:password_confirmation) %>
+    </br>
+    Phone No.: <%= p.telephone_field( :phone_number) %>
+    </br>
+  </div>
+  <div style="width:500px;height:190px;border:1px solid;" align='center'>
+    </br>
+    Street Address: <%= p.text_field(:street_addr) %>
+    </br>
+    Apartment No.: <%= p.text_field(:apartment_no) %>
+    </br>
+    City: <%= p.text_field(:city) %>
+    </br>
+    Zip-code: <%= p.text_field(:zip_code) %>
+    </br>
+    State: <%= p.text_field(:state) %>
+    </br>
+    Country: <%= p.text_field(:country) %>
+  </div>
+  <div style="width:500px;height:130px;border:1px solid;" align='center'>
+    </br>
+    Select which option to use for SSC: <%= p.select("auth_option_id", options_for_select([['SSN', '1'], ['Driver license no.', '2'],['Medcare no.','3']], '1')) %>
+    <!-- TODO populate this drop down using auth_options table. -->
+    </br>
+    Enter card no. chosen for SSC: <%= p.text_field(:ssc_value) %>
+    <!-- TODO if selected option is 1(SSN) then make this field disabled and use the above mentioned ssn instead. -->
+    </br>
+    Select SSC expiry duration: <%= p.select("ssc_lifetime", options_for_select([['12hrs', '12'], ['1Day', '24'],['2Day','48'],['3Day', '72'],['4Day','96'],['5Day', '120'],['6Day','144'],['1Week', '168']], '24')) %>
+  </div>
+  <div> 
+    </br>
+    <%= p.submit %>
+  </div>
+<% end %>
