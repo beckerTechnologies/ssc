@@ -2,7 +2,7 @@ class CreateAuthOptions < ActiveRecord::Migration
   def up
     create_table :auth_options do |t|
       t.text :name
-      t.integer :lenght
+      t.integer :lenght #TODO fix spellings. 
 
       t.timestamps
     end
