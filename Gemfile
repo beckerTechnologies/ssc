@@ -4,8 +4,13 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rails', '4.0.2'
 
 # Use pg for heroku as the database for Active Record
-gem 'pg'
-
+group :development do
+  gem 'sqlite3', '1.3.8'
+end
+group :production do
+  gem 'pg', '0.15.1'
+  gem 'rails_12factor', '0.0.2'
+end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
