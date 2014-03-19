@@ -17,6 +17,7 @@ class SetupController < ApplicationController
 
     params[:profile][:basic_info].permit!
     @basic = BasicInfo.new(params[:profile][:basic_info])
+    @basic[:ssn] = @basic[:ssn].tr('-','')
 
     @profile.valid?
     @basic.valid?
