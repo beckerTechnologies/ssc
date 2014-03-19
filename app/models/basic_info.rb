@@ -4,8 +4,8 @@ class BasicInfo < ActiveRecord::Base
   validates :first_name, presence: true
   validates :dob, presence: true
   #TODO fix the regex
-  VALID_SSN_REGEX = /\A[\d]{3}-[\d]{2}-[d]{4}/i
+  VALID_SSN_REGEX = /\b(\d{3})\D?(\d{2})\D?(\d{4})\b/
   validates :ssn, presence: true,
-    #format: { with: VALID_SSN_REGEX }, 
+    format: { with: VALID_SSN_REGEX }, 
     uniqueness: true
 end

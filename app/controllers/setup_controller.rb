@@ -44,7 +44,7 @@ class SetupController < ApplicationController
       if params[:ct_mask].present?
         @profile_id = @profile[:id]
         @lifetime = @profile[:ssc_lifetime]
-        @expiry = Time.now + @lifetime #TODO figure out the multiplying factor to convert lifetime into additive value
+        @expiry = Time.now + (60*60*@lifetime)
         @ssc_a = @profile[:ssc_value].split ''
         @ctmask_a = params[:ct_mask].split ''
         h = Hash[('a'..'z').to_a.zip (0..25).to_a]

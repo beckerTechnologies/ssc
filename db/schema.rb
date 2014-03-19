@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20140311190200) do
   create_table "profiles", force: true do |t|
     t.text     "email"
     t.text     "password"
-    t.integer  "phone_number"
+    t.text     "phone_number"
     t.text     "street_addr"
     t.text     "apartment_no"
     t.text     "city"
