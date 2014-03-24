@@ -8,7 +8,8 @@ class Profile < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sensitive: false }
-  validates :password, confirmation: true, length: { minimum: 2}
+  VALID_PASS_REGEX = /\A(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}\z/
+  validates :password, confirmation: true, length: { minimum: 6},format: {with: VALID_PASS_REGEX}
   validates :password_confirmation, presence: true
 =begin
   #has_secure_password
