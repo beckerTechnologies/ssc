@@ -1,0 +1,4 @@
+# if for some reason you get error with rake db:migrate command "role does not exist" .. do this
+psql -d postgres
+postgres=# create role app_name login createdb;
+postgres=# \q
