@@ -9,6 +9,7 @@ gem 'sidekiq'
 #to make sidekiq work on heroku
 gem 'autoscaler'
 gem 'redis'
+gem 'unicorn'
 
 # Use pg for heroku as the database for Active Record
 group :development do
