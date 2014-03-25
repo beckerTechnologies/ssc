@@ -25,7 +25,10 @@ class LoginController < ApplicationController
       redirect_to :action => :page1
     else
       @pid = session[:login]
-      if params[:ssc].present? 
+      if params[:sendnew].present?
+        RenewWorker.perform_async(@pid)
+        flash[:success] = true
+      elsif params[:ssc].present? 
         @ssc = params[:ssc].tr(' ','')
         if @ssc.length!=0 
           begin

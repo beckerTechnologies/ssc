@@ -2,3 +2,9 @@
 psql -d postgres
 postgres=# create role app_name login createdb;
 postgres=# \q
+
+# to make the email functionality work, run these 3 commands: 
+#install redis before running this command. 
+redis-server /usr/local/etc/redis.conf 
+bundle exec sidekiq
+rails s 

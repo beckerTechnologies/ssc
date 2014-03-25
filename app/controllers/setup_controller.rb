@@ -45,18 +45,13 @@ class SetupController < ApplicationController
       if params[:ct_mask].present?
         @profile_id = @profile[:id]
         @lifetime = @profile[:ssc_lifetime]
-        @expiry = Time.now + (60*60*@lifetime)
-        @ssc_a = @profile[:ssc_value].split ''
-        @ctmask_a = params[:ct_mask].split ''
-        h = Hash[('a'..'z').to_a.zip (0..25).to_a]
-        @ct = rand(10) # single digit ct
+        @ssc_val = @profile[:ssc_value]
+        @ct_mask = params[:ct_mask]
+        @ct = set_ct #rand(10) # single digit ct
+        @ssc = set_ssc(@ct, @ssc_val, @ct_mask)
+        @expiry = set_expiry(@lifetime)
         flash[:notice] = @ct
         session[:ct] = @ct
-        @ctmask_a.each do |i| 
-          @ind = h[i]
-          @ssc_a[@ind] = @ct
-        end
-        @ssc = @ssc_a.join
         @sscbank = {ct_mask: params[:ct_mask], profile_id:@profile_id, lifetime: @lifetime, expiry:@expiry, ssc:@ssc}
         @ssc_bank = SscBank.new(@sscbank )
         @ssc_bank.valid?
@@ -95,9 +90,14 @@ class SetupController < ApplicationController
     end
   end
   def page5
-    if params[:send].present?
-      #send email n sms
-      flash[:success] = true
+    if !session[:pid]
+      flash[:error] = "Session expired. Hit return to go back. "
+    else
+      @pid = session[:pid]
+      if params[:sendnew].present?
+        RenewWorker.perform_async(@pid)
+        flash[:success] = true
+      end
     end
   end
   def show
