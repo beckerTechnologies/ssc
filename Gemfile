@@ -6,6 +6,9 @@ gem 'rails', '4.0.2'
 #sidekiq
 gem 'sidekiq'
 
+#to make sidekiq work on heroku
+gem 'autoscaler'
+
 # Use pg for heroku as the database for Active Record
 group :development do
  gem 'sqlite3', '1.3.8'
