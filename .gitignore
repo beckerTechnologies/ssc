@@ -21,3 +21,5 @@
 .DS_Store
 .idea
 .secret
+/config/database.yml
+Gemfile
