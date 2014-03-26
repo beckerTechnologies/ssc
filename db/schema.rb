@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140311190200) do
+ActiveRecord::Schema.define(version: 20140326002047) do
 
   create_table "auth_options", force: true do |t|
     t.text     "name"
@@ -31,6 +31,12 @@ ActiveRecord::Schema.define(version: 20140311190200) do
     t.datetime "updated_at"
   end
 
+  create_table "carriers", force: true do |t|
+    t.string   "carrier_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "profiles", force: true do |t|
     t.text     "email"
     t.text     "password"
@@ -46,6 +52,7 @@ ActiveRecord::Schema.define(version: 20140311190200) do
     t.integer  "ssc_lifetime"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "carrier_id"
   end
 
   create_table "ssc_banks", force: true do |t|

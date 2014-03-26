@@ -10,6 +10,7 @@ class SetupController < ApplicationController
     @profile = Profile.new
     @basic_info = @profile.build_basic_info
     @ao = AuthOption.all
+    @carriers = Carrier.all
     @lt = get_lifetime
   end
   def create
@@ -100,7 +101,8 @@ class SetupController < ApplicationController
     else
       @pid = session[:pid]
       if params[:sendnew].present?
-        RenewWorker.perform_async(@pid)
+        #RenewWorker.perform_async(@pid)
+        mail_helper(@pid)
         flash[:success] = true
       end
     end
@@ -115,7 +117,7 @@ class SetupController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:email, :password, :password_confirmation, :phone_number, :street_addr, :apartment_no, :city, :state, :zip_code, :country, :auth_option_id,  :ssc_value, :ssc_lifetime, basic_info_attributes: [:id, :first_name, :middle_name, :last_name, :dob, :ssn] )
+    params.require(:profile).permit(:email, :password, :password_confirmation, :phone_number, :street_addr, :apartment_no, :city, :state, :zip_code, :country, :auth_option_id, :carrier_id,  :ssc_value, :ssc_lifetime, basic_info_attributes: [:id, :first_name, :middle_name, :last_name, :dob, :ssn] )
   end
 end
 

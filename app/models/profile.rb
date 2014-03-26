@@ -3,6 +3,7 @@ class Profile < ActiveRecord::Base
   has_one :basic_info, :autosave => true
   has_one :ssc_bank, :autosave => true
   belongs_to :auth_option
+  belongs_to :carrier
   accepts_nested_attributes_for :basic_info
   #accepts_nested_attributes_for :ssc_bank
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
