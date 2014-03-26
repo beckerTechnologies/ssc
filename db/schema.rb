@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326002047) do
+ActiveRecord::Schema.define(version: 20140326212554) do
 
   create_table "auth_options", force: true do |t|
     t.text     "name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140326002047) do
     t.string   "carrier_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "carrier_value"
   end
 
   create_table "profiles", force: true do |t|

@@ -3,6 +3,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
+ruby '2.0.0'
+
 #sidekiq
 gem 'sidekiq'
 
@@ -44,10 +46,6 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
-
-gem 'sms_fu'		# To send SMS messages to users
-
-gem 'pony'
 
 gem 'sms-easy'
 
