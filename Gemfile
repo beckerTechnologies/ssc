@@ -49,6 +49,8 @@ gem 'sms_fu'		# To send SMS messages to users
 
 gem 'pony'
 
+gem 'sms-easy'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
