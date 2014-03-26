@@ -1,4 +1,5 @@
 class SetupController < ApplicationController
+  
   def initialize # to display errors one per line, otherwise delete this. 
     @profile = Profile.new
     @basic = @profile.build_basic_info # BasicInfo.new

@@ -40,6 +40,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'sms_fu'		# To send SMS messages to users
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

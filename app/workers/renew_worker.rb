@@ -15,7 +15,7 @@ class RenewWorker
     else
       ssc_bank.save!
       SscMailer.newct_email(pid, ct).deliver
-      #TODO send sms here
+
     end
   end
 end

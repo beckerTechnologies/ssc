@@ -11,3 +11,21 @@
  *= require_self
  *= require_tree .
  */
+
+* {
+	font-family:'Avenir LT W01 45 Book';
+}
+
+
+body {
+	width: 800px;
+	height: 2000px;
+	background-color: #9acad1;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.home-page-text {
+	font-size: 18px;
+	margin-top: 20px;
+}
