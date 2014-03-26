@@ -2,15 +2,6 @@
 <p>Try it Out</p>
 <p>bunch of input fileds.</p>
 
-<% if flash[:error].present?  %>
-  <p style='color:red' class='error-messages'>
-  <%= flash[:error] %>.
-  </p>    
-<% end %>
-<% if flash[:notice].present?  %>
-  <p>Use <%= flash[:notice] %> as challenge text and enter your SSC.</p>    
-<% end %>
-<%= debug(params) if Rails.env.development? %>
 <%= form_tag :url => "./page4" do |p| %>
   SSC: <%= text_field_tag :ssc %>
   </br>

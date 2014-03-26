@@ -5,32 +5,35 @@ SSC::Application.routes.draw do
   #TODO clean up 
   root 'home#index'
 
-  get "setup/page1"
-  get "setup/page2"
-  get "setup/page3"
-  get "setup/page4"
-  get "setup/page5"
-  put "setup/page1"
-  post "setup/page1"
-  post "setup/create"
-  post "setup/page2"
-  post "setup/page3"
-  put "setup/page3"
-  put "setup/page4"
-  post "setup/page4"
-  put "setup/page5"
-  post "setup/page5"
 
-  get "home/about"
-  get "setup/show"
+resources :setup do
+  get "page1", :on => :collection
+  get "page2", :on => :collection
+  get "page3", :on => :collection
+  get "page4", :on => :collection
+  get "page5", :on => :collection
+  put "page1", :on => :collection
+  post "page1", :on => :collection
+  post "create", :on => :collection
+  post "page2", :on => :collection
+  post "page3", :on => :collection
+  put "page3", :on => :collection
+  put "page4", :on => :collection
+  post "page4", :on => :collection
+  put "page5", :on => :collection
+  post "page5", :on => :collection
+ get "show", :on => :collection
+end
 
-  get "login/page1"
-  get "login/page2"
-  get "login/page3"
-  put "login/page1"
-  put "login/page2"
-  put "login/page3"
-
+ 
+ resources :login do
+  get "page1", :on => :collection
+  get "page2", :on => :collection
+  get "page3", :on => :collection
+  put "page1", :on => :collection
+  put "page2", :on => :collection
+  put "page3", :on => :collection
+end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
