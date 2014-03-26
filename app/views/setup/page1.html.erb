@@ -50,16 +50,16 @@
   </div>
   <div style="width:500px;height:130px;border:1px solid;" align='center'>
     </br>
-    Select which option to use for SSC: <%= p.select("auth_option_id", options_for_select([['SSN', '1'], ['Driver license no.', '2'],['Medcare no.','3']], '1')) %>
-    <!-- TODO populate this drop down using auth_options table. -->
+    Select which option to use for SSC: <%= p.select("auth_option_id", options_from_collection_for_select(@ao, 'id', 'name', 1 )) %>
     </br>
     Enter card no. chosen for SSC: <%= p.text_field(:ssc_value) %>
     <!-- TODO if selected option is 1(SSN) then make this field disabled and use the above mentioned ssn instead. -->
     </br>
-    Select SSC expiry duration: <%= p.select("ssc_lifetime", options_for_select([['12hrs', '12'], ['1Day', '24'],['2Day','48'],['3Day', '72'],['4Day','96'],['5Day', '120'],['6Day','144'],['1Week', '168']], '24')) %>
+    Select SSC expiry duration: <%= p.select("ssc_lifetime", options_from_collection_for_select( @lt,'last', 'first',24)) %>
   </div>
   <div> 
     </br>
     <%= p.submit %>
   </div>
 <% end %>
+

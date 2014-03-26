@@ -8,3 +8,7 @@ postgres=# \q
 redis-server /usr/local/etc/redis.conf 
 bundle exec sidekiq
 rails s 
+
+#to load AuthOption in table
+rake db:seed
+# otherwise setup/page1 and setup/create wont work

@@ -1,0 +1,101 @@
+2014-03-25T08:21:22.168166+00:00 app[web.1]: Redirected to http://polar-castle-6087.herokuapp.com/setup/page2
+2014-03-25T08:21:22.168432+00:00 app[web.1]: Completed 302 Found in 39ms (ActiveRecord: 18.8ms)
+2014-03-25T08:21:22.168166+00:00 app[web.1]: Redirected to http://polar-castle-6087.herokuapp.com/setup/page2
+2014-03-25T08:21:22.168432+00:00 app[web.1]: Completed 302 Found in 39ms (ActiveRecord: 18.8ms)
+2014-03-25T08:21:22.268248+00:00 app[web.1]: Processing by SetupController#page2 as HTML
+2014-03-25T08:21:22.268248+00:00 app[web.1]: Processing by SetupController#page2 as HTML
+2014-03-25T08:21:22.265733+00:00 app[web.1]: Started GET "/setup/page2" for 174.56.30.243 at 2014-03-25 08:21:22 +0000
+2014-03-25T08:21:22.265733+00:00 app[web.1]: Started GET "/setup/page2" for 174.56.30.243 at 2014-03-25 08:21:22 +0000
+2014-03-25T08:21:22.278542+00:00 heroku[router]: at=info method=GET path=/setup/page2 host=polar-castle-6087.herokuapp.com request_id=12a74d7c-a44a-4588-baee-59d08b6776de fwd="174.56.30.243" dyno=web.1 connect=1ms service=13ms status=200 bytes=1668
+2014-03-25T08:21:22.401612+00:00 heroku[router]: at=info method=GET path=/favicon.ico host=polar-castle-6087.herokuapp.com request_id=9ee37b01-3ac8-45c1-85e9-c3eba4b9ecfb fwd="174.56.30.243" dyno=web.1 connect=1ms service=5ms status=304 bytes=133
+2014-03-25T08:21:22.271138+00:00 app[web.1]:   Rendered setup/page2.html.erb (1.1ms)
+2014-03-25T08:21:22.271138+00:00 app[web.1]:   Rendered setup/page2.html.erb (1.1ms)
+2014-03-25T08:21:22.271382+00:00 app[web.1]: Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+2014-03-25T08:21:22.271382+00:00 app[web.1]: Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+2014-03-25T08:21:23.417793+00:00 app[web.1]: Started PUT "/setup/page3" for 174.56.30.243 at 2014-03-25 08:21:23 +0000
+2014-03-25T08:21:23.417793+00:00 app[web.1]: Started PUT "/setup/page3" for 174.56.30.243 at 2014-03-25 08:21:23 +0000
+2014-03-25T08:21:23.421475+00:00 app[web.1]: Processing by SetupController#page3 as HTML
+2014-03-25T08:21:23.437875+00:00 heroku[router]: at=info method=POST path=/setup/page3 host=polar-castle-6087.herokuapp.com request_id=bfaeb6b0-4e34-44fc-a998-3c022338c95b fwd="174.56.30.243" dyno=web.1 connect=1ms service=19ms status=200 bytes=1833
+2014-03-25T08:21:23.430442+00:00 app[web.1]: Completed 200 OK in 8ms (Views: 3.5ms | ActiveRecord: 1.9ms)
+2014-03-25T08:21:23.421715+00:00 app[web.1]: Processing by SetupController#page3 as HTML
+2014-03-25T08:21:23.421715+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"CPMrdmaWK/dXJy/RnZHtn6amMT/JhAFCVei93d/CrlM=", "commit"=>"Proceed"}
+2014-03-25T08:21:23.421880+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"CPMrdmaWK/dXJy/RnZHtn6amMT/JhAFCVei93d/CrlM=", "commit"=>"Proceed"}
+2014-03-25T08:21:23.430098+00:00 app[web.1]:   Rendered setup/page3.html.erb (2.0ms)
+2014-03-25T08:21:23.430098+00:00 app[web.1]:   Rendered setup/page3.html.erb (2.0ms)
+2014-03-25T08:21:23.430442+00:00 app[web.1]: Completed 200 OK in 8ms (Views: 3.5ms | ActiveRecord: 1.9ms)
+2014-03-25T08:21:23.644473+00:00 heroku[router]: at=info method=GET path=/favicon.ico host=polar-castle-6087.herokuapp.com request_id=70c070d9-eaaf-427c-9570-bfe3aaf2d4ce fwd="174.56.30.243" dyno=web.1 connect=8ms service=5ms status=304 bytes=133
+2014-03-25T08:21:26.241142+00:00 app[web.1]: Started POST "/setup/page3?url=.%2Fpage3" for 174.56.30.243 at 2014-03-25 08:21:26 +0000
+2014-03-25T08:21:26.244094+00:00 app[web.1]: Processing by SetupController#page3 as HTML
+2014-03-25T08:21:26.244094+00:00 app[web.1]: Processing by SetupController#page3 as HTML
+2014-03-25T08:21:26.244237+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"CPMrdmaWK/dXJy/RnZHtn6amMT/JhAFCVei93d/CrlM=", "ct_mask"=>"abc", "commit"=>"Proceed", "url"=>"./page3"}
+2014-03-25T08:21:26.241142+00:00 app[web.1]: Started POST "/setup/page3?url=.%2Fpage3" for 174.56.30.243 at 2014-03-25 08:21:26 +0000
+2014-03-25T08:21:26.244094+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"CPMrdmaWK/dXJy/RnZHtn6amMT/JhAFCVei93d/CrlM=", "ct_mask"=>"abc", "commit"=>"Proceed", "url"=>"./page3"}
+2014-03-25T08:21:26.264425+00:00 app[web.1]: Redirected to http://polar-castle-6087.herokuapp.com/setup/page4
+2014-03-25T08:21:26.264425+00:00 app[web.1]: Redirected to http://polar-castle-6087.herokuapp.com/setup/page4
+2014-03-25T08:21:26.268806+00:00 heroku[router]: at=info method=POST path=/setup/page3?url=.%2Fpage3 host=polar-castle-6087.herokuapp.com request_id=738e9430-a625-4f43-b4cf-18dce701b204 fwd="174.56.30.243" dyno=web.1 connect=1ms service=30ms status=302 bytes=1192
+2014-03-25T08:21:26.264701+00:00 app[web.1]: Completed 302 Found in 20ms (ActiveRecord: 6.2ms)
+2014-03-25T08:21:26.405509+00:00 app[web.1]: Processing by SetupController#page4 as HTML
+2014-03-25T08:21:26.402101+00:00 app[web.1]: Started GET "/setup/page4" for 174.56.30.243 at 2014-03-25 08:21:26 +0000
+2014-03-25T08:21:26.264701+00:00 app[web.1]: Completed 302 Found in 20ms (ActiveRecord: 6.2ms)
+2014-03-25T08:21:26.410771+00:00 app[web.1]:   Rendered setup/page4.html.erb (2.7ms)
+2014-03-25T08:21:26.411183+00:00 app[web.1]: Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+2014-03-25T08:21:26.402101+00:00 app[web.1]: Started GET "/setup/page4" for 174.56.30.243 at 2014-03-25 08:21:26 +0000
+2014-03-25T08:21:26.405509+00:00 app[web.1]: Processing by SetupController#page4 as HTML
+2014-03-25T08:21:26.410771+00:00 app[web.1]:   Rendered setup/page4.html.erb (2.7ms)
+2014-03-25T08:21:26.411183+00:00 app[web.1]: Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+2014-03-25T08:21:26.420195+00:00 heroku[router]: at=info method=GET path=/setup/page4 host=polar-castle-6087.herokuapp.com request_id=290d6433-9126-4d04-87c6-20fb8418acc7 fwd="174.56.30.243" dyno=web.1 connect=1ms service=17ms status=200 bytes=1620
+2014-03-25T08:21:26.879912+00:00 heroku[router]: at=info method=GET path=/favicon.ico host=polar-castle-6087.herokuapp.com request_id=2ff28fdf-a20e-41cc-92fb-c8d99e2c2ac4 fwd="174.56.30.243" dyno=web.1 connect=1ms service=4ms status=304 bytes=133
+2014-03-25T08:21:29.526178+00:00 app[web.1]: Started POST "/setup/page4?url=.%2Fpage4" for 174.56.30.243 at 2014-03-25 08:21:29 +0000
+2014-03-25T08:21:29.529263+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"CPMrdmaWK/dXJy/RnZHtn6amMT/JhAFCVei93d/CrlM=", "ssc"=>"4", "commit"=>"check", "url"=>"./page4"}
+2014-03-25T08:21:29.529263+00:00 app[web.1]: Processing by SetupController#page4 as HTML
+2014-03-25T08:21:29.526178+00:00 app[web.1]: Started POST "/setup/page4?url=.%2Fpage4" for 174.56.30.243 at 2014-03-25 08:21:29 +0000
+2014-03-25T08:21:29.529263+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"CPMrdmaWK/dXJy/RnZHtn6amMT/JhAFCVei93d/CrlM=", "ssc"=>"4", "commit"=>"check", "url"=>"./page4"}
+2014-03-25T08:21:29.529263+00:00 app[web.1]: Processing by SetupController#page4 as HTML
+2014-03-25T08:21:29.543144+00:00 heroku[router]: at=info method=POST path=/setup/page4?url=.%2Fpage4 host=polar-castle-6087.herokuapp.com request_id=6d05e09c-8f69-440d-9db6-e7129665d021 fwd="174.56.30.243" dyno=web.1 connect=1ms service=16ms status=200 bytes=2036
+2014-03-25T08:21:29.665485+00:00 heroku[router]: at=info method=GET path=/favicon.ico host=polar-castle-6087.herokuapp.com request_id=ce941765-5e6f-4e23-b1d4-1ae2f46d25ff fwd="174.56.30.243" dyno=web.1 connect=3ms service=6ms status=304 bytes=133
+2014-03-25T08:21:29.534769+00:00 app[web.1]:   Rendered setup/page4.html.erb (1.2ms)
+2014-03-25T08:21:29.534769+00:00 app[web.1]:   Rendered setup/page4.html.erb (1.2ms)
+2014-03-25T08:21:29.535071+00:00 app[web.1]: Completed 200 OK in 6ms (Views: 1.9ms | ActiveRecord: 1.4ms)
+2014-03-25T08:21:29.535071+00:00 app[web.1]: Completed 200 OK in 6ms (Views: 1.9ms | ActiveRecord: 1.4ms)
+2014-03-25T08:21:35.053918+00:00 app[web.1]: Started POST "/setup/page4?url=.%2Fpage4" for 174.56.30.243 at 2014-03-25 08:21:35 +0000
+2014-03-25T08:21:35.053918+00:00 app[web.1]: Started POST "/setup/page4?url=.%2Fpage4" for 174.56.30.243 at 2014-03-25 08:21:35 +0000
+2014-03-25T08:21:35.057360+00:00 app[web.1]: Processing by SetupController#page4 as HTML
+2014-03-25T08:21:35.057360+00:00 app[web.1]: Processing by SetupController#page4 as HTML
+2014-03-25T08:21:35.069308+00:00 heroku[router]: at=info method=POST path=/setup/page4?url=.%2Fpage4 host=polar-castle-6087.herokuapp.com request_id=148c9d9f-d19d-4a2f-912c-1189c8de466a fwd="174.56.30.243" dyno=web.1 connect=1ms service=17ms status=302 bytes=1213
+2014-03-25T08:21:35.062039+00:00 app[web.1]: Redirected to http://polar-castle-6087.herokuapp.com/setup/page5
+2014-03-25T08:21:35.062214+00:00 app[web.1]: Completed 302 Found in 4ms (ActiveRecord: 1.2ms)
+2014-03-25T08:21:35.057610+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"CPMrdmaWK/dXJy/RnZHtn6amMT/JhAFCVei93d/CrlM=", "ssc"=>"555123123", "commit"=>"check", "url"=>"./page4"}
+2014-03-25T08:21:35.062039+00:00 app[web.1]: Redirected to http://polar-castle-6087.herokuapp.com/setup/page5
+2014-03-25T08:21:35.062214+00:00 app[web.1]: Completed 302 Found in 4ms (ActiveRecord: 1.2ms)
+2014-03-25T08:21:35.057610+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"CPMrdmaWK/dXJy/RnZHtn6amMT/JhAFCVei93d/CrlM=", "ssc"=>"555123123", "commit"=>"check", "url"=>"./page4"}
+2014-03-25T08:21:35.194560+00:00 app[web.1]: Processing by SetupController#page5 as HTML
+2014-03-25T08:21:35.194560+00:00 app[web.1]: Processing by SetupController#page5 as HTML
+2014-03-25T08:21:35.192306+00:00 app[web.1]: Started GET "/setup/page5" for 174.56.30.243 at 2014-03-25 08:21:35 +0000
+2014-03-25T08:21:35.198094+00:00 app[web.1]:   Rendered setup/page5.html.erb (1.9ms)
+2014-03-25T08:21:35.198449+00:00 app[web.1]: Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+2014-03-25T08:21:35.192306+00:00 app[web.1]: Started GET "/setup/page5" for 174.56.30.243 at 2014-03-25 08:21:35 +0000
+2014-03-25T08:21:35.198449+00:00 app[web.1]: Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+2014-03-25T08:21:35.198094+00:00 app[web.1]:   Rendered setup/page5.html.erb (1.9ms)
+2014-03-25T08:21:35.202584+00:00 heroku[router]: at=info method=GET path=/setup/page5 host=polar-castle-6087.herokuapp.com request_id=605759d5-1d64-4622-b340-57357d0fb7b7 fwd="174.56.30.243" dyno=web.1 connect=1ms service=13ms status=200 bytes=2190
+2014-03-25T08:21:35.325598+00:00 heroku[router]: at=info method=GET path=/favicon.ico host=polar-castle-6087.herokuapp.com request_id=a2e0c266-3ca8-4458-83b7-0ba64f079556 fwd="174.56.30.243" dyno=web.1 connect=1ms service=4ms status=304 bytes=133
+2014-03-25T08:21:36.740188+00:00 app[web.1]: Started PUT "/setup/page5" for 174.56.30.243 at 2014-03-25 08:21:36 +0000
+2014-03-25T08:21:36.743506+00:00 app[web.1]: Processing by SetupController#page5 as HTML
+2014-03-25T08:21:36.743506+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"CPMrdmaWK/dXJy/RnZHtn6amMT/JhAFCVei93d/CrlM=", "sendnew"=>"yes", "commit"=>"Send Challange text via email/sms"}
+2014-03-25T08:21:36.745817+00:00 app[web.1]: Completed 500 Internal Server Error in 2ms
+2014-03-25T08:21:36.753540+00:00 heroku[router]: at=info method=POST path=/setup/page5 host=polar-castle-6087.herokuapp.com request_id=e62196b6-9070-4936-8b00-0a3012a32f9d fwd="174.56.30.243" dyno=web.1 connect=1ms service=12ms status=500 bytes=1543
+2014-03-25T08:21:36.747340+00:00 app[web.1]: Redis::CannotConnectError (Error connecting to Redis on 127.0.0.1:6379 (ECONNREFUSED)):
+2014-03-25T08:21:36.747340+00:00 app[web.1]:   app/controllers/setup_controller.rb:98:in `page5'
+2014-03-25T08:21:36.743506+00:00 app[web.1]: Processing by SetupController#page5 as HTML
+2014-03-25T08:21:36.743506+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"CPMrdmaWK/dXJy/RnZHtn6amMT/JhAFCVei93d/CrlM=", "sendnew"=>"yes", "commit"=>"Send Challange text via email/sms"}
+2014-03-25T08:21:36.740188+00:00 app[web.1]: Started PUT "/setup/page5" for 174.56.30.243 at 2014-03-25 08:21:36 +0000
+2014-03-25T08:21:36.744610+00:00 app[web.1]: 2014-03-25T08:21:36Z 2 TID-ou4cgxvms INFO: Sidekiq client with redis options {:size=>1}
+2014-03-25T08:21:36.747340+00:00 app[web.1]: 
+2014-03-25T08:21:36.747340+00:00 app[web.1]: 
+2014-03-25T08:21:36.747340+00:00 app[web.1]: 
+2014-03-25T08:21:36.745817+00:00 app[web.1]: Completed 500 Internal Server Error in 2ms
+2014-03-25T08:21:36.747340+00:00 app[web.1]: Redis::CannotConnectError (Error connecting to Redis on 127.0.0.1:6379 (ECONNREFUSED)):
+2014-03-25T08:21:36.747340+00:00 app[web.1]: 
+2014-03-25T08:21:36.747340+00:00 app[web.1]: 
+2014-03-25T08:21:36.747340+00:00 app[web.1]: 
+2014-03-25T08:21:36.747340+00:00 app[web.1]:   app/controllers/setup_controller.rb:98:in `page5'
+2014-03-25T08:21:36.893274+00:00 heroku[router]: at=info method=GET path=/favicon.ico host=polar-castle-6087.herokuapp.com request_id=b3abfa78-15cb-4189-b476-c299e1c14be7 fwd="174.56.30.243" dyno=web.1 connect=1ms service=6ms status=304 bytes=133

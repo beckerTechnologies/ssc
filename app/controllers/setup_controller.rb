@@ -9,8 +9,12 @@ class SetupController < ApplicationController
     flash.clear
     @profile = Profile.new
     @basic_info = @profile.build_basic_info
+    @ao = AuthOption.all
+    @lt = get_lifetime
   end
   def create
+    @ao = AuthOption.all
+    @lt = get_lifetime
     #TODO why are labels and fields not in the same line after a validation error occurs on that field ? 
     #TODO retain values in the form after validation errors are encountered. 
     profile_params.permit!
