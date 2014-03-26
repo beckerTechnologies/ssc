@@ -9,8 +9,8 @@ class SscMailer < ActionMailer::Base
     @carrier_id = @profile.carrier_id
     @ct = ct
     mail(to: @profile.email, subject: 'New Challange Text')
-    # sms_fu = SMSFu::Client.configure(:delivery => :action_mailer)
-    # sms_fu.deliver(@profile.phone_number,@carrier,"message") # TODO change the carrier to dynamic selection
+    sms_fu = SMSFu::Client.configure(:delivery => :action_mailer)
+    sms_fu.deliver(@profile.phone_number,@carrier,"message") # TODO change the carrier to dynamic selection
   end
 
  
