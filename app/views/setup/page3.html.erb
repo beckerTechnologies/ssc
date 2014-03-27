@@ -1,11 +1,54 @@
+<!-- TODO move the javascript in js.erb script-->
 <h1>Setup</h1>
 <p>Successfuly created profile. Pick your the boxes to be replaced with Challange text.</p>
 <p>developers note: this will be an array of toggel buttons. with validation "only 3 can be turned on for submission". </p>
-
 <%= form_tag :url => "./page3" do |p| %>
-  SSC Mask: <%= text_field_tag :ct_mask %>
-  </br>
   <p>
-  <%= submit_tag('Proceed') %>
+  <p hidden='true' id='sscbutton' ></p>
+  <%= hidden_field_tag :ct_mask %>
+  <input type='button' value='Proceed' onclick='checkSubmit()' />
   </p>
+  <script>
+
+    window.onload = function(){
+      var ssc = (new String(<%= @ssc%>)).split('');
+      var p2 = document.getElementById("sscbutton");
+      var d = document.createElement("div");
+      $(d).attr('id','format');
+      for (var i = 0; i < (<%= @len%>).valueOf(); i++ ){
+        var ce = document.createElement('input');
+        $(ce).attr({
+          type:'checkbox',
+          id:''+i+''
+        });
+        $(ce).addClass("step3");
+        d.appendChild(ce);
+        var ce = document.createElement('label');
+        $(ce).attr({
+          for:''+i+''
+        });
+        $(ce).text(''+ssc[i]+'');
+        $(ce).addClass("step3");
+        d.appendChild(ce);
+      }
+      $(d).buttonset();
+      $(p2).append(d);
+      $(p2).show();
+
+    }
+    function checkSubmit(){
+      if($("#format :checked").length==3){
+        var values = $("#format :checked").map(function(){return $(this).attr('id');}).get();
+        $('#ct_mask').val(values);
+        $("form").submit();
+        return true;
+      }
+      else{
+        alert('please select 3 box positions');
+        return false;
+      }
+    }
+
+  </script>
+
 <% end %>

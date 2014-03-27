@@ -37,13 +37,15 @@ class SetupController < ApplicationController
     end
   end
   def page2
-    #session[:pid] = 11 #@profile[:id] # remove this after testing.
+    #session[:pid] = 1 #@profile[:id] # remove this after testing.
   end
   def page3
 
     if session[:pid]
       @pid = session[:pid]
       @profile = Profile.find(@pid) #session[:pid])
+      @len = (AuthOption.find(@profile[:auth_option_id]))[:length]
+      @ssc = (@profile[:ssc_value]) #TODO rename it to ssc_val..then dont read it again 3 lines below. 
       if params[:ct_mask].present?
         @profile_id = @profile[:id]
         @lifetime = @profile[:ssc_lifetime]
@@ -73,13 +75,13 @@ class SetupController < ApplicationController
   end
   def page4
     if session[:ct] && session[:pid]
-      flash[:notice] = session[:ct]
+      @ct = session[:ct]
       if params[:ssc].present?
         @ssc = params[:ssc]
         @pid = session[:pid]
         @ssc_bank = SscBank.find_by! profile_id: @pid
         if @ssc != @ssc_bank[:ssc]
-          flash[:notice] = "Incorrect SSC, please try again. (for purpose of testing this is the profile_id = #{@pid} and this is the expected ssc = #{@ssc_bank[:ssc]} ) "
+          flash[:notice] = "Incorrect SSC, please try again. (for purpose of testing this is the profile_id = #{@pid} and this is the expected ssc = #{@ssc_bank[:ssc]} #{@ct} ) "
           render :action => :page4
         else
           flash[:notice] = "Congratulations you are done"

@@ -9,6 +9,12 @@ redis-server /usr/local/etc/redis.conf
 bundle exec sidekiq
 rails s 
 
-#to load AuthOption in table
+#to load AuthOption in table, on localhost
 rake db:seed
+# or on heroku
+heroku run rake db:seed
 # otherwise setup/page1 and setup/create wont work
+
+#reverting on heroku 
+heroku releases
+heroku rollback v13
