@@ -1,7 +1,7 @@
 class CreateBasicInfos < ActiveRecord::Migration
   def up
     create_table :basic_infos do |t|
-      t.integer :profile_id # FK
+      t.integer :profile_id
       t.text :first_name
       t.text :middle_name
       t.text :last_name 

@@ -29,3 +29,29 @@ body {
 	font-size: 18px;
 	margin-top: 20px;
 }
+
+.setup_page_1 {
+	border: 1px solid black;
+	padding: 10px;
+	padding-right: 40px;
+	padding-left: 40px;
+	width: 500px;
+	margin-right: auto;
+	margin-left: auto;
+
+}
+
+.setup_page_1 input {
+	float: right;
+}
+
+.setup_page_1 select {
+	float: right;
+	width: 208px;
+}
+
+.field_with_errors {
+	width: 500px;
+	height: 19px;
+	color: red;
+}

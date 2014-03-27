@@ -47,7 +47,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'sms-easy'
+gem 'sms-easy'			# To send SMS to users
+
+gem 'wicked'			# to chop the setup form to multiple pages
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
