@@ -6,7 +6,7 @@ class RenewWorker
     ssc_bank = SscBank.find_by profile_id: pid
     ct = set_ct
     ssc = set_ssc(ct, ssc_bank[:ssc], ssc_bank[:ct_mask])
-    expiry = set_expiry(ssc_bank[:lifetime])
+    expiry = set_expiry((Lifetime.find(ssc_bank[:lifetime_id]))[:hours])
     ssc_bank[:expiry] = expiry
     ssc_bank[:ssc] = ssc
     ssc_bank.valid?

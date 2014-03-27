@@ -1,0 +1,36 @@
+<%= form_for(@basic_info, :url => "./basicinfo" ) do |f| %>
+  <% if @basic_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@basic_info.errors.count, "error") %> prohibited this basic_info from being saved:</h2>
+
+      <ul>
+        <% @basic_info.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label(:first_name, "First name:") %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label(:middle_name, "Middle name:") %><br>
+    <%= f.text_field :middle_name %>
+  </div>
+  <div class="field">
+    <%= f.label(:last_name, "Last name:") %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label(:dob, "Date of Birth:") %><br>
+    <%= f.date_select :dob %>
+  </div>
+  <div class="field">
+    <%= f.label(:ssn, "SSN:")%><br>
+    <%= f.text_field :ssn %>
+  </div>
+  <div class="actions">
+    <%= f.submit("Proceed") %>
+  </div>
+<% end %>

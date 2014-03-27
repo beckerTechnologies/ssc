@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326001831) do
+ActiveRecord::Schema.define(version: 20140327220927) do
 
   create_table "auth_options", force: true do |t|
     t.text     "name"
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 20140326001831) do
     t.datetime "updated_at"
   end
 
+  create_table "lifetimes", force: true do |t|
+    t.integer  "hours"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "profiles", force: true do |t|
     t.text     "email"
     t.text     "password"
@@ -60,7 +67,7 @@ ActiveRecord::Schema.define(version: 20140326001831) do
     t.text     "ct_mask"
     t.text     "auth_value"
     t.datetime "expiry"
-    t.integer  "lifetime"
+    t.integer  "lifetime_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

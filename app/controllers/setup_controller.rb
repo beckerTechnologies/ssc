@@ -1,77 +1,89 @@
 class SetupController < ApplicationController
-  
-  def page1
-    flash.clear
+  def new
     @profile = Profile.new
-    @basic_info = @profile.build_basic_info
-    @ao = AuthOption.all
     @ca = Carrier.all
-    @lt = get_lifetime
-  end
-  def create
-    @ao = AuthOption.all
+    render  :profile
+  end 
+
+  def profile
     @ca = Carrier.all
-    @lt = get_lifetime
-    #TODO why are labels and fields not in the same line after a validation error occurs on that field ? 
-    #TODO retain values in the form after validation errors are encountered. 
-    profile_params.permit!
     @profile = Profile.new(profile_params)
-
-    params[:profile][:basic_info].permit!
-    @basic = BasicInfo.new(params[:profile][:basic_info])
-    @basic[:ssn] = @basic[:ssn].tr('-','')
-
-    @profile.valid?
-    @basic.valid?
-
-    if @profile.errors.present? || @basic.errors.present?
-      flash[:notice] = "#{@profile.errors.full_messages.to_sentence} - #{@basic.errors.full_messages.to_sentence}" # to display all errors in one line 
-      render :action=>'page1'
-    else
-      @profile.save!
-      @basic[:profile_id] = @profile[:id]
-      @basic.save!
-      flash[:notice] = "Successfully created profile. #{@profile[:id]}"
-      session[:pid] = @profile[:id]
-      redirect_to :action => :page2
+    respond_to do |format|
+      if @profile.save
+        session[:pid] = @profile.id
+        format.html{ redirect_to :action => :new_info, notice: 'Profile stored'}
+      else
+        format.html{ render :action => :profile}
+      end
     end
   end
+  def new_info
+    @basic_info = BasicInfo.new
+    render  :basicinfo
+  end 
+  def basicinfo
+    @basic_info = BasicInfo.new(basic_info_params)
+    @basic_info.profile_id = session[:pid]
+    respond_to do |format|
+      if @basic_info.save
+        format.html{ redirect_to :action => :new_ssc, notice: 'Basic Info stored'}
+      else
+        format.html{ render :action => :basicinfo}
+      end
+    end 
+  end  
+  def new_ssc
+    @ssc_bank = SscBank.new
+    @ao = AuthOption.all
+    @lt = Lifetime.all
+    render  :ssc
+  end 
+  def ssc
+    @ao = AuthOption.all
+    @lt = Lifetime.all
+    @ssc_bank = SscBank.new(ssc_bank_params)
+    @ssc_bank.profile_id = session[:pid]
+    respond_to do |format|
+      if @ssc_bank.save
+        format.html{ redirect_to :action => :page3, notice: 'SSC info stored'}
+      else
+        format.html{ render :action => :ssc}
+      end
+    end
+  end
+
   def page2
-    #session[:pid] = 1 #@profile[:id] # remove this after testing.
+    session[:pid] = 1 #@profile[:id] # remove this after testing.
   end
   def page3
 
     if session[:pid]
       @pid = session[:pid]
-      @profile = Profile.find(@pid) #session[:pid])
-      @len = (AuthOption.find(@profile[:auth_option_id]))[:length]
-      @ssc = (@profile[:ssc_value]) #TODO rename it to ssc_val..then dont read it again 3 lines below. 
+      @ssc_bank = SscBank.find_by profile_id: @pid
+      @len = (AuthOption.find(@ssc_bank[:auth_option_id]))[:length] # for the view
+      @ssc_o = @ssc_bank[:auth_value]
       if params[:ct_mask].present?
-        @profile_id = @profile[:id]
-        @lifetime = @profile[:ssc_lifetime]
-        @ssc_val = @profile[:ssc_value]
         @ct_mask = params[:ct_mask]
-        @ct = set_ct #rand(10) # single digit ct
-        @ssc = set_ssc(@ct, @ssc_val, @ct_mask)
-        @expiry = set_expiry(@lifetime)
-        flash[:notice] = @ct
+        @ct = set_ct 
         session[:ct] = @ct
-        @sscbank = {ct_mask: params[:ct_mask], profile_id:@profile_id, lifetime: @lifetime, expiry:@expiry, ssc:@ssc}
-        @ssc_bank = SscBank.new(@sscbank )
-        @ssc_bank.valid?
-        if @ssc_bank.errors.present?
-          flash[:notice] = "#{@ssc_bank.errors.full_messages.to_sentence}"
-          render :action => :page3
-        else
-          @ssc_bank.save!
-          #flash[:notice] = "successfully created SSC"
-          redirect_to :action => :page4
+        @ssc = set_ssc(@ct, @ssc_bank[:auth_value], @ct_mask)
+        @lifetime = (Lifetime.find(@ssc_bank[:lifetime_id]))[:hours]
+        @expiry = set_expiry(@lifetime)
+
+        @ssc_bank.expiry = @expiry 
+        @ssc_bank.ct_mask = @ct_mask
+        @ssc_bank.ssc = @ssc 
+        respond_to do |format|
+          if @ssc_bank.save!
+            format.html{ redirect_to :action => :page4, notice: 'SSC stored'}
+          else
+            format.html{ render :action => :page3}
+          end
         end
       end
     else 
       flash[:notice] = "Session expired. Hit return to go back. " 
     end 
-
   end
   def page4
     if session[:ct] && session[:pid]
@@ -114,7 +126,14 @@ class SetupController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:email, :password, :password_confirmation, :phone_number, :street_addr, :apartment_no, :city, :state, :zip_code, :country, :auth_option_id, :carrier_id,  :ssc_value, :ssc_lifetime, basic_info_attributes: [:id, :first_name, :middle_name, :last_name, :dob, :ssn] )
+    params.require(:profile).permit(:email, :password, :password_confirmation, :phone_number, :street_addr, :apartment_no, :city, :state, :zip_code, :country, :carrier_id )
+  end
+  def basic_info_params
+    params.require(:basic_info).permit(:first_name, :middle_name, :last_name, :dob, :ssn)
+  end
+  def ssc_bank_params
+    params.require(:ssc_bank).permit(:auth_option_id, :auth_value, :ssc, :ct_mask, :lifetime_id) 
   end
 end
+
 

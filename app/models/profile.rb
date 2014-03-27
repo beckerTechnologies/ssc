@@ -4,7 +4,7 @@ class Profile < ActiveRecord::Base
   has_one :ssc_bank, :autosave => true
   belongs_to :auth_option
   belongs_to :carrier
-  accepts_nested_attributes_for :basic_info
+  #accepts_nested_attributes_for :basic_info
   #accepts_nested_attributes_for :ssc_bank
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
@@ -22,7 +22,4 @@ class Profile < ActiveRecord::Base
   validates :state, presence: true
   validates :country, presence: true
 =end
-  validates :auth_option_id, presence: true
-  validates :ssc_value, presence: true
-  validates :ssc_lifetime, presence: true
 end

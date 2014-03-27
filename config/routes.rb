@@ -5,38 +5,38 @@ SSC::Application.routes.draw do
   #TODO clean up 
   root 'home#index'
 
-  resources :setup do
-    get "page1", :on => :collection
-    get "page2", :on => :collection
-    get "page3", :on => :collection
-    get "page4", :on => :collection
-    get "page5", :on => :collection
-    put "page1", :on => :collection
-    post "page1", :on => :collection
-    post "create", :on => :collection
-    post "page2", :on => :collection
-    post "page3", :on => :collection
-    put "page3", :on => :collection
-    put "page4", :on => :collection
-    post "page4", :on => :collection
-    put "page5", :on => :collection
-    post "page5", :on => :collection
-    get "show", :on => :collection
-  end
 
+resources :setup do
+  get "basicinfo", :on => :collection
+  post "basicinfo", :on => :collection
+  get "profile", :on => :collection
+  post "profile", :on => :collection
+  get "ssc", :on => :collection
+  post "ssc", :on => :collection
+  get "new_info", :on => :collection
+  post "new_info", :on => :collection
+  get "new_ssc", :on => :collection
+  post "new_ssc", :on => :collection
+  get "page2", :on => :collection
+  get "page3", :on => :collection
+  get "page4", :on => :collection
+  get "page5", :on => :collection
+  post "page2", :on => :collection
+  post "page3", :on => :collection
+  post "page4", :on => :collection
+  post "page5", :on => :collection
+  get "show", :on => :collection
+end
 
-  resources :login do
-    get "page1", :on => :collection
-    get "page2", :on => :collection
-    get "page3", :on => :collection
-    put "page1", :on => :collection
-    put "page2", :on => :collection
-    put "page3", :on => :collection
-  end
-
-  resources :form_wizard
-
-
+ 
+ resources :login do
+  get "page1", :on => :collection
+  get "page2", :on => :collection
+  get "page3", :on => :collection
+  put "page1", :on => :collection
+  put "page2", :on => :collection
+  put "page3", :on => :collection
+end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
