@@ -1,21 +1,64 @@
 <h1>Setup</h1>
 <div class="setup_page">
 
-<p> Your Box Code is: </p>
+  <p> Your Box Code is: </p>
 
-<p> <%= @ssc_bank.ct_mask %> </p>
+  <p> <%= @ssc_bank.ct_mask %> </p>
 
-<p> Write this down and do not forget it! </p></br></br></br>
+  <p> Write this down and do not forget it! </p></br></br></br>
 
-<p>Try it Out</p>
-<p>your challange text is <%= @ct%>.</p>
+  <p>Try it Out</p>
+  <p>your challange text is <%= @ct%>.</p>
 
-<%= form_tag :url => "./page4" do |p| %>
-  <p> SSC: <%= text_field_tag :ssc %> </p>
-  </br>
-  <div class="submit_btn">
-  <%= submit_tag('check') %>
-  </div>
-<% end %>
+  <%= form_tag :url => "./page4" do |p| %>
+    <p> SSC: <%= text_field_tag :ssc %> </p>
+    </br>
+    <div class="submit_btn">
+      <%= submit_tag('check') %>
+    </div>
+  <% end %>
 </div>
 
+<div class="ssc-gen">
+
+  <form maxlength ='20' size='20' id='gen_form' >
+    <p>
+    <label>Insert your personal ID number you selected for your SSC</label>
+    <input maxlength ='20' size='20' type='text' id='numbers'>
+    </p>
+    <p>
+    <label>Insert your box positions</label>
+    <input maxlength ='1' size='1' id='first'>
+    <input maxlength ='1' size='1' id='second'>
+    <input maxlength ='1' size='1' id='third'>
+    </p>
+    <p>
+    <label>Insert your challenge key</label>
+    <input maxlength ='1' size='1' id='ct_in'>
+    </p>
+    <input type='button' id='gen_submit' value='Generate SSC'>
+    <p>
+    <label class= "gen_output" hidden='true' for='ssc_out' >Your encoded SSC is: </input>
+    <input class = "gen_output" hidden='true' maxlength ='20' size='20' type='text' id='ssc_out'></input>
+    </p>
+  </form>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+      $("#gen_submit").click(function() {
+        var numbers = $('#numbers').val();
+        var ct = $('#ct_in').val();
+        var numbers_a = numbers.split('');
+        numbers_a[parseInt($('#first').val())] = ct;
+        numbers_a[parseInt($('#second').val())] = ct;
+        numbers_a[parseInt($('#third').val())] = ct;
+
+        var numbers_i = numbers_a.join('');
+
+        $('#ssc_out').val(numbers_i);
+        $('.gen_output').show();
+        return false;
+        })
+      })
+</script>
