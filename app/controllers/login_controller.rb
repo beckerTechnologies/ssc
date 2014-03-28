@@ -41,7 +41,7 @@ class LoginController < ApplicationController
               redirect_to :action => :page3
             end
           rescue 
-            flash[:notice] = "incorrect or expired SSC. use the button below to send yourself a new CT. (for testing, profile_id = #{@pid} and here is ur ssc: #{@sscVal.ssc} #{Time.now} > #{@sscVal[:expiry]}" 
+            flash[:notice] = "incorrect or expired SSC. use the button below to send yourself a new CT." 
           end
         end
       else

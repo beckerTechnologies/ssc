@@ -50,9 +50,9 @@
         var numbers = $('#numbers').val();
         var ct = $('#ct_in').val();
         var numbers_a = numbers.split('');
-        numbers_a[parseInt($('#first').val())] = ct;
-        numbers_a[parseInt($('#second').val())] = ct;
-        numbers_a[parseInt($('#third').val())] = ct;
+        numbers_a[parseInt($('#first').val())-1] = ct;
+        numbers_a[parseInt($('#second').val())-1] = ct;
+        numbers_a[parseInt($('#third').val())-1] = ct;
 
         var numbers_i = numbers_a.join('');
 

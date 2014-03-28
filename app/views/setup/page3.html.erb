@@ -47,7 +47,7 @@
     }
     function checkSubmit(){
       if($("#format :checked").length==3){
-        var values = $("#format :checked").map(function(){return $(this).attr('id');}).get();
+        var values = $("#format :checked").map(function(){return (parseInt($(this).attr('id'))+1);}).get();
         $('#ct_mask').val(values);
         $("form").submit();
         return true;

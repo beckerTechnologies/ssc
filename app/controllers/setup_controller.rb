@@ -104,7 +104,7 @@ class SetupController < ApplicationController
         @pid = session[:pid]
         @ssc_bank = SscBank.find_by profile_id: @pid
         if @ssc != @ssc_bank[:ssc]
-          flash[:notice] = "Incorrect SSC, please try again. (for purpose of testing this is the profile_id = #{@pid} and this is the expected ssc = #{@ssc_bank[:ssc]} #{@ct} ) "
+          flash[:notice] = "Incorrect SSC, please try again." 
           render :action => :page4
         else
           flash[:notice] = "Congratulations you are done"

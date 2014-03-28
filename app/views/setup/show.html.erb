@@ -13,7 +13,6 @@
       <th>Zip code</th>
       <th>State</th>
       <th>Country</th>
-      <th>Ssc value</th>
       <th></th>
       <th></th>
       <th></th>
@@ -33,7 +32,6 @@
         <td><%= profile.zip_code %></td>
         <td><%= profile.state %></td>
         <td><%= profile.country %></td>
-        <td><%= profile.ssc_value %></td>
       </tr>
     <% end %>
   </tbody>
@@ -46,12 +44,12 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th>profile_id</th>
       <th>First name </th>
       <th>Middle name</th>
       <th>Last name</th>
       <th>dob</th>
       <th>ssn</th>
-      <th>profile_id</th>
     </tr>
   </thead>
 
@@ -59,12 +57,12 @@
     <% @basic.each do |basic| %>
       <tr>
         <td><%= basic.id %></td>
+        <td><%= basic.profile_id %></td>
         <td><%= basic.first_name %></td>
         <td><%= basic.middle_name %></td>
         <td><%= basic.last_name %></td>
         <td><%= basic.dob %></td>
         <td><%= basic.ssn %></td>
-        <td><%= basic.profile_id %></td>
       </tr>
     <% end %>
   </tbody>
@@ -84,6 +82,7 @@
       <th>ct mask</th>
       <th>expiry</th>
       <th>lifetime</th>
+      <th>Ssc value</th>
     </tr>
   </thead>
 
@@ -95,7 +94,8 @@
         <td><%= bank.ssc %></td>
         <td><%= bank.ct_mask %></td>
         <td><%= bank.expiry %></td>
-        <td><%= bank.lifetime %></td>
+        <td><%= bank.lifetime_id %></td>
+        <td><%= bank.auth_value %></td>
       </tr>
     <% end %>
   </tbody>

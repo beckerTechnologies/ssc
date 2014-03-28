@@ -7,7 +7,7 @@ module ApplicationHelper
     auth_val = auth_val_s.split ''
     ct_mask = ct_mask_s.split ','
     ct_mask.each do |i|
-      ind = (i).to_i
+      ind = (i).to_i - 1
       auth_val[ind] = ct
     end
     return auth_val.join
