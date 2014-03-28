@@ -1,13 +1,22 @@
+
 <!-- TODO move the javascript in js.erb script-->
+
 <h1>Setup</h1>
-<p>Successfuly created profile. Pick your the boxes to be replaced with Challange text.</p>
-<p>developers note: this will be an array of toggel buttons. with validation "only 3 can be turned on for submission". </p>
+<div class="setup_page">
+
+<p>Click 3 boxes to create your box code!</p>
+
+<div class="boxes_positions">
+
 <%= form_tag :url => "./page3" do |p| %>
-  <p>
+
   <p hidden='true' id='sscbutton' ></p>
   <%= hidden_field_tag :ct_mask %>
+</div>
+  <div class="submit_btn">
   <input type='button' value='Proceed' onclick='checkSubmit()' />
-  </p>
+  </div>
+
   <script>
 
     window.onload = function(){
@@ -52,3 +61,6 @@
   </script>
 
 <% end %>
+
+
+</div>

@@ -1,4 +1,7 @@
 class SetupController < ApplicationController
+
+  layout 'setup'
+  
   def new
     @profile = Profile.new
     @ca = Carrier.all
@@ -11,7 +14,7 @@ class SetupController < ApplicationController
     respond_to do |format|
       if @profile.save
         session[:pid] = @profile.id
-        format.html{ redirect_to :action => :new_info, notice: 'Profile stored'}
+        format.html{ redirect_to :action => :new_info}
       else
         format.html{ render :action => :profile}
       end
@@ -26,7 +29,7 @@ class SetupController < ApplicationController
     @basic_info.profile_id = session[:pid]
     respond_to do |format|
       if @basic_info.save
-        format.html{ redirect_to :action => :new_ssc, notice: 'Basic Info stored'}
+        format.html{ redirect_to :action => :new_ssc}
       else
         format.html{ render :action => :basicinfo}
       end
@@ -45,7 +48,7 @@ class SetupController < ApplicationController
     @ssc_bank.profile_id = session[:pid]
     respond_to do |format|
       if @ssc_bank.save
-        format.html{ redirect_to :action => :page3, notice: 'SSC info stored'}
+        format.html{ redirect_to :action => :page3}
       else
         format.html{ render :action => :ssc}
       end

@@ -4,9 +4,15 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <p>hi <%= @basic_info.first_name %>, </p>
+    <p><%= @basic_info.first_name %>, </p>
     <p>
-    your new challange text is : <%= @ct %>.<br/>
+    Thank you for using the Plus-One Anti-Fraud Security System.<br/>
+    </p>
+    <p>
+	Your new "Challenge Symbol" is <%= @ct %>. This symbol will expire in <%= @lifetime.hours %> hours.
+    </p>
+    <p>
+	Access your profile at <a href="http://sscbeta.herokuapp.com/"> this link </a>to Login or to request a new Challenge Symbol.
     </p>
   </body>
 </html>

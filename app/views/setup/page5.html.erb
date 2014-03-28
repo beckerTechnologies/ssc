@@ -1,14 +1,18 @@
 <h1>Setup</h1>
+<div class="setup_page">
+
 <p>Congratulations ! setup process is complete. Press the button below to send the challange text. </p>
 
 
 
 <%= form_tag("./page5") do %>
   <%= hidden_field_tag 'sendnew', 'yes' %>
-  <%= submit_tag("Send Challange text via email/sms") %>
+  <p class="email_home_btns"> <%= submit_tag("Send Challange Text Via Email/SMS") %> </p>
 <% end %>
 
 
 <%= form_tag(root_path, method: "get") do %>
-  <%= submit_tag("back to Home") %>
+  <p class="email_home_btns"> <%= submit_tag("Go Back To Home") %> </p>
 <% end %>
+
+</div>

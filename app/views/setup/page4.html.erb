@@ -1,12 +1,15 @@
 <h1>Setup</h1>
+<div class="setup_page">
+
 <p>Try it Out</p>
 <p>your challange text is <%= @ct%>.</p>
 
 <%= form_tag :url => "./page4" do |p| %>
-  SSC: <%= text_field_tag :ssc %>
+  <p> SSC: <%= text_field_tag :ssc %> </p>
   </br>
-  <p>
+  <div class="submit_btn">
   <%= submit_tag('check') %>
-  </p>
+  </div>
 <% end %>
+</div>
 

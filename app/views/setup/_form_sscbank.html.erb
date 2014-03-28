@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :auth_option_id %><br>
-    <%= f.select("auth_option_id", options_from_collection_for_select(@ao, 'id', 'name', 1 )) %>
+    <p><%= f.label :auth_option_id %>
+    <%= f.select("auth_option_id", options_from_collection_for_select(@ao, 'id', 'name', 1 )) %> </p>
   </div>
   <div class="field">
-    <%= f.label :auth_value %><br>
-    <%= f.text_field :auth_value %>
+    <p><%= f.label :auth_value %>
+    <%= f.text_field :auth_value %> </p>
   </div>
   <div class="field">
-    <%= f.label :lifetime_id %><br>
-    <%= f.select("lifetime_id", options_from_collection_for_select( @lt,'id', 'name',2)) %>
+    <p><%= f.label :lifetime_id %>
+    <%= f.select("lifetime_id", options_from_collection_for_select( @lt,'id', 'name',2)) %> </p>
   </div>
-  <div class="actions">
+  <div class="submit_btn">
     <%= f.submit("Procced") %>
   </div>
 <% end %>
