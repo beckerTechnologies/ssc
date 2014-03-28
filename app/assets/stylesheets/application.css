@@ -19,7 +19,8 @@
 
 body {
 	height: 2000px;
-	background-color: #CEEBFB;
+	/*background-color: #CEEBFB;*/
+	background-color: white;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -52,7 +53,8 @@ h3 {
 	border: 1px solid black;
 	border-radius: 10px;
 	padding: 10px 0px 10px 0px;
-	background-color: #F0ECEB;
+	/*background-color: #F0ECEB;*/
+	background-color: white;
 	margin: 50px 400px 200px 100px;
 }
 
@@ -70,7 +72,8 @@ h3 {
 	border: 1px solid black;
 	border-radius: 10px;
 	padding: 10px 0px 10px 0px;
-	background-color: #F0ECEB;
+	/*background-color: #F0ECEB;*/
+	background-color: white;
 	margin: 50px 100px 200px 400px;
 }
 
@@ -86,7 +89,8 @@ h3 {
 	clear: both;
 	font-size: 16px;
 	text-align: justify;
-	background-color: #66A7C5;
+	/*background-color: #66A7C5;*/
+	background-color: white;
 	padding: 100px;
 }
 
@@ -113,7 +117,8 @@ h3 {
 	font-size: 16px;
 	text-align: center;
 	padding: 100px;
-	background-color: #F0ECEB;
+	/*background-color: #F0ECEB;*/
+	background-color: white;
 }
 
 .home_page_get_started_link {
@@ -121,13 +126,14 @@ h3 {
 	border: 1px solid black;
 	border-radius: 10px;
 	padding: 10px 0px 10px 0px;
-	background-color: #66A7C5;
+	/*background-color: #66A7C5;*/
+	background-color: white;
 	margin: 50px auto 200px auto;
 	width: 235px;
+	text-align: center;
 }
 
 .home_page_get_started_link a {
-	text-align: center;
 	text-decoration: none;
 	padding: 10px 34px 10px 34px;
 	border-radius: 10px;
@@ -142,14 +148,12 @@ h3 {
 
 .setup_page {
 	border: 1px solid black;
-	padding: 10px;
-	padding-right: 40px;
-	padding-left: 40px;
-	padding-bottom: 40px;
+	padding: 10px 40px 40px 40px;
 	width: 500px;
 	margin-right: auto;
 	margin-left: auto;
-	background-color: #CEEBFB;
+	/*background-color: #CEEBFB;*/
+	background-color: white;
 	overflow: auto;
 }
 
@@ -171,6 +175,7 @@ h3 {
 
 .field_with_errors {
 	color: red;
+	width: 200px;
 }
 
 .dob_select select{
@@ -189,3 +194,44 @@ h3 {
 
 }
 
+.setup_page ol {
+	padding-top: 10px;
+}
+
+.setup_page li {
+	margin: 0px 20px 20px 10px;
+	text-align: justify;
+}
+
+.setup_page_ssc {
+	border: 1px solid black;
+	padding: 10px 40px 40px 40px; 
+	width: 500px;
+	margin-right: auto;
+	margin-left: auto;
+	/*background-color: #CEEBFB;*/
+	background-color: white;
+	overflow: auto;
+}
+
+.ssc-field {
+	margin-top: 40px;
+	margin-bottom: 60px;
+}
+
+.setup_page_ssc input{
+	text-align: center;
+	margin: 20px auto auto 100px;
+	width: 300px;
+}
+
+.setup_page_ssc select{
+	text-align: center;
+	margin: 20px auto auto 100px;
+	width: 300px;
+}
+
+.setup_page_ssc .submit_btn input{
+	width: 150px;
+	float: right;
+}

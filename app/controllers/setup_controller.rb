@@ -1,7 +1,7 @@
 class SetupController < ApplicationController
 
   layout 'setup'
-  
+
   def new
     @profile = Profile.new
     @ca = Carrier.all
@@ -29,12 +29,18 @@ class SetupController < ApplicationController
     @basic_info.profile_id = session[:pid]
     respond_to do |format|
       if @basic_info.save
-        format.html{ redirect_to :action => :new_ssc}
+        format.html{ redirect_to :action => :welcome_ssc}
       else
         format.html{ render :action => :basicinfo}
       end
     end 
-  end  
+  end
+
+  def welcome_ssc
+
+    # redirect_to :action => :new_ssc
+  end
+
   def new_ssc
     @ssc_bank = SscBank.new
     @ao = AuthOption.all
@@ -91,10 +97,12 @@ class SetupController < ApplicationController
   def page4
     if session[:ct] && session[:pid]
       @ct = session[:ct]
+      @pid = session[:pid]
+      @ssc_bank = SscBank.find_by profile_id: @pid
       if params[:ssc].present?
         @ssc = params[:ssc]
         @pid = session[:pid]
-        @ssc_bank = SscBank.find_by! profile_id: @pid
+        @ssc_bank = SscBank.find_by profile_id: @pid
         if @ssc != @ssc_bank[:ssc]
           flash[:notice] = "Incorrect SSC, please try again. (for purpose of testing this is the profile_id = #{@pid} and this is the expected ssc = #{@ssc_bank[:ssc]} #{@ct} ) "
           render :action => :page4

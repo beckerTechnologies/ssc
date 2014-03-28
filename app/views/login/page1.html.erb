@@ -1,15 +1,22 @@
 <h1>Login</h1>
+<div class="setup_page">
+
 <p>Please enter your username(complete email address) and password.</p> 
-<div style="width:300px;height:100px;border:1px solid;" align='center'>
   </br>
   <%= form_tag("./page1", method: "put") do %>
     <%= label_tag(:email, "Username:") %>
     <%= text_field_tag(:email) %>
-    </br>
+    </br></br>
     <%= label_tag(:password, "Password:") %>
     <%= password_field_tag(:password) %>
-    </br>
-    <%= submit_tag("Login") %>
-  <% end %>
+    </br></br>
+
+  
   </br></br>
+  <div class="submit_btn">
+    <%= submit_tag("Login") %>
+    </div>
+
+    <% end %>
+
 </div>

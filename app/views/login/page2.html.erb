@@ -1,11 +1,18 @@
 <h1>Login</h1>
+
+<div class="setup_page">
+
 <p>Please enter your SSC to proceed</p> 
-<div style="width:300px;height:100px;border:1px solid;" align='center'>
   </br>
   <%= form_tag("./page2", method: "put") do %>
     <%= label_tag(:ssc, "SSC:") %>
     <%= text_field_tag(:ssc) %>
+    </br>
+    </br>
+    <div class="submit_btn">
+
     <%= submit_tag("Login") %>
+    </div>
     </br>
     </br>
   <% end %>
@@ -13,4 +20,5 @@
     <%= hidden_field_tag 'sendnew', 'yes' %>
     <%= submit_tag("Request new Challange text") %>
   <% end %>
+
 </div>
