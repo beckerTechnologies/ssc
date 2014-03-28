@@ -4,63 +4,63 @@
 <h1>Setup</h1>
 <div class="setup_page">
 
-<p>Click 3 boxes to create your box code!</p>
+  <p>Click 3 boxes to create your box code!</p>
 
-<div class="boxes_positions">
+  <div class="boxes_positions">
 
-<%= form_tag :url => "./page3" do |p| %>
+    <%= form_tag :url => "./page3" do |p| %>
 
-  <p hidden='true' id='sscbutton' ></p>
-  <%= hidden_field_tag :ct_mask %>
-</div>
-  <div class="submit_btn">
-  <input type='button' value='Proceed' onclick='checkSubmit()' />
-  </div>
+      <p hidden='true' id='sscbutton' ></p>
+      <%= hidden_field_tag :ct_mask %>
+    </div>
+    <div class="submit_btn">
+      <input type='button' value='Proceed' onclick='checkSubmit()' />
+    </div>
 
-  <script>
+    <script>
 
-    window.onload = function(){
-      var ssc = (new String(<%= @ssc_o%>)).split('');
-      var p2 = document.getElementById("sscbutton");
-      var d = document.createElement("div");
-      $(d).attr('id','format');
-      for (var i = 0; i < (<%= @len%>).valueOf(); i++ ){
-        var ce = document.createElement('input');
-        $(ce).attr({
-          type:'checkbox',
-          id:''+i+''
-        });
-        $(ce).addClass("step3");
-        d.appendChild(ce);
-        var ce = document.createElement('label');
-        $(ce).attr({
-          for:''+i+''
-        });
-        $(ce).text(''+ssc[i]+'');
-        $(ce).addClass("step3");
-        d.appendChild(ce);
+      window.onload = function(){
+        var ssc = (new String(<%= @ssc_o%>)).split('');
+        var p2 = document.getElementById("sscbutton");
+        var d = document.createElement("div");
+        $(d).attr('id','format');
+        for (var i = 0; i < (<%= @len%>).valueOf(); i++ ){
+          var ce = document.createElement('input');
+          $(ce).attr({
+            type:'checkbox',
+            id:''+i+''
+          });
+          $(ce).addClass("step3");
+          d.appendChild(ce);
+          var ce = document.createElement('label');
+          $(ce).attr({
+            for:''+i+''
+          });
+          $(ce).text(''+ssc[i]+'');
+          $(ce).addClass("step3");
+          d.appendChild(ce);
+        }
+        $(d).buttonset();
+        $(p2).append(d);
+        $(p2).show();
+
       }
-      $(d).buttonset();
-      $(p2).append(d);
-      $(p2).show();
-
-    }
-    function checkSubmit(){
-      if($("#format :checked").length==3){
-        var values = $("#format :checked").map(function(){return (parseInt($(this).attr('id'))+1);}).get();
-        $('#ct_mask').val(values);
-        $("form").submit();
-        return true;
+      function checkSubmit(){
+        if($("#format :checked").length==3){
+          var values = $("#format :checked").map(function(){return (parseInt($(this).attr('id'))+1);}).get();
+          $('#ct_mask').val(values);
+          $("form").submit();
+          return true;
+        }
+        else{
+          alert('please select 3 box positions');
+          return false;
+        }
       }
-      else{
-        alert('please select 3 box positions');
-        return false;
-      }
-    }
 
-  </script>
+    </script>
 
-<% end %>
+  <% end %>
 
 
 </div>
