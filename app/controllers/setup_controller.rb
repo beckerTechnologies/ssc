@@ -53,7 +53,7 @@ class SetupController < ApplicationController
     @ao = AuthOption.all
     @lt = Lifetime.all
     @ssc_bank = SscBank.new(ssc_bank_params)
-    if AuthOption.find(@ssc_bank.auth_option_id)==@ssc_bank.auth_value.length
+    if AuthOption.find(@ssc_bank.auth_option_id).length==@ssc_bank.auth_value.length
         @ssc_bank.profile_id = session[:pid]
         respond_to do |format|
           if @ssc_bank.save
@@ -63,7 +63,7 @@ class SetupController < ApplicationController
           end
         end
     else 
-        flash[:notice] = "value wrong length" # TODO figure out what to do ?
+        flash[:notice] = "value wrong length #{AuthOption.find(@ssc_bank.auth_option_id).length} #{@ssc_bank.auth_value.length}" # TODO figure out what to do ?
     end
   end
 
