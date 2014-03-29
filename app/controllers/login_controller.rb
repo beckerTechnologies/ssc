@@ -1,5 +1,5 @@
 class LoginController < ApplicationController
-  
+  layout 'login'  
   def page1
     if params[:email].present? 
       @email = params[:email].tr(' ','').downcase

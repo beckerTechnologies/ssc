@@ -1,7 +1,9 @@
 class SetupController < ApplicationController
 
   layout 'setup'
-
+  def welcome_setup
+       # redirect_to :action => :new_ssc
+  end
   def new
     @profile = Profile.new
     @ca = Carrier.all
