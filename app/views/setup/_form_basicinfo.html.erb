@@ -24,7 +24,7 @@
   </div>
   <div class="dob_select">
     <p><%= f.label(:dob, "Date of Birth") %>
-    <%= f.date_select :dob, start_year: 1900, end_year: 2014%> </p>
+    <%= f.date_select :dob, start_year: 1900, end_year: 2014, order: [:year, :day, :month]%> </p>
   </div>
   <div class="field">
     <p><%= f.label(:ssn, "Social Security Number")%>

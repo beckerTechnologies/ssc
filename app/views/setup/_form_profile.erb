@@ -35,11 +35,11 @@
     <%= f.select(:carrier_id, options_from_collection_for_select(@ca, 'id', 'carrier_name', 1 )) %> </p>
   </div>
   <div class="field">
-    <p> <%= f.label :street_addr %>
+    <p> <%= f.label :street_addr, "Street Address" %>
     <%= f.text_field :street_addr %> </p>
   </div>
   <div class="field">
-    <p> <%= f.label :apartment_no %>
+    <p> <%= f.label :apartment_no, "Apartment No." %>
     <%= f.text_field :apartment_no %> </p>
   </div>
   <div class="field">
