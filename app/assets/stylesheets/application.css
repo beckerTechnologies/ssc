@@ -152,8 +152,7 @@ h3 {
 	font-size: 150%;
 	text-align: center;
 	padding: 10%;
-	/*background-color: #F0ECEB;*/
-	background-color: white;
+	background-color: #66A7C5;
 }
 
 .home_page_get_started_link {
@@ -180,6 +179,9 @@ h3 {
 	margin-left: auto;
 	text-align: center;
 	margin-top: 5%;
+	border: 50px solid #EE3233;
+	padding: none;
+	width: 560px;
 }
 
 /*-------------------------------- Set-Up Page --------------------------------*/
