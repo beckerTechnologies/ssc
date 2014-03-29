@@ -81,4 +81,17 @@ SSC::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
+  config.action_mailer.smtp_settings = {
+    #:openssl_verify_mode => OpenSSL::SSL::VERIFY_NONE,      
+    #:ssl => true,
+    :enable_starttls_auto => true,  #this is the important stuff!
+    :address        => 'smtp.gmail.com',
+    :port           => 25,
+    :domain         => 'gmail.com',
+    :authentication => 'plain',
+    :user_name      => 'notifications.ssc@gmail.com',
+    :password       => 'yahoo@123'
+  }
+
+
 end
