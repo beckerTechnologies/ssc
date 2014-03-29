@@ -1,29 +1,24 @@
 <div class="setup_page">
 
-  <p> Your Box Code is: </p>
+  <p> Your Box Code is: <%= @ssc_bank.ct_mask %> </p>
 
-  <p> <%= @ssc_bank.ct_mask %> </p>
-
-  <p> Write this down and do not forget it! </p></br></br></br>
-
-  <p>Try it Out</p>
   <p>your challenge text is <%= @ct%>.</p>
 
-  <%= form_tag :url => "./page4" do |p| %>
-    <p> SSC: <%= text_field_tag :ssc %> </p>
-    </br>
-    <div class="submit_btn">
-      <%= submit_tag('check') %>
-    </div>
-  <% end %>
-</div>
+  <p> Write this down and do not forget it! </p>
 
-<div class="ssc-gen">
+    <h3>Try it Out</h3>
 
-  <form maxlength ='20' size='20' id='gen_form' >
+
+  <div class="ssc-gen">
+<h4> Secret Securoty Code Generator </h4>
+<small> (Use this generator to create your SSC to enter into the box below.) </small>
+
+  <form id='gen_form' >
     <p>
-    <label>Insert your personal ID number you selected for your SSC</label>
-    <input maxlength ='20' size='20' type='text' id='numbers'>
+    <label>Insert your personal ID number</label>
+    <span class="input-wide">
+    <input type='text' id='numbers'>
+    </span>
     </p>
     <p>
     <label>Insert your box positions</label>
@@ -33,12 +28,16 @@
     </p>
     <p>
     <label>Insert your challenge key</label>
-    <input maxlength ='1' size='1' id='ct_in'>
+    <input id='ct_in'>
     </p>
+    <div class="submit_btn">
     <input type='button' id='gen_submit' value='Generate SSC'>
+    </div>
     <p>
     <label class= "gen_output" hidden='true' for='ssc_out' >Your encoded SSC is: </input>
-    <input class = "gen_output" hidden='true' maxlength ='20' size='20' type='text' id='ssc_out'></input>
+        <span class="input-wide">
+
+    <input class = "gen_output" hidden='true' type='text' id='ssc_out'></input></span>
     </p>
   </form>
 </div>
@@ -61,3 +60,17 @@
         })
       })
 </script>
+
+  
+
+  <%= form_tag :url => "./page4" do |p| %>
+    <p> Enter your SSC: <%= text_field_tag :ssc %> </p>
+    </br>
+    <div class="submit_btn">
+      <%= submit_tag('check') %>
+    </div>
+  <% end %>
+
+
+
+</div>
