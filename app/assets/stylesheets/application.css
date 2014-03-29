@@ -129,15 +129,23 @@ h3 {
 .home_page_text_about_website {
 	font-size: 150%;
 	text-align: justify;
-	padding: 10%;
 }
 
 .disclaimer {
 	margin-top: 10%;
+	padding: 10%;
 }
 
 .disclaimer-span {
 	text-decoration: underline;
+}
+
+.home_page_text_about {
+	background-color: #66A7C5;
+	color: white;
+	width: 80%;
+	padding: 10%;
+	text-align: justify;
 }
 
 .home_page_text_get_started {
@@ -165,6 +173,13 @@ h3 {
 	padding: 10px 18.72% 10px 18.73%;
 	border-radius: 10px;
 	color: black;
+}
+
+.video {
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	margin-top: 5%;
 }
 
 /*-------------------------------- Set-Up Page --------------------------------*/
