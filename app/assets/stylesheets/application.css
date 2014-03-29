@@ -48,7 +48,12 @@ h3 {
 }
 
 .home_page_new_user_link {
-	float: right;
+  /*float: right;*/
+  /*for hovering element*/
+  position:fixed;
+  top:30px;
+  right:5px;
+  /*for hovering element*/
 	font-size: 18px;
 	border: 1px solid black;
 	border-radius: 10px;
@@ -67,7 +72,12 @@ h3 {
 }
 
 .home_page_login_link {
-	float: left;
+	/*float: left;*/
+  /*for hovering element*/
+  position:fixed;
+  top:30px;
+  left:5px;
+  /*for hovering element*/
 	font-size: 18px;
 	border: 1px solid black;
 	border-radius: 10px;
