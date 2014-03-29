@@ -318,6 +318,12 @@ h3 {
 	width: 32%;
 }
 
+.email-sms-link input {
+	text-align: center;
+	
+	margin: 0 auto 20% auto;
+}
+
 
 /*-------------------------------- Footer --------------------------------*/
 

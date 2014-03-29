@@ -4,15 +4,15 @@
 
 <p> Click to receive challenge symbol! If you have a text enabled mobile phone and selected your correct carrier, you will receive both an email and SMS challenge. These are both the same.</p>
 
+<p> When you have received your challenge symbol, you are ready to practice using your SSC! </p> </br></br>
 
 
+<div class="email-sms-link">
 <%= form_tag("./page5") do %>
   <%= hidden_field_tag 'sendnew', 'yes' %>
   <p class="email_home_btns"> <%= submit_tag("Send Challenge Text Via Email/SMS") %> </p>
 <% end %>
-
-<p> When you have received your challenge symbol, you are ready to practice using your SSC! </p> </br></br>
-
+</div>
 
 <p class="submit_btn"> <%= link_to ("Go Back To Home"), root_path %> </p>
 
