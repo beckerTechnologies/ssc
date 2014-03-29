@@ -29,6 +29,7 @@ resources :setup do
   get "welcome_ssc", :on => :collection
 end
 
+ resources :form_wizard
  
  resources :login do
   get "page1", :on => :collection

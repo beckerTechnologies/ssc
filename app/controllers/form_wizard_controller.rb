@@ -1,10 +1,10 @@
 class FormWizardController < ApplicationController
 	include Wicked::Wizard
 
-	steps :basic_info, :address_info, :ssc_info
+	steps :email_info, :address_info
 
 	def show
-		@profile = Profile.find(:profile)
+		@profile = Profile.find_by id: session[:pid]
 		render_wizard
 	end
 

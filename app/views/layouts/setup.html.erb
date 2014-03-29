@@ -10,14 +10,20 @@
     <script src="//code.jquery.com/jquery-1.9.1.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   </head>
-  <body class="setup_body">
+  
+  <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
+    <h1 class="setup_page_h1">Setup Page</h1>
+
     <%= yield %>
-    <div>
-      <p style="width:100%; text-align: center">
+    
+  </body>
+
+  <footer>
+      <p>
       Developed by Becker Technologies LLC
       </p>
-    </div>
-  </body>
+  </footer>
 </html>

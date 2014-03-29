@@ -13,12 +13,12 @@
  */
 
 * {
-	font-family: cursive;
+	font-family: Geneva;
 }
 
 
 body {
-	height: 2000px;
+	height: 1000px;
 	/*background-color: #CEEBFB;*/
 	background-color: white;
 	margin-right: auto;
@@ -31,8 +31,19 @@ h3 {
 
 /*-------------------------------- Home Page --------------------------------*/
 
+.home_page_logo {
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+.home_page_logo img {
+	width: 10%;
+	height: 10%;
+}
+
 .home_page_text_title {
-	font-size: 28px;
+	font-size: 300%;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
@@ -40,27 +51,33 @@ h3 {
 }
 
 .home_page_text_welcome {
-	font-size: 24px;
+	font-size: 150%;
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	margin-bottom: 100px;
+	margin-bottom: 10%;
+}
+
+.background_color_blue {
+	background-color: #66A7C5;
+	height: 9%;
+	width: 100%;
 }
 
 .home_page_new_user_link {
-  /*float: right;*/
+  float: right;
   /*for hovering element*/
-  position:fixed;
+  /*position:fixed;
   top:30px;
-  right:5px;
+  right:5px;*/
   /*for hovering element*/
-	font-size: 18px;
+	font-size: 150%;
 	border: 1px solid black;
 	border-radius: 10px;
-	padding: 10px 0px 10px 0px;
+	padding: 0.8% 0% 0.8% 0%;
 	/*background-color: #F0ECEB;*/
 	background-color: white;
-	margin: 50px 400px 200px 100px;
+	margin: 5% 20% 5% 10%;
 }
 
 .home_page_new_user_link a {
@@ -72,19 +89,19 @@ h3 {
 }
 
 .home_page_login_link {
-	/*float: left;*/
+	float: left;
   /*for hovering element*/
-  position:fixed;
+  /*position:fixed;
   top:30px;
-  left:5px;
+  left:5px;*/
   /*for hovering element*/
-	font-size: 18px;
+	font-size: 150%;
 	border: 1px solid black;
 	border-radius: 10px;
-	padding: 10px 0px 10px 0px;
+	padding: 0.8% 0% 0.8% 0%;
 	/*background-color: #F0ECEB;*/
 	background-color: white;
-	margin: 50px 100px 200px 400px;
+	margin: 5% 10% 5% 20%;
 }
 
 .home_page_login_link a {
@@ -97,26 +114,26 @@ h3 {
 
 .home_page_text_about_plusone {
 	clear: both;
-	font-size: 16px;
+	font-size: 150%;
 	text-align: justify;
 	/*background-color: #66A7C5;*/
 	background-color: white;
-	padding: 100px;
+	padding: 10%;
 }
 
 .home_page_text_about_plusone li {
-	margin-left: 40px;
+	margin-left: 4%;
 	text-decoration: italic;
 }
 
 .home_page_text_about_website {
-	font-size: 16px;
+	font-size: 150%;
 	text-align: justify;
-	padding: 100px;
+	padding: 10%;
 }
 
 .disclaimer {
-	margin-top: 40px;
+	margin-top: 10%;
 }
 
 .disclaimer-span {
@@ -124,37 +141,34 @@ h3 {
 }
 
 .home_page_text_get_started {
-	font-size: 16px;
+	font-size: 150%;
 	text-align: center;
-	padding: 100px;
+	padding: 10%;
 	/*background-color: #F0ECEB;*/
 	background-color: white;
 }
 
 .home_page_get_started_link {
-	font-size: 18px;
+	font-size: 150%;
 	border: 1px solid black;
 	border-radius: 10px;
-	padding: 10px 0px 10px 0px;
+	padding: 0.8% 0% 0.8% 0%;
 	/*background-color: #66A7C5;*/
 	background-color: white;
-	margin: 50px auto 200px auto;
-	width: 235px;
+	margin: 5% auto 5% auto;
 	text-align: center;
+	width: 40%;
 }
 
 .home_page_get_started_link a {
 	text-decoration: none;
-	padding: 10px 34px 10px 34px;
+	padding: 10px 16.22% 10px 16.23%;
 	border-radius: 10px;
 	color: black;
 }
 
 /*-------------------------------- Set-Up Page --------------------------------*/
-.setup_body {
-	width: 800px;
-	background-color: white;
-}
+
 
 .setup_page {
 	border: 1px solid black;
@@ -165,6 +179,12 @@ h3 {
 	/*background-color: #CEEBFB;*/
 	background-color: white;
 	overflow: auto;
+}
+
+.setup_page_h1 {
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .setup_page input {
@@ -244,4 +264,13 @@ h3 {
 .setup_page_ssc .submit_btn input{
 	width: 150px;
 	float: right;
+}
+
+
+/*-------------------------------- Footer --------------------------------*/
+
+footer {
+	text-align: center;
+	margin: 10% auto 5% auto;
+	border-top: 1px solid black;
 }

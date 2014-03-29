@@ -17,17 +17,17 @@
   </div>
   <div class="field">
     <p> <%= f.label :password %>
-    <%= f.password_field :password , placeholder: "Must be more than 6 char"%> </p>
+    <%= f.password_field :password , placeholder: "Must be more than 6 characters"%> </p>
   </div>
-  <small> (Password should have lower case and upper case characters) </small>
 
   <div class="field">
     <p> <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, placeholder: "Must match Password" %> </p>
   </div>
+  <small> (Must include lower case, upper case, and a number) </small>
 
   <div class="field">
-    <p> <%= f.label :phone_number %>
+    <p> <%= f.label :phone_number, "Text-enabled Phone Number" %>
     <%= f.telephone_field :phone_number, placeholder: "Without brackets and spaces" %> </p>
   </div>
   <div class="field">

@@ -12,7 +12,7 @@ class SscMailer < ActionMailer::Base
     @carrier_id = @profile.carrier_id
     @carrier = Carrier.find(@carrier_id)
     @ct = ct
-    mail(to: @profile.email, subject: 'New Challange Text')
+    mail(to: @profile.email, subject: 'New Plus-One Challenge Symbol')
     
     easy = SMSEasy::Client.new
     easy.deliver(@profile.phone_number, @carrier.carrier_value, "Thank you for using Plus-One! Your CS is #{@ct}. This expires in #{@lifetime.hours} hours.")
