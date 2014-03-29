@@ -26,6 +26,7 @@ resources :setup do
   post "page4", :on => :collection
   post "page5", :on => :collection
   get "show", :on => :collection
+  get "welcome_setup", :on => :collection
   get "welcome_ssc", :on => :collection
 end
 
