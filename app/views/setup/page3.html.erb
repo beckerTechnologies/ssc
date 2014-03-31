@@ -7,10 +7,11 @@
 
 
   <%= form_tag :url => "./page3" do |p| %>
+    
     <div class="boxes_positions">
-
       <p hidden='true' id='sscbutton' ></p>
       <%= hidden_field_tag :ct_mask %>
+      <span class="box_positions_text"> Box Numbers: </span>
         | <% @len.times do |x|%>
           <% if x < 9 %>
             <span class="box_positions_1"> <%= x+1 %> </span> |
@@ -19,6 +20,7 @@
           <% end %>
         <% end %>
     </div>
+
     <div class="submit_btn">
       <input type='button' value='Proceed' onclick='checkSubmit()' />
     </div>
@@ -67,7 +69,7 @@
       return true;
     }
     else{
-      alert('please select 3 box positions');
+      alert('Please select 3 box positions');
       return false;
     }
   }
