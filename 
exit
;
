@@ -1,0 +1,6 @@
+[master 2c1d85e] Adding (favicon.ico) to the website
+ 8 files changed, 339 insertions(+), 1 deletion(-)
+ create mode 100644 app/assets/images/favicon.ico
+ create mode 100644 public/assets/application-6326294e8fe7282ebaab6f699600e2f1.css
+ create mode 100644 public/assets/application-6326294e8fe7282ebaab6f699600e2f1.css.gz
+ create mode 100644 public/assets/favicon-f7565117daeefdd398dc34e8b222ae2a.ico
