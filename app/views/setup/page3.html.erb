@@ -1,7 +1,7 @@
 
 <!-- TODO move the javascript in js.erb script-->
 
-<div class="setup_page">
+<div class="setup_page_3">
 
   <p>Click 3 boxes to create your box code!</p>
 
@@ -11,6 +11,13 @@
 
       <p hidden='true' id='sscbutton' ></p>
       <%= hidden_field_tag :ct_mask %>
+        | <% @len.times do |x|%>
+          <% if x < 9 %>
+            <span class="box_positions_1"> <%= x+1 %> </span> |
+          <% else %>
+            <span class="box_positions_2"> <%= x+1 %> </span> |
+          <% end %>
+        <% end %>
     </div>
     <div class="submit_btn">
       <input type='button' value='Proceed' onclick='checkSubmit()' />
@@ -43,6 +50,7 @@
       $(ce).css('border-style','solid');
       $(ce).css('border-width','2px');
       $(ce).css('border-color','black');
+      $(ce).css('width','50px');
       $(ce).addClass("step3");
       d.appendChild(ce);
     }
@@ -65,4 +73,6 @@
   }
 
 </script>
+
+
 
