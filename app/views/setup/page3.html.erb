@@ -23,7 +23,7 @@
 <script>
 
   window.onload = function(){
-    var ssc = (new String(<%= @ssc_o%>)).split('');
+    var ssc = ("<%= @ssc_o%>").split('');
     var p2 = document.getElementById("sscbutton");
     var d = document.createElement("div");
     $(d).attr('id','format');
