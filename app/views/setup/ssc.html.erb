@@ -1,7 +1,21 @@
-  
-
 <div class="setup_page_ssc">
 
-<%= render 'form_sscbank'%>
+  <%= form_for(@ssc_bank, :url => "./ssc" ) do |f| %>
+    <% if @ssc_bank.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@ssc_bank.errors.count, "error") %> prohibited this ssc_bank from being saved:</h2>
+
+        <ul>
+          <% @ssc_bank.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= render 'form_sscbank', :f => f%>
+    <div class="submit_btn">
+      <%= f.submit("Proceed") %>
+    </div>
+  <% end %>
 
 </div>
