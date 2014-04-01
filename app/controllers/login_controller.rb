@@ -50,5 +50,12 @@ class LoginController < ApplicationController
     end
   end
   def page3
+    @pid = session[:login]
+    @profile = Profile.find(@pid)
+    @basic_info = BasicInfo.find_by profile_id: @pid
+    @ssc_bank = SscBank.find_by profile_id: @pid
+    @ca = Carrier.all
+    @ao = AuthOption.all
+    @lt = Lifetime.all
   end
 end
