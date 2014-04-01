@@ -28,6 +28,7 @@ resources :setup do
   get "show", :on => :collection
   get "welcome_setup", :on => :collection
   get "welcome_ssc", :on => :collection
+  get "commit_to_memory", :on => :collection
 end
 
  resources :form_wizard

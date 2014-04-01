@@ -2,7 +2,7 @@ class SetupController < ApplicationController
 
   layout 'setup'
   def welcome_setup
-       # redirect_to :action => :new_ssc
+    # redirect_to :action => :new_ssc
   end
   def new
     @profile = Profile.new
@@ -54,26 +54,26 @@ class SetupController < ApplicationController
     @lt = Lifetime.all
     @ssc_bank = SscBank.new(ssc_bank_params)
     if AuthOption.find(@ssc_bank.auth_option_id).length==@ssc_bank.auth_value.length
-        @ssc_bank.profile_id = session[:pid]
-        respond_to do |format|
-          if @ssc_bank.save
-            format.html{ redirect_to :action => :page3}
-          else
-            format.html{ render :action => :ssc}
-          end
+      @ssc_bank.profile_id = session[:pid]
+      respond_to do |format|
+        if @ssc_bank.save
+          format.html{ redirect_to :action => :page3}
+        else
+          format.html{ render :action => :ssc}
         end
+      end
     else 
-        flash[:notice] = "value wrong length #{AuthOption.find(@ssc_bank.auth_option_id).length} #{@ssc_bank.auth_value.length}" # TODO figure out what to do ?
+      flash[:notice] = "value wrong length #{AuthOption.find(@ssc_bank.auth_option_id).length} #{@ssc_bank.auth_value.length}" # TODO figure out what to do ?
     end
   end
 
-    def page2
-      session[:pid] = 1 #@profile[:id] # remove this after testing.
-    end
-    def page3
+  def page2
+    session[:pid] = 1 #@profile[:id] # remove this after testing.
+  end
+  def page3
 
-      if session[:pid]
-        @pid = session[:pid]
+    if session[:pid]
+      @pid = session[:pid]
       @ssc_bank = SscBank.find_by profile_id: @pid
       @len = (AuthOption.find(@ssc_bank[:auth_option_id]))[:length] # for the view
       @ssc_o = @ssc_bank[:auth_value]
@@ -90,7 +90,7 @@ class SetupController < ApplicationController
         @ssc_bank.ssc = @ssc 
         respond_to do |format|
           if @ssc_bank.save!
-            format.html{ redirect_to :action => :page4, notice: 'SSC stored'}
+            format.html{ redirect_to :action => :commit_to_memory, notice: 'SSC stored'}
           else
             format.html{ render :action => :page3}
           end
@@ -99,6 +99,11 @@ class SetupController < ApplicationController
     else 
       flash[:notice] = "Session expired. Hit return to go back. " 
     end 
+  end
+  def commit_to_memory
+    @pid = session[:pid]
+    @ssc_bank = SscBank.find_by profile_id: @pid
+    @ct_mask = @ssc_bank.ct_mask
   end
   def page4
     if session[:ct] && session[:pid]
