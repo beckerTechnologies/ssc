@@ -20,8 +20,9 @@
 body {
 	height: 1000px;
 	/*background-color: #CEEBFB;*/
-	background-color: #F0ECEB;
-	margin: 0 auto 0 auto;
+	background-color: white;
+	margin-right: auto;
+	margin-left: auto;
 	width: 100%;
 }
 
@@ -33,42 +34,40 @@ h3 {
 
 
 .navigation {
-	background-color: #151B54;
+	background-color: #A3D6F5;
 	height: 5.5%;
+	margin: 0 auto 0 auto;
 }
 
 .navigation ul {
 	list-style:none;
-	margin: 0 0 0 0 !important;
-	padding: 0 0 0 0 !important;
-
+	margin:0 0 0 30%;
 }
 
 .navigation li {
-	background-color: #151B54; 
+	background-color: #A3D6F5; 
 	float:left;
 	text-align: center;
 	margin-top: 10px;
 	margin-left: 20px;
-	border-right: 1px solid #F0ECEB;
-	border-left: 1px solid #F0ECEB;
+	border-top:3px;
 }
 
 .navigation li a {
 	text-decoration:none;
 	color:white;
-	font-size: 150%;
+	font-size: 200%;
 	letter-spacing:0.2px;
 	padding: 10px;
 }
 
 .navigation li:hover {
-	background-color:#151B54;
+	background-color:#A3D6F5;
 	color: #EE3233;
 }
 
 .navigation li:hover a {
-	color: #9F000F;
+	color: #EE3233;
 	padding-top: 4px;
 	padding-bottom: 4px;
 }
@@ -76,30 +75,23 @@ h3 {
 /*-------------------------------- Home Page --------------------------------*/
 
 .home_page_logo {
-	float: left;
-	width: 12%;
-	height: 12%;
-	margin: 8% 1% 0 20%;
+	margin-top: 5%;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
 }
 
 .home_page_logo img {
-	width: 100%;
-	height: 100%;
+	width: 10%;
+	height: 10%;
 }
 
 .home_page_text_title {
-	font-size: 250%;
+	font-size: 300%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
 	font-weight: bold;
-	background-color: #151B54;
-	color: white;
-	margin: 0 0 0 0 !important;
-	text-align: left !important;
-	padding-top: 10%;
-}
-
-.background_color_gray {
-	background-color: #F0ECEB;
-	height: 10%;
 }
 
 .home_page_text_welcome {
@@ -110,21 +102,19 @@ h3 {
 	margin-bottom: 10%;
 }
 
-.background_color_red {
-	background-color: #9F000F;
-	height: 25%;
+.background_color_blue {
+	background-color: #66A7C5;
+	height: 40%;
+	padding: 8%
 }
 
 .video {
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
+	border: 50px solid #EE3233;
 	padding: none;
 	width: 560px;
-}
-
-.video iframe { 
-	margin-top: -6%; 
 }
 
 .home_page_new_user_link {
@@ -180,6 +170,7 @@ h3 {
 	font-size: 150%;
 	text-align: justify;
 	/*background-color: #66A7C5;*/
+	background-color: white;
 	padding: 3% 10% 3% 10%;
 }
 
@@ -203,7 +194,7 @@ h3 {
 }
 
 .home_page_text_about {
-	background-color: #151B54;
+	background-color: #66A7C5;
 	color: white;
 	width: 80%;
 	padding: 3% 10% 3% 10%;
@@ -214,8 +205,7 @@ h3 {
 	font-size: 150%;
 	text-align: center;
 	padding: 3% 10% 1% 10%;
-	background-color: #151B54;
-	color: white;
+	background-color: #66A7C5;
 }
 
 .home_page_get_started_link {

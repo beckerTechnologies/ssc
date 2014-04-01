@@ -1,0 +1,71 @@
+<div class="home_page_logo">
+	<img src="/assets/logo-new.jpg" />
+</div>
+
+<div class="home_page_text_title">
+<p>Plus-One Anti-Fraud Security</p>
+</div>
+
+<div class="home_page_text_welcome">
+<p>Welcome to the next generation of security software</p>
+</div>
+
+
+
+<!-- <div class="home_page_new_user_link">
+<%= link_to "New User", :controller => :setup, :action => :welcome_setup %>
+</div>
+<div class="home_page_login_link">
+<%= link_to "Login", :controller => :login, :action => :page1 %>
+</div> -->
+    
+<div class="background_color_blue">
+
+<div class="video">
+<iframe width="560" height="315" src="//www.youtube.com/embed/uHhwUXpYGnY" frameborder="0" allowfullscreen></iframe>
+</div>
+
+</div>
+
+
+<div class="home_page_text_about_plusone">
+<h3> About Plus-One </h3>
+<p>Plus-One is a patented security interface intended to reduce tax fraud by putting in place a matrix of user authentication challenges that prevent anyone but the real user from accessing their information.</p>
+
+<p>The goal is relatively simple: The matrix of authentication steps provides so many safeguards that the user must truly have ALL of the necessary information, including access to the user’s emails and text messages, in order to access the profile.</p>
+
+<p>By increasing the amount of information that the user must authenticate, the likelihood that a “bad guy” can find all of this information is severely limited.</p>
+
+<p>Under the current security scheme, here is how a “bad guy” can get access to “Bob’s” tax information:<p>
+
+<li>Bad guy’s girlfriend works at Bob’s dental office and steals Bob’s SSN, DOB, and current address.</li>
+<li>Bad guy uses this information to access a relevant tax database and files a fraudulent tax return.</li>
+
+<p>Under the Plus-One scenario, the same hypothetical would look like this:</p>
+
+<li>Bad guy’s girlfriend works at Bob’s dental office and steals Bob’s SSN, DOB, and current address.</li>
+<li>Bad guy attempts to use this information but is stopped when he is prompted to enter Bob’s “box number” and “challenge symbol.”</li>
+<li>Bob receives an email from Bob’s tax database profile and is notified of an attempted access.</li>
+</p>
+</div>
+
+
+<div class="home_page_text_about_website">
+<div class="home_page_text_about">
+<h3> About This Website </h3>
+<p>This website is intended to provide a first glimpse at the capabilities of Plus-One as a security technology to protect a hypothetical database of sensitive information from fraudulent access.</p>
+
+<p>While Plus-One can be accessed by all users with an email address, the full capability of the program can best be demonstrated when the user has a text-enabled mobile phone.</p>
+
+</div>
+<p class="disclaimer"> <span class="disclaimer-span">DISCLAIMER:</span> This website is intended only to be used as a tool to demonstrate the capabilities of the Plus-One and Plus-Four security technology. This website should be used only for the purposes of demonstrating this technology. This website should only be used with the author’s permission. When using this website, NEVER USE REAL IDENTIFICATION NUMBERS OR ANY OTHER INFORMATION THAT COULD BE CONSIDERED SECURE OR PROPRIETARY. When using this website, we recommend that the user invent a “dummy” profile and write down that dummy profile’s “personal” information in order to ensure safety. USE THIS WEBSITE AT YOUR OWN RISK.</p>
+
+</div>
+
+
+<div class="home_page_text_get_started">
+<h3> Get Started </h3>
+<div class="home_page_get_started_link">
+<%= link_to "Create Profile", :controller => :setup, :action => :new %>
+</div>
+</div>
