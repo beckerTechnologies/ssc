@@ -57,5 +57,41 @@ class LoginController < ApplicationController
     @ca = Carrier.all
     @ao = AuthOption.all
     @lt = Lifetime.all
+    render :action => :editprofile
   end
+  def update
+    @ca = Carrier.all
+    @ao = AuthOption.all
+    @lt = Lifetime.all
+    profile_params.permit!
+    @profile = Profile.new(profile_params)
+    #params[:profile].permit!
+    #@profile = Profile.new(params[:profile])
+    params[:profile][:basic_info].permit!
+    @basic_info = BasicInfo.new(params[:profile][:basic_info])
+    params[:profile][:ssc_bank].permit!
+    @ssc_bank = SscBank.new(params[:profile][:ssc_bank])
+
+    @profile.valid? 
+    @basic_info.valid?
+    @ssc_bank.valid?
+
+    if @profile.errors.present? || @basic_info.errors.present? || @ssc_bank.errors.present?
+      flash[:notice] = "#{@profile.errors.full_messages.to_sentence} - #{@basic_info.errors.full_messages.to_sentence} - #{@ssc_bank.errors.full_messages.to_sentence}" 
+      render :action => :editprofile
+    else
+      @profile.save!
+      @basic_info[:profile_id] = @profile[:id]
+      @basic_info.save!
+      @ssc_bank[:profile_id] = @profile[:id]
+      @ssc_bank.save!
+      flash[:notice] = "saved with id: #{@profile[:id]}"
+      render :action => :editprofile
+    end
+  end
+
+  def profile_params
+    params.require(:profile).permit(:email, :password, :password_confirmation, :phone_number, :street_addr, :apartment_no, :city, :state, :zip_code, :country, :carrier_id, basic_info_attributes: [:id, :first_name, :middle_name, :last_name, :dob, :ssn], ssc_bank_attributes: [:id, :auth_option_id, :ssc, :ct_mask, :auth_value, :expiry, :lifetime_id])
+  end
+
 end
