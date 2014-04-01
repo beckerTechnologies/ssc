@@ -226,7 +226,7 @@ h3 {
 }
 
 .home_page_get_started_link {
-	font-size: 150%;
+	font-size: 100%;
 	border: 1px solid black;
 	border-radius: 10px;
 	padding: 0.8% 0% 0.8% 0%;
@@ -234,14 +234,14 @@ h3 {
 	background-color: white;
 	margin: 5% auto 5% auto;
 	text-align: center;
-	width: 40%;
+	width: 30%;
 	overflow: hidden;
-	max-height: 10%;
 }
 
 .home_page_get_started_link a {
 	text-decoration: none;
 	border-radius: 10px;
+	padding: 10px 82px 10px 82px;
 	color: black;
 	overflow: hidden;
 }
