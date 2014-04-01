@@ -235,15 +235,13 @@ h3 {
 	margin: 5% auto 5% auto;
 	text-align: center;
 	width: 30%;
-	overflow: hidden;
 }
 
 .home_page_get_started_link a {
 	text-decoration: none;
 	border-radius: 10px;
-	padding: 10px 82px 10px 82px;
+	padding: 3% 27% 3% 27%;
 	color: black;
-	overflow: hidden;
 }
 
 /*-------------------------------- Set-Up Page --------------------------------*/
