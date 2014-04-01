@@ -27,14 +27,15 @@
     $(p2).append(d);//necessary ? 
     $(p2).show();
 
-    setInterval( function(){
-      var a = 500;
-
-      $('#0').fadeIn(a).delay(3*a).fadeOut(a);
-      $('#1').fadeIn(2*a).delay(2*a).fadeOut(a);
-      $('#2').fadeIn(3*a).delay(a).fadeOut(a);
-    }, (500*5));
-
-
+    setTimeout( 'meme()', 200);
   })
+
+  function meme(){
+    var a = 500;
+
+    $('#0').fadeIn(a).delay(3*a).fadeOut(a);
+    $('#1').fadeIn(2*a).delay(2*a).fadeOut(a);
+    $('#2').fadeIn(3*a).delay(a).fadeOut(a);
+    setTimeout( 'meme()', (500*5));
+  }
 </script>
