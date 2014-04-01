@@ -63,7 +63,7 @@ class SetupController < ApplicationController
         end
       end
     else 
-      flash[:notice] = "value wrong length #{AuthOption.find(@ssc_bank.auth_option_id).length} #{@ssc_bank.auth_value.length}" # TODO figure out what to do ?
+      flash[:notice] = "You entered #{@ssc_bank.auth_value.length} digits, while #{AuthOption.find(@ssc_bank.auth_option_id).name} should be #{AuthOption.find(@ssc_bank.auth_option_id).length} digits long" # TODO figure out what to do ?
     end
   end
 
@@ -90,7 +90,7 @@ class SetupController < ApplicationController
         @ssc_bank.ssc = @ssc 
         respond_to do |format|
           if @ssc_bank.save!
-            format.html{ redirect_to :action => :commit_to_memory, notice: 'SSC stored'}
+            format.html{ redirect_to :action => :commit_to_memory }
           else
             format.html{ render :action => :page3}
           end
@@ -98,6 +98,7 @@ class SetupController < ApplicationController
       end
     else 
       flash[:notice] = "Session expired. Hit return to go back. " 
+      redirect_to :controller => :home, :action => :index 
     end 
   end
   def commit_to_memory
@@ -124,11 +125,13 @@ class SetupController < ApplicationController
       end
     else 
       flash[:notice] = "Session expired. Hit return to go back. "
+      redirect_to :controller => :home, :action => :index 
     end
   end
   def page5
     if !session[:pid]
       flash[:notice] = "Session expired. Hit return to go back. "
+      redirect_to :controller => :home, :action => :index 
     else
       @pid = session[:pid]
       if params[:sendnew].present?
