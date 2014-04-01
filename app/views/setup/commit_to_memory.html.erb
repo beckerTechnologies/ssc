@@ -1,17 +1,16 @@
 
 <div class="setup_page_3">
-  <span id="d"></span>
   <p id='mem'></p>
   <%= link_to "Proceed", :controller => :setup, :action => :page4 %>
 </div>
 
 <script>
   $(function(){
-    //alert('<%= @ct_mask %>');
 
     //var text = "123".split('');
     //var d_arr = [];
     var text = "<%= @ct_mask %>".split(',');
+    alert('<%= @ct_mask %>');
     var p2 = document.getElementById("mem");
     var d = document.createElement("div");
     for (var i = 0; i < text.length; i++ ){
@@ -23,7 +22,7 @@
       });
       $(ce).text(''+text[i]+'');
       d.appendChild(ce);
-      d_arr.push(ce);
+      //d_arr.push(ce);
     }
     $(p2).append(d);//necessary ? 
     $(p2).show();
