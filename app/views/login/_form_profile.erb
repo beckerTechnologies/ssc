@@ -19,7 +19,7 @@
   </div>
   <div class="field">
     <p> <%= f.label :carrier_id, "Phone Carrier" %>
-    <%= f.select(:carrier_id, options_from_collection_for_select(@ca, 'id', 'carrier_name')) %> </p>
+      <%= f.select( :carrier_id,  Carrier.all.map {|u| [u.carrier_name,u.id]}, {:include_blank => "Select a Carrier"}) %> </p>
   </div>
   <div class="field">
     <p> <%= f.label :street_addr, "Street Address" %>

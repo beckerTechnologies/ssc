@@ -1,19 +1,6 @@
-<%= form_for(@ssc_bank, :url => "./ssc" ) do |f| %>
-  <% if @ssc_bank.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ssc_bank.errors.count, "error") %> prohibited this ssc_bank from being saved:</h2>
-
-      <ul>
-      <% @ssc_bank.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="ssc-field">
     <p><%= f.label :auth_option_id, "Choose your preferred category of personal identification number:" %></br>
-    <%= f.select("auth_option_id", options_from_collection_for_select(@ao, 'id', 'name', 1 )) %> </p>
+    <%= f.select( :auth_option_id,  AuthOption.all.map {|u| [u.name,u.id]}, {:include_blank => "Select Personal Identifier"}) %> </p>
   </div>
   <div class="ssc-field">
     <p><%= f.label :auth_value, "Enter your number!" %></br>
@@ -21,9 +8,5 @@
   </div>
   <div class="ssc-field">
     <p><%= f.label :lifetime_id, "Lifetime for your selection (how long it will remain active)" %></br>
-    <%= f.select("lifetime_id", options_from_collection_for_select( @lt,'id', 'name',2)) %> </p>
+    <%= f.select( :lifetime_id,  Lifetime.all.map {|u| [u.name,u.id]}, {:include_blank => "Select SSC Lifetime"}) %> </p>
   </div>
-  <div class="submit_btn">
-    <%= f.submit("Proceed") %>
-  </div>
-<% end %>

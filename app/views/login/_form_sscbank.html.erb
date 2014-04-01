@@ -1,6 +1,6 @@
   <div class="ssc-field">
     <p><%= f.label :auth_option_id, "Choose your preferred category of personal identification number:" %></br>
-    <%= f.select("auth_option_id", options_from_collection_for_select(@ao, 'id', 'name', 1 )) %> </p>
+    <%= f.select( :auth_option_id,  AuthOption.all.map {|u| [u.name,u.id]}, {:include_blank => "Select Personal Identifier"}) %> </p>
   </div>
   <div class="ssc-field">
     <p><%= f.label :auth_value, "Enter your number!" %></br>
@@ -8,5 +8,5 @@
   </div>
   <div class="ssc-field">
     <p><%= f.label :lifetime_id, "Lifetime for your selection (how long it will remain active)" %></br>
-    <%= f.select("lifetime_id", options_from_collection_for_select( @lt,'id', 'name',2)) %> </p>
+    <%= f.select( :lifetime_id,  Lifetime.all.map {|u| [u.name,u.id]}, {:include_blank => "Select SSC Lifetime"}) %> </p>
   </div>
