@@ -37,6 +37,9 @@ end
   get "page1", :on => :collection
   get "page2", :on => :collection
   get "page3", :on => :collection
+  post "page1", :on => :collection
+  post "page2", :on => :collection
+  post "page3", :on => :collection
   put "page1", :on => :collection
   put "page2", :on => :collection
   put "page3", :on => :collection

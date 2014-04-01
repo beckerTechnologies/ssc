@@ -1,0 +1,65 @@
+<div class="setup_page">
+
+  <p>File your tax return</p>
+  <p>content comes here</p>
+  </br>
+  <%= form_tag(root_path, method: "get") do %>
+    <%= submit_tag("Back To Home") %>
+  <% end %>
+
+  <p> <%= form_for(@profile, :url => "./profile" ) do |f| %>
+    <% if @profile.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+        <ul>
+          <% @profile.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= render 'form_profile', :f => f %>
+    <div class="submit_btn">
+      <%= f.submit("Proceed") %>
+    </div>
+  <% end %>
+
+
+  <%= form_for(@basic_info, :url => "./basicinfo" ) do |f| %>
+    <% if @basic_info.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@basic_info.errors.count, "error") %> prohibited this basic_info from being saved:</h2>
+
+        <ul>
+          <% @basic_info.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= render 'form_basicinfo', :f => f%>
+    <div class="submit_btn">
+      <%= f.submit("Proceed") %>
+    </div>
+  <% end %>
+
+  <%= form_for(@ssc_bank, :url => "./ssc" ) do |f| %>
+    <% if @ssc_bank.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@ssc_bank.errors.count, "error") %> prohibited this ssc_bank from being saved:</h2>
+
+        <ul>
+          <% @ssc_bank.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= render 'form_sscbank', :f => f%>
+    <div class="submit_btn">
+      <%= f.submit("Proceed") %>
+    </div>
+  <% end %>
+
+</div>

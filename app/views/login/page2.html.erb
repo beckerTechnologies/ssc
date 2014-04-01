@@ -2,7 +2,7 @@
 
   <p>Please enter your SSC to proceed</p> 
   </br>
-  <%= form_tag("./page2", method: "put") do %>
+  <%= form_tag("./page2") do %>
     <%= label_tag(:ssc, "SSC:") %>
     <%= text_field_tag(:ssc) %>
     </br>
@@ -14,7 +14,7 @@
     </br>
     </br>
   <% end %>
-  <%= form_tag("./page2", method: "put") do %>
+  <%= form_tag("./page2" ) do %>
     <%= hidden_field_tag 'sendnew', 'yes' %>
     <%= submit_tag("Request new Challenge Symbol") %>
   <% end %>

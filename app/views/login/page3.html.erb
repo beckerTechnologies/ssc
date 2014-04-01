@@ -4,11 +4,25 @@
   <p>content comes here</p>
   </br>
   <%= form_tag(root_path, method: "get") do %>
-      <%= submit_tag("Back To Home") %>
+    <%= submit_tag("Back To Home") %>
+  <% end %>
+
+  <p> <%= form_for(@profile, url: './update') do |f| %>
+    <%= render 'form_profile', :f => f %>
+
+
+    <%= f.fields_for(@basic_info) do |b| %>
+      <%= render 'form_basicinfo', :f => b%>
     <% end %>
 
-  <%= render 'form_profile'%>
-  <%= render 'form_basicinfo'%>
-  <%= render 'form_sscbank'%>
+    <%= f.fields_for(@ssc_bank) do |s| %>
+      <%= render 'form_sscbank', :f => s%>
+    <% end %>
+
+
+    <div class="submit_btn">
+      <%= f.submit("Proceed") %>
+    </div>
+  <% end %>
 
 </div>
