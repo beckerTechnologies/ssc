@@ -1,6 +1,22 @@
 
 <div class="setup_page">
 
-<%= render 'form_basicinfo'%>
+  <%= form_for(@basic_info, :url => "./basicinfo" ) do |f| %>
+    <% if @basic_info.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@basic_info.errors.count, "error") %> prohibited this basic_info from being saved:</h2>
+
+        <ul>
+          <% @basic_info.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= render 'form_basicinfo', :f => f %>
+    <div class="submit_btn">
+      <%= f.submit("Proceed") %>
+    </div>
+  <% end %>
 
 </div>

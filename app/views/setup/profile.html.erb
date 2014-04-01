@@ -1,7 +1,21 @@
- 
-
 <div class="setup_page">
 
-<%= render 'form_profile'%>
+  <p> <%= form_for(@profile, :url => "./profile" ) do |f| %>
+    <% if @profile.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+        <ul>
+          <% @profile.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %> 
+    <%= render 'form_profile', :f => f%>
+    <div class="submit_btn">
+      <%= f.submit("Proceed") %>
+    </div>
+  <% end %>
 
 </div>

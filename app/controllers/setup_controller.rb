@@ -6,12 +6,10 @@ class SetupController < ApplicationController
   end
   def new
     @profile = Profile.new
-    @ca = Carrier.all
     render  :profile
   end 
 
   def profile
-    @ca = Carrier.all
     @profile = Profile.new(profile_params)
     respond_to do |format|
       if @profile.save
@@ -45,13 +43,9 @@ class SetupController < ApplicationController
 
   def new_ssc
     @ssc_bank = SscBank.new
-    @ao = AuthOption.all
-    @lt = Lifetime.all
     render  :ssc
   end 
   def ssc
-    @ao = AuthOption.all
-    @lt = Lifetime.all
     @ssc_bank = SscBank.new(ssc_bank_params)
     if AuthOption.find(@ssc_bank.auth_option_id).length==@ssc_bank.auth_value.length
       @ssc_bank.profile_id = session[:pid]

@@ -77,9 +77,6 @@ class LoginController < ApplicationController
   private
   def set_values
     session[:login] =1
-    @ca = Carrier.all
-    @ao = AuthOption.all
-    @lt = Lifetime.all
     @pid = session[:login]
     @profile = Profile.find(@pid)
     @basic_info = BasicInfo.find_by profile_id: @pid
