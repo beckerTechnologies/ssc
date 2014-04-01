@@ -9,9 +9,9 @@
   $(function(){
     alert('<%= @ct_mask %>');
 
-    var text = "123".split('');
-    var d_arr = [];
-    //var text = "<%= @ct_mask %>".split('');
+    //var text = "123".split('');
+    //var d_arr = [];
+    var text = "<%= @ct_mask %>".split(',');
     var p2 = document.getElementById("mem");
     var d = document.createElement("div");
     for (var i = 0; i < text.length; i++ ){
@@ -25,7 +25,7 @@
       d.appendChild(ce);
       d_arr.push(ce);
     }
-    $(p2).append(d);
+    $(p2).append(d);//necessary ? 
     $(p2).show();
 
     setInterval( function(){
