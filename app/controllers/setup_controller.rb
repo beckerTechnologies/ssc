@@ -1,6 +1,6 @@
 class SetupController < ApplicationController
   before_action :reset_session, only: [:welcome_setup]
-  before_action :check_session, except: [:welcome_setup, :show]
+  before_action :check_session, except: [:welcome_setup,:new,:profile, :show]
   layout 'setup'
   def welcome_setup
   end
