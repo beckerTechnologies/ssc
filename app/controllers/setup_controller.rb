@@ -1,8 +1,8 @@
 class SetupController < ApplicationController
-
+  before_action :reset_session, only: [:welcome_setup]
+  before_action :check_session, except: [:welcome_setup, :show]
   layout 'setup'
   def welcome_setup
-    # redirect_to :action => :new_ssc
   end
   def new
     @profile = Profile.new
@@ -146,15 +146,26 @@ class SetupController < ApplicationController
 
   private
 
+  def reset_session
+    session[:login] = nil
+  end
+
+  def check_session
+    if !session[:pid]
+      flash[:alert] = "Session expired. Hit return to go back. "
+      redirect_to :controller => :home, :action => :index
+    end
+  end
+
   def profile_params
     params.require(:profile).permit(:email, :password, :password_confirmation, :phone_number, :street_addr, :apartment_no, :city, :state, :zip_code, :country, :carrier_id )
   end
+
   def basic_info_params
     params.require(:basic_info).permit(:first_name, :middle_name, :last_name, :dob, :ssn)
   end
+
   def ssc_bank_params
     params.require(:ssc_bank).permit(:auth_option_id, :auth_value, :ssc, :ct_mask, :lifetime_id) 
   end
 end
-
-

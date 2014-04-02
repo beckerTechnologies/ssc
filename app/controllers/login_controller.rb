@@ -1,4 +1,5 @@
 class LoginController < ApplicationController
+  before_action :check_session, except: [:page1]
   before_action :set_values, only: [:page3, :update]
   layout 'login'  
   def page1
@@ -74,6 +75,13 @@ class LoginController < ApplicationController
     end
   end
   private
+  def check_session
+    if !session[:login]
+      flash[:alert] = "Session expired. Hit return to go back. "
+      redirect_to :controller => :home, :action => :index
+    end
+  end
+
   def set_values
     # session[:login] = 1 # for debugging. 
     @pid = session[:login]
