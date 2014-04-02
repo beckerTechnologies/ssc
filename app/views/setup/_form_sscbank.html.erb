@@ -11,24 +11,23 @@
     <%= f.select( :lifetime_id,  Lifetime.all.map {|u| [u.name,u.id]}, {:include_blank => "Select SSC Lifetime"}) %> </p>
   </div>
 
-<%= f.hidden_field( :auth_option_id, :class => 'aol' )%> 
-
 <script type="text/javascript">
-$(function(){    
+  $(function(){    
 
-  $('.auth_option_id').click(function(){
-    var auth_id = parseInt($('.aoid').val());
-    $('.aol').val(auth_id);
-  });
+      $('.aoid').change(callback());
 
-  $('.auth_value').keyup(function(){
-   var lens = [9,10,16,20,13,10];
-    var len = lens[parseInt($('.aol').val())-1];
-    if ($('.aov').val().length!= (len))
+      $('.auth_value').keyup(callback());
+
+      function callback(){
+      return function(){
+      var lens = [9,10,16,20,13,10];
+      var len = lens[parseInt($('.aoid').val())-1];
+      if ($('.aov').val().length!= (len))
       $('.aov').css('color','red');
-    else
-      $('.aov').css('color','black');
-  });
+      else
+        $('.aov').css('color','black');
+      }
+      }
 
-});
+  });
 </script>
