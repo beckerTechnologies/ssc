@@ -29,6 +29,23 @@ h3 {
 	margin-top: 30px;
 }
 
+.center_text {
+	text-align: center;
+}
+
+.underlined_text {
+	text-decoration: underline;
+}
+
+.italic_text {
+	font-style: italic;
+}
+
+.green_text {
+	color: green;
+	font-weight: bold;
+}
+
 /*-------------------------------- Navigation Bar --------------------------------*/
 
 
@@ -179,7 +196,6 @@ h3 {
 .home_page_text_about_plusone {
 	clear: both;
 	font-size: 150%;
-	text-align: justify;
 	/*background-color: #66A7C5;*/
 	margin: 5% 8% 3% 8%;
 	padding: 0 2% 0 2%;
