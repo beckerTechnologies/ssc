@@ -16,6 +16,16 @@
 	font-family: Geneva;
 }
 
+@media screen and (max-device-width: 480px) {
+	body {
+		height: 1000px;
+		/*background-color: #CEEBFB;*/
+		background-color: #F0ECEB;
+		margin: 0 auto 0 auto;
+		width: 80%;
+	}	
+}
+
 
 body {
 	height: 1000px;
