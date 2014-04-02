@@ -80,6 +80,7 @@ class LoginController < ApplicationController
     @profile = Profile.find(@pid)
     @basic_info = BasicInfo.find_by profile_id: @pid
     @ssc_bank = SscBank.find_by profile_id: @pid
+    @ssn = @basic_info.ssn
   end
 
   def profile_params

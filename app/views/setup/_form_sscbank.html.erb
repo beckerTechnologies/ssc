@@ -1,38 +1,40 @@
-  <div class="auth_option_id">
-    <p><%= f.label :auth_option_id, "Choose your preferred category of personal identification number:" %></br>
-    <%= f.select( :auth_option_id,  AuthOption.all.map {|u| [u.name,u.id]}, {:include_blank => "Select Personal Identifier"}, :class => 'aoid' )%> </p>
-  </div>
-  <div class="auth_value">
-    <p><%= f.label :auth_value, "Enter your number!" %></br>
-    <%= f.text_field :auth_value, :class => 'aov' %> </p>
-  </div>
-  <div class="ssc-field">
-    <p><%= f.label :lifetime_id, "Lifetime for your selection (how long it will remain active)" %></br>
-    <%= f.select( :lifetime_id,  Lifetime.all.map {|u| [u.name,u.id]}, {:include_blank => "Select SSC Lifetime"}) %> </p>
-  </div>
+<div class="auth_option_id">
+  <p><%= f.label :auth_option_id, "Choose your preferred category of personal identification number:" %></br>
+  <%= f.select( :auth_option_id,  AuthOption.all.map {|u| [u.name,u.id]}, {:include_blank => "Select Personal Identifier"}, :class => 'aoid' )%> </p>
+</div>
+<div class="auth_value">
+  <p><%= f.label :auth_value, "Enter your number!" %></br>
+  <%= f.text_field :auth_value, :class => 'aov' %> </p>
+</div>
+<div class="ssc-field">
+  <p><%= f.label :lifetime_id, "Lifetime for your selection (how long it will remain active)" %></br>
+  <%= f.select( :lifetime_id,  Lifetime.all.map {|u| [u.name,u.id]}, {:include_blank => "Select SSC Lifetime"}) %> </p>
+</div>
 
-  <script type="text/javascript">
-    $(function(){    
-        lens = "<%= AuthOption.pluck(:length).join(',') %>".split(',');
-        ssnID = "<%= (AuthOption.find_by :name => 'SSN').id %>";
+<script type="text/javascript">
+  $(function(){    
+      lens = "<%= AuthOption.pluck(:length).join(',') %>".split(',');
+      ssnID = "<%= (AuthOption.find_by :name => 'SSN').id %>";
 
-        $('.aoid').change(callback());
-        $('.auth_value').keyup(callback());
+      $('.aoid').change(callback());
+      $('.auth_value').keyup(callback());
 
-        function callback(){
-        return function(){
-        if(parseInt($('.aoid').val())==ssnID){
-        $('.aov').val('SSN as entered before');
-        $('.aov').prop("disabled", true);
-        } else {
-        var len = lens[parseInt($('.aoid').val())-1];
-        if ($('.aov').val().length!= (len))
-        $('.aov').css('color','red');
-        else
-        $('.aov').css('color','black');
-        }
-        }
-        }
+      function callback(){
+      return function(){
+      if(parseInt($('.aoid').val())==ssnID){
+      $('.aov').val("<%=@ssn%>");
+      $('.aov').prop("disabled", true);
+      $('.aov').css('color','black');
+      } else {
+      $('.aov').prop("disabled", false);
+      var len = lens[parseInt($('.aoid').val())-1];
+      if ($('.aov').val().length!= (len))
+      $('.aov').css('color','red');
+      else
+      $('.aov').css('color','black');
+      }
+      }
+      }
 
-    });
+  });
 </script>

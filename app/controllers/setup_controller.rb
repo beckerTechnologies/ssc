@@ -42,14 +42,13 @@ class SetupController < ApplicationController
   end
 
   def new_ssc
+    @ssn = (BasicInfo.find_by profile_id: session[:pid]).ssn
     @ssc_bank = SscBank.new
     render  :ssc
   end 
   def ssc
     @ssc_bank = SscBank.new(ssc_bank_params)
-    if @ssc_bank.auth_option_id == (AuthOption.find_by :name => 'SSN').id
-      @ssc_bank.auth_value = (BasicInfo.find_by profile_id: session[:pid]).ssn 
-    end
+    @ssn = (BasicInfo.find_by profile_id: session[:pid]).ssn
     if AuthOption.find(@ssc_bank.auth_option_id).length==@ssc_bank.auth_value.length
       @ssc_bank.profile_id = session[:pid]
       respond_to do |format|
