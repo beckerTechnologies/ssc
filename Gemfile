@@ -53,6 +53,8 @@ gem 'sms-easy'			# To send SMS to users
 
 gem 'wicked'			# to chop the setup form to multiple pages
 
+gem 'jquery-ui-rails'	# To add jQuery datepicker in the forms
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

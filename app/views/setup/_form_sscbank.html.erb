@@ -1,12 +1,36 @@
-  <div class="ssc-field">
+  <div class="auth_option_id">
     <p><%= f.label :auth_option_id, "Choose your preferred category of personal identification number:" %></br>
-    <%= f.select( :auth_option_id,  AuthOption.all.map {|u| [u.name,u.id]}, {:include_blank => "Select Personal Identifier"}) %> </p>
+    <%= f.select( :auth_option_id,  AuthOption.all.map {|u| [u.name,u.id]}, {:include_blank => "Select Personal Identifier"}, :class => 'aoid' )%> </p>
   </div>
-  <div class="ssc-field">
+  <div class="auth_value">
     <p><%= f.label :auth_value, "Enter your number!" %></br>
-    <%= f.text_field :auth_value %> </p>
+    <%= f.text_field :auth_value, :class => 'aov' %> </p>
   </div>
   <div class="ssc-field">
     <p><%= f.label :lifetime_id, "Lifetime for your selection (how long it will remain active)" %></br>
     <%= f.select( :lifetime_id,  Lifetime.all.map {|u| [u.name,u.id]}, {:include_blank => "Select SSC Lifetime"}) %> </p>
   </div>
+
+<input hidden='true' type='text' value='' id='aol'/>
+
+<script type="text/javascript">
+$(function(){    
+
+  $('.auth_option_id').click(function(){
+    var auth_id = parseInt($('.aoid').val());
+    var lens = [9,10,16,20,13,10];
+    $('#aol').val(lens[auth_id-1]);
+  });
+
+  $('.auth_value').keyup(function(){
+   
+    var len = parseInt($('#aol').val());
+    if ($('.aov').val().length!= (len))
+      $('.aov').css('color','red');
+    else
+      $('.aov').css('color','black');
+
+  });
+
+});
+</script>
