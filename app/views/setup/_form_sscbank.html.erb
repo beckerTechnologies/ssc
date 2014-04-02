@@ -11,23 +11,28 @@
     <%= f.select( :lifetime_id,  Lifetime.all.map {|u| [u.name,u.id]}, {:include_blank => "Select SSC Lifetime"}) %> </p>
   </div>
 
-<script type="text/javascript">
-  $(function(){    
+  <script type="text/javascript">
+    $(function(){    
+        lens = "<%= AuthOption.pluck(:length).join(',') %>".split(',');
+        ssnID = "<%= (AuthOption.find_by :name => 'SSN').id %>";
 
-      $('.aoid').change(callback());
+        $('.aoid').change(callback());
+        $('.auth_value').keyup(callback());
 
-      $('.auth_value').keyup(callback());
-
-      function callback(){
-      return function(){
-      var lens = [9,10,16,20,13,10];
-      var len = lens[parseInt($('.aoid').val())-1];
-      if ($('.aov').val().length!= (len))
-      $('.aov').css('color','red');
-      else
+        function callback(){
+        return function(){
+        if(parseInt($('.aoid').val())==ssnID){
+        $('.aov').val('SSN as entered before');
+        $('.aov').prop("disabled", true);
+        } else {
+        var len = lens[parseInt($('.aoid').val())-1];
+        if ($('.aov').val().length!= (len))
+        $('.aov').css('color','red');
+        else
         $('.aov').css('color','black');
-      }
-      }
+        }
+        }
+        }
 
-  });
+    });
 </script>
