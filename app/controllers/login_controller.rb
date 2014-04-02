@@ -57,13 +57,14 @@ class LoginController < ApplicationController
     #profile_params.permit!
     params[:profile][:basic_info].permit!
     params[:profile][:ssc_bank].permit!
-    @same = @ssc_bank.auth_value == params[:profile][:basic_info][:auth_value] && @ssc_bank.auth_option_id == params[:profile][:basic_info][:auth_option_id]  
-
+    @same_ssc = ((@ssc_bank.auth_value).to_s == (params[:profile][:ssc_bank][:auth_value]).to_s) && ((@ssc_bank.auth_option_id).to_s == (params[:profile][:ssc_bank][:auth_option_id]).to_s) 
+    @ssn_selected = (params[:profile][:ssc_bank][:auth_option_id]).to_s == ((AuthOption.find_by :name => 'SSN').id).to_s
     respond_to do |format|
       if @profile.update_attributes!(profile_params) &&  @basic_info.update_attributes!(params[:profile][:basic_info]) && @ssc_bank.update_attributes!(params[:profile][:ssc_bank])
-        if !@same
+        @ssc_bank.update_attributes!(auth_value: @basic_info.ssn) if @ssn_selected
+        if !@same_ssc
           session[:pid] = @profile.id
-          format.html {redirect_to :controller => :setup, :action => :page3, notice: 'update ssc'}
+          format.html {redirect_to :controller => :setup, :action => :page3, notice: "update ssc #{@ssn_selected}"}
         else
           format.html {render :action => :page3, notice: 'profile saved'}
         end
@@ -74,6 +75,7 @@ class LoginController < ApplicationController
   end
   private
   def set_values
+    # session[:login] = 1 # for debugging. 
     @pid = session[:login]
     @profile = Profile.find(@pid)
     @basic_info = BasicInfo.find_by profile_id: @pid
