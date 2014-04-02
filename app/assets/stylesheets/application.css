@@ -16,12 +16,6 @@
 	font-family: Geneva;
 }
 
-@media screen and (max-device-width: 480px) {
-	body {
-		zoom: 150%;
-	}	
-}
-
 
 body {
 	height: 1000px;
