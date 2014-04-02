@@ -8,15 +8,15 @@
   <% end %>
 
   <p> <%= form_for(@profile, url: './update') do |f| %>
-    <%= render 'form_profile', :f => f %>
+    <%= render 'setup/form_profile', :f => f %>
 
 
     <%= f.fields_for(@basic_info) do |b| %>
-      <%= render 'form_basicinfo', :f => b%>
+      <%= render 'setup/form_basicinfo', :f => b%>
     <% end %>
 
     <%= f.fields_for(@ssc_bank) do |s| %>
-      <%= render 'form_sscbank', :f => s%>
+      <%= render 'setup/form_sscbank', :f => s%>
     <% end %>
 
 
