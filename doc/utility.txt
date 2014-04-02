@@ -15,6 +15,21 @@ rake db:seed
 heroku run rake db:seed
 # otherwise setup/page1 and setup/create wont work
 
+#run this command if "assets are not available" error shows up
+rake assets:precompile
+#and then git add, commit push to heroku
+
+#heroku database reset
+heroku pg:reset HEROKU_POSTFRESQL_TEAL_URL
+#teal is the color which changes with database. 
+#then do migrate to create database
+heroku run rake db:migrate
+#and do seed to populate the lookup tables 
+heroku run rake db:seed
+
+#if heroku hangs up, run this
+heroku restart
+
 #reverting on heroku 
 heroku releases
 heroku rollback v13
