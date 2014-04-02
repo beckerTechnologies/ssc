@@ -57,17 +57,15 @@ class LoginController < ApplicationController
     #profile_params.permit!
     params[:profile][:basic_info].permit!
     params[:profile][:ssc_bank].permit!
+    @same = @ssc_bank.auth_value == params[:profile][:basic_info][:auth_value] && @ssc_bank.auth_option_id == params[:profile][:basic_info][:auth_option_id]  
 
     respond_to do |format|
-      if @profile.update_attributes!(profile_params) 
-        if @basic_info.update_attributes!(params[:profile][:basic_info]) 
-          if @ssc_bank.update_attributes!(params[:profile][:ssc_bank])
-            format.html {render :action => :page3, notice: 'profile saved'}
-          else 
-            format.html {render :action => :page3}
-          end
+      if @profile.update_attributes!(profile_params) &&  @basic_info.update_attributes!(params[:profile][:basic_info]) && @ssc_bank.update_attributes!(params[:profile][:ssc_bank])
+        if !@same
+          session[:pid] = @profile.id
+          format.html {redirect_to :controller => :setup, :action => :page3, notice: 'update ssc'}
         else
-          format.html {render :action => :page3}
+          format.html {render :action => :page3, notice: 'profile saved'}
         end
       else
         format.html {render :action => :page3}
