@@ -12,12 +12,8 @@
 <script>
   $(function(){
 
-    //var text = "123".split('');
-    //var d_arr = [];
     var text = "<%= @ct_mask %>".split(',');
-    //alert('<%= @ct_mask %>');
     var p2 = document.getElementById("mem");
-    var d = document.createElement("div");
     for (var i = 0; i < text.length; i++ ){
       var ce = document.createElement('label');
       $(ce).attr({
@@ -25,11 +21,9 @@
         for:''+i+'',
         hidden:'true'
       });
-      $(ce).text(''+text[i]+'');
-      d.appendChild(ce);
-      //d_arr.push(ce);
+      $(ce).text('        '+text[i]+'        ');
+      p2.appendChild(ce);
     }
-    $(p2).append(d);//necessary ? 
     $(p2).show();
 
     setTimeout( 'meme()', 200);
