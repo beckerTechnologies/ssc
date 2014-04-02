@@ -74,7 +74,6 @@ class LoginController < ApplicationController
   end
   private
   def set_values
-    session[:login] =1
     @pid = session[:login]
     @profile = Profile.find(@pid)
     @basic_info = BasicInfo.find_by profile_id: @pid
