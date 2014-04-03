@@ -1,4 +1,18 @@
 module ApplicationHelper
+  def set_temp_password
+    o = [('a'..'z'), ('A'..'Z'), ('1'..'9')].map { |i| i.to_a }.flatten
+    a = [('a'..'z')].map { |i| i.to_a }.flatten
+    w = [('A'..'Z')].map { |i| i.to_a }.flatten
+    d = [('1'..'9')].map { |i| i.to_a }.flatten
+    str = []
+    str.push((0...9).map { o[rand(o.length)] }.join)
+    str.push( a[rand(a.length)]) 
+    str.push( w[rand(w.length)])
+    str.push( d[rand(d.length)]) 
+    pass = str.join
+    
+  end
+
   def set_ct
     return rand(10)
   end

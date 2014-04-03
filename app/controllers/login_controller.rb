@@ -74,7 +74,8 @@ class LoginController < ApplicationController
   def forgot_pass
     @profile = Profile.find_by email: params[:email_addr]
     if @profile 
-      SscMailer.forgot_pass(@profile).deliver
+      @pass =  set_temp_password
+      SscMailer.forgot_pass(@profile, @pass).deliver
       redirect_to :action => :page1
     else
       flash[:notice] = "The email you entered is not valid!"

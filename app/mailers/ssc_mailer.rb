@@ -17,9 +17,10 @@ class SscMailer < ActionMailer::Base
     easy.deliver(@profile.phone_number, @carrier.carrier_value, "Thank you for using Plus-One! Your CS is #{@ct}. This expires in #{@lifetime.hours} hours.")
   end
 
-  def forgot_pass(profile)
+  def forgot_pass(profile, pass)
     @profile = profile
     @basic_info = BasicInfo.find_by profile_id: @profile
+    @pass = pass
     mail(to: @profile.email, subject: 'New Plus-One Website Password')
   end
 end
