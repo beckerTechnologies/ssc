@@ -13,9 +13,10 @@ class Profile < ActiveRecord::Base
   validates :password, confirmation: true, length: { minimum: 6},format: {with: VALID_PASS_REGEX}
   validates :password_confirmation, presence: true
   validates :carrier_id, presence: true
+  VALID_PHON_REGEX = /\A(?=.*\d).{10}\z/
+  validates :phone_number, presence: true, format: { with: VALID_PHON_REGEX }
 =begin
   #has_secure_password
-  validates :phone_number, presence: true
   validates :street_addr, presence: true
   #validates :apartment_no, presence: true
   validates :city, presence: true
