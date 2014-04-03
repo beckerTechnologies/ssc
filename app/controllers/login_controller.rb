@@ -56,9 +56,11 @@ class LoginController < ApplicationController
     params[:profile][:ssc_bank].permit!
     @same_ssc = ((@ssc_bank.auth_value).to_s == (params[:profile][:ssc_bank][:auth_value]).to_s) && ((@ssc_bank.auth_option_id).to_s == (params[:profile][:ssc_bank][:auth_option_id]).to_s) 
     @ssn_selected = (params[:profile][:ssc_bank][:auth_option_id]).to_s == ((AuthOption.find_by :name => 'SSN').id).to_s
+    @phn_selected =  (params[:profile][:ssc_bank][:auth_option_id]).to_s == (2).to_s
     respond_to do |format|
       if @profile.update_attributes!(profile_params) &&  @basic_info.update_attributes!(params[:profile][:basic_info]) && @ssc_bank.update_attributes!(params[:profile][:ssc_bank])
         @ssc_bank.update_attributes!(auth_value: @basic_info.ssn) if @ssn_selected
+        @ssc_bank.update_attributes!(auth_value: @profile.phone_number) if @ssn_selected
         if !@same_ssc
           session[:pid] = @profile.id
           format.html {redirect_to :controller => :setup, :action => :page3, notice: "update ssc #{@ssn_selected}"}
@@ -98,6 +100,7 @@ class LoginController < ApplicationController
     @basic_info = BasicInfo.find_by profile_id: @pid
     @ssc_bank = SscBank.find_by profile_id: @pid
     @ssn = @basic_info.ssn
+    @phn = @profile.phone_number
   end
 
   def profile_params

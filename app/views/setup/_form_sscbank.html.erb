@@ -15,6 +15,7 @@
   $(function(){    
       lens = "<%= AuthOption.pluck(:length).join(',') %>".split(',');
       ssnID = "<%= (AuthOption.find_by :name => 'SSN').id %>";
+      phoneID = 2; // safer option. but actually coming from db/seed
 
       $('.aoid').change(callback());
       $('.auth_value').keyup(callback());
@@ -25,7 +26,11 @@
       $('.aov').val("<%=@ssn%>");
       $('.aov').prop("disabled", true);
       $('.aov').css('color','black');
-      } else {
+      } else if (parseInt($('.aoid').val())==phoneID) {
+      $('.aov').val("<%=@phn%>");
+      $('.aov').prop("disabled", true);
+      $('.aov').css('color','black');
+      } else{
       $('.aov').prop("disabled", false);
       var len = lens[parseInt($('.aoid').val())-1];
       if ($('.aov').val().length!= (len))
