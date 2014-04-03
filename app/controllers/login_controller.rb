@@ -88,7 +88,7 @@ class LoginController < ApplicationController
   private
   def check_session
     if !session[:login]
-      flash[:alert] = "Session expired. Hit return to go back. "
+      flash[:alert] = "Session expired. Please login again!"
       redirect_to :controller => :home, :action => :index
     end
   end

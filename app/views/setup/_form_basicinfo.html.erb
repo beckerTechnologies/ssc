@@ -14,7 +14,26 @@
     <p><%= f.label(:dob, "Date of Birth") %>
     <%= f.text_field :dob,  placeholder: "Click to choose \"Date of Birth\"", :class => "dob"%>
   </div>
-  <div class="field">
+  <div class="ssn_value">
     <p><%= f.label(:ssn, "Social Security Number")%>
-    <%= f.text_field :ssn, placeholder: "Enter SSN" %> </p>
+    <%= f.text_field :ssn, placeholder: "Enter SSN", :class => "ssnv" %> </p>
   </div>
+
+
+<script type="text/javascript">
+  $(function(){    
+      
+      $('.ssn_value').keyup(callback());
+
+      function callback(){
+      return function(){
+      
+      if ($('.ssnv').val().length!= (9))
+      $('.ssnv').css('color','red');
+      else
+      $('.ssnv').css('color','black');
+      }
+      }
+
+  });
+</script>
