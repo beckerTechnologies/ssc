@@ -41,7 +41,9 @@
 
 <div class="home_page_text_get_started">
 <h3> Get Started </h3>
-<div class="home_page_get_started_link">
-<%= link_to "Create Profile", :controller => :setup, :action => :welcome_setup %>
+
+<div class="home_page_get_started_link_new">
+<%= button_to "Create Profile", welcome_setup_setup_index_path, :method => :get  %>
 </div>
+
 </div>
