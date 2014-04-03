@@ -1,0 +1,16 @@
+<div class="setup_page">
+
+<p>Please enter the Email address you used to register for this website:</p> 
+    </br> 
+  <%= form_tag("./forgot_pass") do %>
+    <%= label_tag(:email_addr, "Email Address:") %>
+    <%= text_field_tag(:email_addr) %>
+    
+    </br></br></br>
+
+  <div class="submit_btn">
+    <%= submit_tag("Send New Password") %>
+  </div>
+  <% end %>
+</div>
+    </br></br></br></br></br></br></br>

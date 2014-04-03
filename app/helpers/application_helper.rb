@@ -31,6 +31,6 @@ module ApplicationHelper
     else
       ssc_bank.save!
       SscMailer.newct_email(pid, ct).deliver
+    end
   end
-end
 end

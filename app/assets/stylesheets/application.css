@@ -46,6 +46,15 @@ h3 {
 	font-weight: bold;
 }
 
+.bold_text {
+	font-weight: bold;
+}
+
+.bold_text_up {
+	font-size: 120%;
+	font-weight: 900;
+}
+
 /*-------------------------------- Navigation Bar --------------------------------*/
 
 
@@ -266,12 +275,21 @@ h3 {
 .setup_page {
 	border: 1px solid black;
 	padding: 10px 40px 40px 40px;
-	width: 600px;
-	margin-right: auto;
-	margin-left: auto;
+	width: 55%;
+	margin:0 auto 20% auto;
+	/*background-color: #CEEBFB;*/
+	background-color: white;
+}
+
+.setup_page_form {
+	border: 1px solid black;
+	padding: 10px 40px 40px 40px;
+	width: 55%;
+	margin:0 auto 20% auto;
 	/*background-color: #CEEBFB;*/
 	background-color: white;
 	overflow: auto;
+	text-align: right;
 }
 
 .setup_page_h1 {
@@ -284,11 +302,13 @@ h3 {
 	float: right;
 	width: 300px;
 	font-size: 14px;
+	margin-left: 5%;
 }
 
 .setup_page select {
 	float: right;
 	width: 306px;
+	margin-left: 5%;
 }
 
 .setup_page .submit_btn input{

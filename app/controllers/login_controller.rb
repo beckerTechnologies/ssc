@@ -1,5 +1,5 @@
 class LoginController < ApplicationController
-  before_action :check_session, except: [:page1]
+  before_action :check_session, except: [:page1, :forgot_pass]
   before_action :set_values, only: [:page3, :update]
   layout 'login'  
   def page1
@@ -70,6 +70,18 @@ class LoginController < ApplicationController
       end
     end
   end
+
+  def forgot_pass
+    @profile = Profile.find_by email: params[:email_addr]
+    if @profile 
+      SscMailer.forgot_pass(@profile).deliver
+      redirect_to :action => :page1
+    else
+      flash[:notice] = "The email you entered is not valid!"
+      render :forgot_pass
+    end
+  end
+
   private
   def check_session
     if !session[:login]
