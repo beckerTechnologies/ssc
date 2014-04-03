@@ -1,36 +1,26 @@
-
-<!-- TODO move the javascript in js.erb script-->
-
 <div class="setup_page_3">
-
   <p>Click 3 boxes to create your box code!</p>
-
-
   <%= form_tag :url => "./page3" do |p| %>
-    
+    <label id='ct_mask_label'></label>
+    <%= hidden_field_tag :ct_mask %>
     <div class="boxes_positions">
       <p hidden='true' id='sscbutton' ></p>
-      <%= hidden_field_tag :ct_mask %>
       <span class="box_positions_text"> Box Numbers: </span>
-        | <% @len.times do |x|%>
-          <% if x < 9 %>
-            <span class="box_positions_1"> <%= x+1 %> </span> |
-          <% else %>
-            <span class="box_positions_2"> <%= x+1 %> </span> |
-          <% end %>
+      | <% @len.times do |x|%>
+        <% if x < 9 %>
+          <span class="box_positions_1"> <%= x+1 %> </span> |
+        <% else %>
+          <span class="box_positions_2"> <%= x+1 %> </span> |
         <% end %>
+      <% end %>
     </div>
-
     <div class="submit_btn">
       <input type='button' value='Proceed' onclick='checkSubmit()' />
     </div>
   <% end %>
-
-
 </div>
 
 <script>
-
   window.onload = function(){
     var ssc = ("<%= @ssc_o%>").split('');
     var p2 = document.getElementById("sscbutton");
@@ -59,6 +49,12 @@
     $(d).buttonset();
     $(p2).append(d);
     $(p2).show();
+
+
+    $("#format").click(function(){
+      var values = $("#format :checked").map(function(){return (parseInt($(this).attr('id'))+1);}).get();
+      $("#ct_mask_label").text("You selected Box positions: "+values);
+    })
 
   }
   function checkSubmit(){

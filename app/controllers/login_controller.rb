@@ -24,32 +24,28 @@ class LoginController < ApplicationController
   end
 
   def page2
-    if !session[:login]
-      redirect_to :action => :page1
-    else
-      @pid = session[:login]
-      if params[:sendnew].present?
-        #RenewWorker.perform_async(@pid)
-        mail_helper(@pid)
-        flash[:success] = true
-      elsif params[:ssc].present? 
-        @ssc = params[:ssc].tr(' ','')
-        if @ssc.length!=0 
-          begin
-            @sscVal = SscBank.find_by profile_id: @pid
-            if @sscVal.ssc != @ssc || @sscVal[:expiry] < Time.now # ssc mismatched or expired
-              flash[:notice] = "incorrect or expired SSC. use the button below to send yourself a new CT.#{@ssc}-#{@sscVal.ssc}-#{@sscVal.expiry}-#{Time.now}" 
-              raise "ssc mismatch"
-            else
-              redirect_to :action => :page3
-            end
-          rescue 
+    @pid = session[:login]
+    if params[:sendnew].present?
+      #RenewWorker.perform_async(@pid)
+      mail_helper(@pid)
+      flash[:success] = true
+    elsif params[:ssc].present? 
+      @ssc = params[:ssc].tr(' ','')
+      if @ssc.length!=0 
+        begin
+          @sscVal = SscBank.find_by profile_id: @pid
+          if @sscVal.ssc != @ssc || @sscVal[:expiry] < Time.now # ssc mismatched or expired
             flash[:notice] = "incorrect or expired SSC. use the button below to send yourself a new CT.#{@ssc}-#{@sscVal.ssc}-#{@sscVal.expiry}-#{Time.now}" 
+            raise "ssc mismatch"
+          else
+            redirect_to :action => :page3
           end
+        rescue 
+          flash[:notice] = "incorrect or expired SSC. use the button below to send yourself a new CT.#{@ssc}-#{@sscVal.ssc}-#{@sscVal.expiry}-#{Time.now}" 
         end
-      else
-        flash.clear
       end
+    else
+      flash.clear
     end
   end
   def page3

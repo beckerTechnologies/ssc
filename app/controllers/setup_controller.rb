@@ -37,19 +37,21 @@ class SetupController < ApplicationController
   end
 
   def welcome_ssc
-
     # redirect_to :action => :new_ssc
   end
 
   def new_ssc
-    @ssn = (BasicInfo.find_by profile_id: session[:pid]).ssn
     @ssc_bank = SscBank.new
+    @ssn = (BasicInfo.find_by profile_id: session[:pid]).ssn
     render  :ssc
   end 
   def ssc
     @ssc_bank = SscBank.new(ssc_bank_params)
-    @ssn = (BasicInfo.find_by profile_id: session[:pid]).ssn
-    if AuthOption.find(@ssc_bank.auth_option_id).length==@ssc_bank.auth_value.length
+    @ssn =((BasicInfo.find_by profile_id: session[:pid])[:ssn]).to_s
+    if (ssc_bank_params[:auth_option_id]).to_s == ((AuthOption.find_by :name => 'SSN').id).to_s
+      @ssc_bank[:auth_value] = @ssn
+    end
+    if @ssc_bank.auth_value && AuthOption.find(@ssc_bank.auth_option_id).length==@ssc_bank.auth_value.length
       @ssc_bank.profile_id = session[:pid]
       respond_to do |format|
         if @ssc_bank.save
@@ -68,34 +70,29 @@ class SetupController < ApplicationController
   end
   def page3
 
-    if session[:pid]
-      @pid = session[:pid]
-      @ssc_bank = SscBank.find_by profile_id: @pid
-      @len = (AuthOption.find(@ssc_bank[:auth_option_id]))[:length] # for the view
-      @ssc_o = @ssc_bank[:auth_value]
-      if params[:ct_mask].present?
-        @ct_mask = params[:ct_mask]
-        @ct = set_ct 
-        session[:ct] = @ct
-        @ssc = set_ssc(@ct, @ssc_bank[:auth_value], @ct_mask)
-        @lifetime = (Lifetime.find(@ssc_bank[:lifetime_id]))[:hours]
-        @expiry = set_expiry(@lifetime)
+    @pid = session[:pid]
+    @ssc_bank = SscBank.find_by profile_id: @pid
+    @len = (AuthOption.find(@ssc_bank[:auth_option_id]))[:length] # for the view
+    @ssc_o = @ssc_bank[:auth_value]
+    if params[:ct_mask].present?
+      @ct_mask = params[:ct_mask]
+      @ct = set_ct 
+      session[:ct] = @ct
+      @ssc = set_ssc(@ct, @ssc_bank[:auth_value], @ct_mask)
+      @lifetime = (Lifetime.find(@ssc_bank[:lifetime_id]))[:hours]
+      @expiry = set_expiry(@lifetime)
 
-        @ssc_bank.expiry = @expiry 
-        @ssc_bank.ct_mask = @ct_mask
-        @ssc_bank.ssc = @ssc 
-        respond_to do |format|
-          if @ssc_bank.save!
-            format.html{ redirect_to :action => :commit_to_memory }
-          else
-            format.html{ render :action => :page3}
-          end
+      @ssc_bank.expiry = @expiry 
+      @ssc_bank.ct_mask = @ct_mask
+      @ssc_bank.ssc = @ssc 
+      respond_to do |format|
+        if @ssc_bank.save!
+          format.html{ redirect_to :action => :commit_to_memory }
+        else
+          format.html{ render :action => :page3}
         end
       end
-    else 
-      flash[:notice] = "Session expired. Hit return to go back. " 
-      redirect_to :controller => :home, :action => :index 
-    end 
+    end
   end
   def commit_to_memory
     @pid = session[:pid]
@@ -103,7 +100,7 @@ class SetupController < ApplicationController
     @ct_mask = @ssc_bank.ct_mask
   end
   def page4
-    if session[:ct] && session[:pid]
+    if session[:ct] 
       @ct = session[:ct]
       @pid = session[:pid]
       @ssc_bank = SscBank.find_by profile_id: @pid
@@ -125,16 +122,11 @@ class SetupController < ApplicationController
     end
   end
   def page5
-    if !session[:pid]
-      flash[:notice] = "Session expired. Hit return to go back. "
-      redirect_to :controller => :home, :action => :index 
-    else
-      @pid = session[:pid]
-      if params[:sendnew].present?
-        #RenewWorker.perform_async(@pid)
-        mail_helper(@pid)
-        flash[:success] = true
-      end
+    @pid = session[:pid]
+    if params[:sendnew].present?
+      #RenewWorker.perform_async(@pid)
+      mail_helper(@pid)
+      flash[:success] = true
     end
   end
   def show
