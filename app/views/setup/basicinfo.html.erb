@@ -1,5 +1,9 @@
 <div class="setup_page_form">
 
+<div class="center_text">
+<h1> Personal Information </h1>
+</div>
+
   <%= form_for(@basic_info, :url => "./basicinfo" ) do |f| %>
     <% if @basic_info.errors.any? %>
       <div id="error_explanation">

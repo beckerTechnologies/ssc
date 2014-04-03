@@ -1,21 +1,22 @@
 <div class="setup_page">
 
-
 <h2> Create your profile! </h2>
 
 <ol>
-<li> In this next few steps, you will create a profile for the Plus-One site. This will allow you access into your profile to manage your Secret Security Code settings and request new challenge symbols.</li>
+<li> In the next few steps, you will type in some of <span class="underlined_text">your</span> personal information in order to create <span class="underlined_text">your</span> <span class="italic_text">profile</span>.</li>
 
-<li> These next steps will ask you for several pieces of personal information that will be used to authenticate that it is really you accessing your profile the next time you log in!</li>
+<li> This information will be kept safe and private. You can change this information if you choose to edit <span class="underlined_text">your</span> <span class="italic_text">profile</span>.</li>
 
-<li> If you have a text-enabled mobile phone, use that phone in the "mobile phone" category.</li>
+<li> If you have a text-enabled phone, please enter that number in the “mobile phone” category!</li>
 </ol>
 
 </div>
 
-<div class="setup_page_get_started_link">
-<%= link_to "Get Started", :controller => :setup, :action => :new %>
+<div class="setup_page_get_started_link_new">
+<%= button_to "Get Started", new_setup_path, :method => :get  %>
 </div>
+
+
 
 <script>
   $(function(){
