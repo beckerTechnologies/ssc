@@ -117,7 +117,7 @@ class SetupController < ApplicationController
         end
       end
     else 
-      flash[:notice] = "Session expired. Hit return to go back. "
+      flash[:notice] = "Session expired. Please start over!"
       redirect_to :controller => :home, :action => :index 
     end
   end
