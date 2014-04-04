@@ -29,9 +29,25 @@ class SetupController < ApplicationController
     @basic_info.profile_id = session[:pid]
     respond_to do |format|
       if @basic_info.save
-        format.html{ redirect_to :action => :welcome_ssc}
+        format.html{ redirect_to :action => :new_addr_info}
       else
         format.html{ render :action => :basicinfo}
+      end
+    end 
+  end
+
+  def new_addr_info
+    @address_info = AddressInfo.new
+    render  :addressinfo
+  end 
+  def addressinfo
+    @address_info = AddressInfo.new(address_info_params)
+    @address_info.profile_id = session[:pid]
+    respond_to do |format|
+      if @address_info.save
+        format.html{ redirect_to :action => :welcome_ssc}
+      else
+        format.html{ render :action => :addrinfo}
       end
     end 
   end
@@ -122,7 +138,7 @@ class SetupController < ApplicationController
     @profiles = Profile.all
     @basic = BasicInfo.all
     @sscbank = SscBank.all
-
+    @address_infos = AddressInfo.all
   end
 
   private
@@ -139,11 +155,15 @@ class SetupController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:email, :password, :password_confirmation, :phone_number, :street_addr, :apartment_no, :city, :state, :zip_code, :country, :carrier_id )
+    params.require(:profile).permit(:email, :password, :password_confirmation, :phone_number, :carrier_id )
   end
 
   def basic_info_params
     params.require(:basic_info).permit(:first_name, :middle_name, :last_name, :dob, :ssn)
+  end
+
+  def address_info_params
+    params.require(:address_info).permit(:street_addr, :apartment_no, :city, :state, :zip_code, :country)
   end
 
   def ssc_bank_params

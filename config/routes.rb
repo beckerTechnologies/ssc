@@ -9,12 +9,16 @@ SSC::Application.routes.draw do
 resources :setup do
   get "basicinfo", :on => :collection
   post "basicinfo", :on => :collection
+  get "addressinfo", :on => :collection
+  post "addressinfo", :on => :collection
   get "profile", :on => :collection
   post "profile", :on => :collection
   get "ssc", :on => :collection
   post "ssc", :on => :collection
   get "new_info", :on => :collection
   post "new_info", :on => :collection
+  get "new_addr_info", :on => :collection
+  post "new_addr_info", :on => :collection
   get "new_ssc", :on => :collection
   post "new_ssc", :on => :collection
   get "page2", :on => :collection

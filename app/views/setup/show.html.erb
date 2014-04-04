@@ -7,15 +7,6 @@
       <th>Email</th>
       <th>Password</th>
       <th>Phone number</th>
-      <th>Street addr</th>
-      <th>Apartment no</th>
-      <th>City</th>
-      <th>Zip code</th>
-      <th>State</th>
-      <th>Country</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -26,12 +17,6 @@
         <td><%= profile.email %></td>
         <td><%= profile.password %></td>
         <td><%= profile.phone_number %></td>
-        <td><%= profile.street_addr %></td>
-        <td><%= profile.apartment_no %></td>
-        <td><%= profile.city %></td>
-        <td><%= profile.zip_code %></td>
-        <td><%= profile.state %></td>
-        <td><%= profile.country %></td>
       </tr>
     <% end %>
   </tbody>
@@ -69,6 +54,34 @@
 </table>
 
 <br>
+
+<h1>Listing Address Info</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Street addr</th>
+      <th>Apartment no</th>
+      <th>City</th>
+      <th>Zip code</th>
+      <th>State</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @address_infos.each do |profile| %>
+      <tr>
+        <td><%= profile.street_addr %></td>
+        <td><%= profile.apartment_no %></td>
+        <td><%= profile.city %></td>
+        <td><%= profile.zip_code %></td>
+        <td><%= profile.state %></td>
+        <td><%= profile.country %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <br>
 <h1>Listing SSC Bank </h1>

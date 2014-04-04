@@ -53,12 +53,13 @@ class LoginController < ApplicationController
   def update
     #profile_params.permit!
     params[:profile][:basic_info].permit!
+    params[:profile][:address_info].permit!
     params[:profile][:ssc_bank].permit!
     @same_ssc = ((@ssc_bank.auth_value).to_s == (params[:profile][:ssc_bank][:auth_value]).to_s) && ((@ssc_bank.auth_option_id).to_s == (params[:profile][:ssc_bank][:auth_option_id]).to_s) 
     @ssn_selected = (params[:profile][:ssc_bank][:auth_option_id]).to_s == ((AuthOption.find_by :name => 'SSN').id).to_s
     @phn_selected =  (params[:profile][:ssc_bank][:auth_option_id]).to_s == (2).to_s
     respond_to do |format|
-      if @profile.update_attributes!(profile_params) &&  @basic_info.update_attributes!(params[:profile][:basic_info]) && @ssc_bank.update_attributes!(params[:profile][:ssc_bank])
+      if @profile.update_attributes!(profile_params) &&  @basic_info.update_attributes!(params[:profile][:basic_info]) &&  @address_info.update_attributes!(params[:profile][:address_info]) && @ssc_bank.update_attributes!(params[:profile][:ssc_bank])
         @ssc_bank.update_attributes!(auth_value: @basic_info.ssn) if @ssn_selected
         @ssc_bank.update_attributes!(auth_value: @profile.phone_number) if @ssn_selected
         if !@same_ssc
@@ -98,13 +99,14 @@ class LoginController < ApplicationController
     @pid = session[:login]
     @profile = Profile.find(@pid)
     @basic_info = BasicInfo.find_by profile_id: @pid
+    @address_info = AddressInfo.find_by profile_id: @pid
     @ssc_bank = SscBank.find_by profile_id: @pid
     @ssn = @basic_info.ssn
     @phn = @profile.phone_number
   end
 
   def profile_params
-    params.require(:profile).permit(:email, :password, :password_confirmation, :phone_number, :street_addr, :apartment_no, :city, :state, :zip_code, :country, :carrier_id, basic_info_attributes: [:first_name, :middle_name, :last_name, :dob, :ssn], ssc_bank_attributes: [ :auth_option_id, :ssc, :ct_mask, :auth_value, :expiry, :lifetime_id])
+    params.require(:profile).permit(:email, :password, :password_confirmation, :phone_number, :carrier_id, basic_info_attributes: [:first_name, :middle_name, :last_name, :dob, :ssn], address_info_attributes: [:street_addr, :apartment_no, :city, :state, :zip_code, :country], ssc_bank_attributes: [ :auth_option_id, :ssc, :ct_mask, :auth_value, :expiry, :lifetime_id])
   end
 
 end

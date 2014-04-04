@@ -1,10 +1,12 @@
 class Profile < ActiveRecord::Base
   before_save { self.email = email.downcase }
   has_one :basic_info, :autosave => true
+  has_one :address_info, :autosave => true
   has_one :ssc_bank, :autosave => true
   belongs_to :auth_option
   belongs_to :carrier
   accepts_nested_attributes_for :basic_info
+  accepts_nested_attributes_for :address_info
   accepts_nested_attributes_for :ssc_bank
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
@@ -17,11 +19,5 @@ class Profile < ActiveRecord::Base
   validates :phone_number, presence: true, format: { with: VALID_PHON_REGEX }
 =begin
   #has_secure_password
-  validates :street_addr, presence: true
-  #validates :apartment_no, presence: true
-  validates :city, presence: true
-  validates :zip_code, presence: true
-  validates :state, presence: true
-  validates :country, presence: true
 =end
 end

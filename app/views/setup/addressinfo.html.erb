@@ -1,0 +1,25 @@
+<div class="setup_page_form">
+
+<div class="center_text">
+<h1> Personal Information </h1>
+</div>
+
+  <%= form_for(@address_info, :url => "./addressinfo" ) do |f| %>
+    <% if @address_info.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@address_info.errors.count, "error") %> prohibited this address_info from being saved:</h2>
+
+        <ul>
+          <% @address_info.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= render 'form_addressinfo', :f => f %>
+    <div class="submit_btn">
+      <%= f.submit("Proceed") %>
+    </div>
+  <% end %>
+
+</div>
