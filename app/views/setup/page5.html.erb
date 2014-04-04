@@ -1,19 +1,19 @@
 <div class="setup_page">
 
-<p>Congratulations ! setup process is complete.</p></br></br>
 
-<p> Click to receive challenge symbol! If you have a text enabled mobile phone and selected your correct carrier, you will receive both an email and SMS challenge. These are both the same.</p>
+<div class="center_text">
+  <h1> Congratulations! You have setup your SSC! </h1>
 
-<p> When you have received your challenge symbol, you are ready to practice using your SSC! </p> </br></br>
+<img src="/assets/fireworks.gif"/>
 
+<p> Click LOGIN to login to your profile! Have your Personal Identification Number, Box Code, and Challenge Symbol ready when you login! </p>
+</br></br></br>
 
-<div class="email-sms-link">
-<%= form_tag("./page5") do %>
-  <%= hidden_field_tag 'sendnew', 'yes' %>
-  <p class="email_home_btns"> <%= submit_tag("Send Challenge Text Via Email/SMS") %> </p>
-<% end %>
 </div>
 
-<p class="submit_btn"> <%= button_to "Go Back To Home", root_path, :class => "button", :method => :get  %> </p>
+<div class="setup_page_get_started_link_new">
+  <%= button_to "Login", page1_login_index_path, :method => :get %>
+</div>
+
 
 </div>

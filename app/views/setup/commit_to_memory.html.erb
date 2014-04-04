@@ -1,11 +1,20 @@
-
 <div class="setup_page_3">
-  <h2>Your Box Code is: </h2>
-  <p id='mem'></p>
+
+<div class="center_text">
+<h2>Your secret Box Code is: </h2>
+</div>
+
+<p id='mem'></p>
+
+<div class="center_text">
+<h4>Write this number down so that you do not forget it!</h4>
+</div>
+
+
  <% if session[:login] %> 
-  <p class="submit_btn"> <%= button_to "Proceed", :controller => :login, :action => :page3, :class => "button", :method => :get  %> </p>
+  <div class="submit_btn"> <%= button_to "Proceed", page3_login_index_path, :method => :get  %> </div>
 <% else %>
-  <p class="submit_btn"> <%= button_to "Proceed", :controller => :setup, :action => :page4, :class => "button", :method => :get  %> </p>
+  <div class="submit_btn"> <%= button_to "Proceed", page4_setup_index_path, :method => :get  %> </div>
 <% end %>
 </div>
 

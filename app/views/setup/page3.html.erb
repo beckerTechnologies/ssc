@@ -1,5 +1,9 @@
 <div class="setup_page_3">
-  <p>Click 3 boxes to create your box code!</p>
+
+<div class="center_text">
+<h3>2. Select three boxes to create your secret “Box Number”!</h3>
+</div>
+
   <%= form_tag :url => "./page3" do |p| %>
     <label id='ct_mask_label'></label>
     <%= hidden_field_tag :ct_mask %>
@@ -53,7 +57,7 @@
 
     $("#format").click(function(){
       var values = $("#format :checked").map(function(){return (parseInt($(this).attr('id'))+1);}).get();
-      $("#ct_mask_label").text("You selected Box positions: "+values);
+      $("#ct_mask_label").text("You selected Box Numbers: "+values);
     })
 
   }

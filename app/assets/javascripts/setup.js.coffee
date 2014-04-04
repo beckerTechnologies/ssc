@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-  $(document).on 'ready page:load', ->$('.dob').datepicker({changeMonth: true, changeYear: true, yearRange: '1900:2014', dateFormat: "yy-mm-dd"})
+  $(document).on 'ready page:load', ->$('.dob').datepicker({changeMonth: true, changeYear: true, yearRange: '1900:2005', dateFormat: "yy-mm-dd"})
 

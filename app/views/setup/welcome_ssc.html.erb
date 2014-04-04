@@ -1,18 +1,20 @@
 <div class="setup_page">
+<div class="center_text">
+<h1> Setup your <span class="green_text">SSC</span>! </h1>
+</div>
 
-
-<h2> Setup your SSC in three easy steps! </h2>
+<h2> Setup your <span class="green_text">SSC</span> in only three easy steps! </h2>
 
 <ol>
-<li> Choose your Personal Identification Number Category and Enter your Number </li>
+<li> Choose your Personal Identification Number Category and enter your number! </li>
 
 <li> Select three boxes in order to create your secret “Box Number”! </li>
 
-<li> Receive your challenge symbol by email or by SMS </li>
+<li> Receive your Challenge Symbol by email and SMS! </li>
 </ol>
 
 </div>
 
-<div class="home_page_get_started_link">
-<%= link_to "Get Started", :controller => :setup, :action => :new_ssc %>
+<div class="setup_page_get_started_link_new">
+<%= button_to "Get Started", new_ssc_setup_index_path, :method => :get  %>
 </div>

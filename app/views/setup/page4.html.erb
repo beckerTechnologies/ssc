@@ -1,23 +1,24 @@
 <div class="setup_page">
 
-  <p> Your Box Code is: <%= @ssc_bank.ct_mask[0] %><%= @ssc_bank.ct_mask[2] %><%= @ssc_bank.ct_mask[4] %> </p>
-
-  <p>your challenge text is <%= @ct%>.</p>
-
-  <h4> Write this down and do not forget it! </h4>
-
-  <h3>Try it Out</h3>
-
-<%= render 'form_sscgen' %>
-
-<%= form_tag :url => "./page4" do |p| %>
-  <p> Enter your SSC: <%= text_field_tag :ssc %> </p>
-  </br>
-  <div class="submit_btn">
-    <%= submit_tag('check') %>
-  </div>
-<% end %>
+<div class="center_text">
+	<h2> Receive your Challenge Symbol by email and SMS!</h2>
 
 
+<div class="email-sms-link">
+	<%= form_tag("./page4") do %>
+	  <%= hidden_field_tag 'sendnew', 'yes' %>
+	  <%= submit_tag("Click here to receive your challenge text:") %>
+	<% end %>
+</div>
 
-      </div>
+
+<p>Check your email and phone for your Challenge Symbol.</p>
+<p>When you have received your Challenge Symbol, click proceed.</p>
+
+</div>
+
+<div class="submit_btn">
+	<%= button_to "Proceed", page5_setup_index_path, :method => :get %>
+</div>
+
+</div>

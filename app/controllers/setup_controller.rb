@@ -104,29 +104,8 @@ class SetupController < ApplicationController
     @ssc_bank = SscBank.find_by profile_id: @pid
     @ct_mask = @ssc_bank.ct_mask
   end
+  
   def page4
-    if session[:ct] 
-      @ct = session[:ct]
-      @pid = session[:pid]
-      @ssc_bank = SscBank.find_by profile_id: @pid
-      if params[:ssc].present?
-        @ssc = params[:ssc]
-        @pid = session[:pid]
-        @ssc_bank = SscBank.find_by profile_id: @pid
-        if @ssc != @ssc_bank[:ssc]
-          flash[:notice] = "Incorrect SSC, please try again." 
-          render :action => :page4
-        else
-          flash[:notice] = "Congratulations you are done"
-          redirect_to :action => :page5
-        end
-      end
-    else 
-      flash[:notice] = "Session expired. Please start over!"
-      redirect_to :controller => :home, :action => :index 
-    end
-  end
-  def page5
     @pid = session[:pid]
     if params[:sendnew].present?
       #RenewWorker.perform_async(@pid)
@@ -134,6 +113,11 @@ class SetupController < ApplicationController
       flash[:success] = true
     end
   end
+
+  def page5
+    
+  end
+  
   def show
     @profiles = Profile.all
     @basic = BasicInfo.all
@@ -149,7 +133,7 @@ class SetupController < ApplicationController
 
   def check_session
     if !session[:pid]
-      flash[:alert] = "Session expired. Hit return to go back. "
+      flash[:alert] = "Session expired. Please Start Over!"
       redirect_to :controller => :home, :action => :index
     end
   end

@@ -1,5 +1,9 @@
 <div class="setup_page_ssc">
 
+<div class="center_text">
+<h3>1. Choose your Personal Identification Number Category and enter your number!</h3>
+</div>
+
   <%= form_for(@ssc_bank, :url => "./ssc" ) do |f| %>
     <% if @ssc_bank.errors.any? %>
       <div id="error_explanation">
