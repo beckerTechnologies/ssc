@@ -41,16 +41,19 @@ end
   get "page1", :on => :collection
   get "page2", :on => :collection
   get "page3", :on => :collection
+  get "view", :on => :collection
   get "forgot_pass", :on => :collection
   get "forgot_pass2", :on => :collection
   post "page1", :on => :collection
   post "page2", :on => :collection
   post "page3", :on => :collection
+  post "view", :on => :collection
   post "forgot_pass", :on => :collection
   post "forgot_pass2", :on => :collection
   put "page1", :on => :collection
   put "page2", :on => :collection
   put "page3", :on => :collection
+  put "view", :on => :collection
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

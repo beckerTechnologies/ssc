@@ -1,6 +1,6 @@
 <div class="setup_page_form">
 
-  <p>Edit Your Profile</p>
+  <p>View Your Profile</p>
   </br>
   <%= form_tag(root_path, method: "get") do %>
     <%= submit_tag("Back To Home") %>
@@ -8,8 +8,15 @@
 
   <%= form_for(@profile, url: './update') do |f| %>
     <%= render 'form_edit', :f => f %>
-    <div class="submit_btn">
-      <%= f.submit("Update Profile") %>
-    </div>
   <% end %>
+  <%= form_tag('page3', method: "get") do %>
+    <%= submit_tag("Edit Profile") %>
+  <% end %>
+<script>
+$(function(){
+$("form *").attr('disabled', true);
+$("form :submit").attr('disabled', false);
+});
+</script>
+
 </div>

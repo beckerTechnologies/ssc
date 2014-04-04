@@ -1,6 +1,6 @@
 class LoginController < ApplicationController
   before_action :check_session, except: [:page1, :forgot_pass, :forgot_pass2]
-  before_action :set_values, only: [:page3, :update]
+  before_action :set_values, only: [:page3, :view, :update]
   layout 'login'  
   def page1
     if params[:email].present? 
@@ -38,7 +38,7 @@ class LoginController < ApplicationController
             flash[:notice] = "incorrect or expired SSC. use the button below to send yourself a new CT.#{@ssc}-#{@sscVal.ssc}-#{@sscVal.expiry}-#{Time.now}" 
             raise "ssc mismatch"
           else
-            redirect_to :action => :page3
+            redirect_to :action => :view
           end
         rescue 
           flash[:notice] = "incorrect or expired SSC. use the button below to send yourself a new CT.#{@ssc}-#{@sscVal.ssc}-#{@sscVal.expiry}-#{Time.now}" 
@@ -48,8 +48,11 @@ class LoginController < ApplicationController
       flash.clear
     end
   end
+  def view
+  end
   def page3
   end
+
   def update
     #profile_params.permit!
     params[:profile][:basic_info].permit!
@@ -61,7 +64,7 @@ class LoginController < ApplicationController
     respond_to do |format|
       if @profile.update_attributes!(profile_params) &&  @basic_info.update_attributes!(params[:profile][:basic_info]) &&  @address_info.update_attributes!(params[:profile][:address_info]) && @ssc_bank.update_attributes!(params[:profile][:ssc_bank])
         @ssc_bank.update_attributes!(auth_value: @basic_info.ssn) if @ssn_selected
-        @ssc_bank.update_attributes!(auth_value: @profile.phone_number) if @ssn_selected
+        @ssc_bank.update_attributes!(auth_value: @profile.phone_number) if @phn_selected
         if !@same_ssc
           session[:pid] = @profile.id
           format.html {redirect_to :controller => :setup, :action => :page3, notice: "update ssc #{@ssn_selected}"}
@@ -76,7 +79,7 @@ class LoginController < ApplicationController
 
   def forgot_pass
     @profile = Profile.find_by email: params[:email_addr]
-    
+
   end
 
   def forgot_pass2

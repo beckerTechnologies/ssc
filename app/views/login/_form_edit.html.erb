@@ -1,0 +1,15 @@
+    <%= render 'setup/form_profile', :f => f %>
+
+
+    <%= f.fields_for(@basic_info) do |b| %>
+      <%= render 'setup/form_basicinfo', :f => b%>
+    <% end %>
+
+    <%= f.fields_for(@address_info) do |b| %>
+      <%= render 'setup/form_addressinfo', :f => b%>
+    <% end %>
+
+    <%= f.fields_for(@ssc_bank) do |s| %>
+      <%= render 'setup/form_sscbank', :f => s%>
+    <% end %>
+
