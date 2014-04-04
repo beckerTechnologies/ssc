@@ -69,7 +69,7 @@ class LoginController < ApplicationController
           session[:pid] = @profile.id
           format.html {redirect_to :controller => :setup, :action => :page3, notice: "update ssc #{@ssn_selected}"}
         else
-          format.html {render :action => :page3, notice: 'profile saved'}
+          format.html {redirect_to :action => :view, notice: 'profile saved'}
         end
       else
         format.html {render :action => :page3}

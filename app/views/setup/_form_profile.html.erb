@@ -16,8 +16,11 @@
 <div class="field">
   <%= f.hidden_field :phone_number, :class => 'full_phone' %> </p>
   <p id='pn'> <%= f.label :phone_number, "Text-enabled Phone Number" %>
+   <% f.label :sugar, "(" %>
   <%= text_field_tag :phone_number1, '1', :class => 'tel areacode', :maxlength=>"3" %> 
+   <% f.label :sugar, ")" %>
   <%= text_field_tag :phone_number2, '2', :class => 'tel exchange', :maxlength=>"3" %>
+   <% f.label :sugar, "-" %>
   <%= text_field_tag :phone_number3, '3', :class => 'tel subscriber', :maxlength=>"4" %> </p>
 </div>
 <div class="field">
@@ -28,6 +31,14 @@
 <script>
 
   $(function(){
+
+    var ful_phn = String($('.full_phone').val());
+    if(ful_phn.length ==10){
+      $("#phone_number1").val(ful_phn.substring(0,3));
+      $("#phone_number2").val(ful_phn.substring(3,6));
+      $("#phone_number3").val(ful_phn.substring(6,10));
+    }
+
     $('.tel').keyup(function (event) {
       var phone = (String($(".tel").map(function(){return (parseInt($(this).val()));}).get())).split(",").join("");
       $('.full_phone').val(phone); 

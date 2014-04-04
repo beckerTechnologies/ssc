@@ -12,7 +12,7 @@
 
 
  <% if session[:login] %> 
-  <div class="submit_btn"> <%= button_to "Proceed", page3_login_index_path, :method => :get  %> </div>
+  <div class="submit_btn"> <%= button_to "Proceed", view_login_index_path, :method => :get  %> </div>
 <% else %>
   <div class="submit_btn"> <%= button_to "Proceed", page4_setup_index_path, :method => :get  %> </div>
 <% end %>

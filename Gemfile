@@ -1,4 +1,9 @@
 source 'https://rubygems.org'
+
+# for address country/state.  
+gem 'countries'
+gem 'country_select'
+
 gem 'bcrypt', '~> 3.1.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
