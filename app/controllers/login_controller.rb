@@ -1,5 +1,5 @@
 class LoginController < ApplicationController
-  before_action :check_session, except: [:page1, :forgot_pass]
+  before_action :check_session, except: [:page1, :forgot_pass, :forgot_pass2]
   before_action :set_values, only: [:page3, :update]
   layout 'login'  
   def page1
@@ -75,6 +75,11 @@ class LoginController < ApplicationController
   end
 
   def forgot_pass
+    @profile = Profile.find_by email: params[:email_addr]
+    
+  end
+
+  def forgot_pass2
     @profile = Profile.find_by email: params[:email_addr]
     if @profile
       @pass =  set_temp_password

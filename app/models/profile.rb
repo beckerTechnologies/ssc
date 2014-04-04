@@ -20,4 +20,6 @@ class Profile < ActiveRecord::Base
 =begin
   #has_secure_password
 =end
+
+
 end

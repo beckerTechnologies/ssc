@@ -214,7 +214,7 @@ h3 {
 .setup_page {
 	border: 1px solid black;
 	padding: 3% 5% 5% 5%;
-	width: 65%;
+	width: 70%;
 	margin:5% auto 5% auto;
 	background-color: white;
 }
@@ -222,7 +222,7 @@ h3 {
 .setup_page_form {
 	border: 1px solid black;
 	padding: 3% 5% 5% 5%;
-	width: 65%;
+	width: 70%;
 	margin:5% auto 5% auto;
 	background-color: white;
 	overflow: auto;
@@ -296,7 +296,7 @@ h3 {
 .setup_page_ssc {
 	border: 1px solid black;
 	padding: 3% 5% 5% 5%;
-	width: 65%;
+	width: 70%;
 	margin: 5% auto 5% auto;
 	background-color: white;
 	overflow: auto;
