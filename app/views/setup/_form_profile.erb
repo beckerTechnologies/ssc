@@ -16,9 +16,9 @@
 <div class="field">
   <%= f.hidden_field :phone_number, :class => 'full_phone' %> </p>
   <p id='pn'> <%= f.label :phone_number, "Text-enabled Phone Number" %>
-  <%= text_field_tag :phone_number1, '1', :class => 'tel areacode' %> 
-  <%= text_field_tag :phone_number2, '2', :class => 'tel exchange' %>
-  <%= text_field_tag :phone_number3, '3', :class => 'tel subscriber' %> </p>
+  <%= text_field_tag :phone_number1, '1', :class => 'tel areacode', :maxlength=>"3" %> 
+  <%= text_field_tag :phone_number2, '2', :class => 'tel exchange', :maxlength=>"3" %>
+  <%= text_field_tag :phone_number3, '3', :class => 'tel subscriber', :maxlength=>"4" %> </p>
 </div>
 <div class="field">
   <p> <%= f.label :carrier_id, "Phone Carrier" %>
