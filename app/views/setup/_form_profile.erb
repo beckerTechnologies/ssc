@@ -1,23 +1,40 @@
-  <div class="field">
-    <p> <%= f.label :email %>
-    <%= f.email_field :email, placeholder: "Enter your Email"%> </p>
-  </div>
-  <div class="field">
-    <p> <small> (Must include lower case, upper case, and a number) </small><%= f.label :password %>
-    <%= f.password_field :password , placeholder: "Must be more than 6 characters"%> </p>
-  </div>
+<div class="field">
+  <p> <%= f.label :email %>
+  <%= f.email_field :email, placeholder: "Enter your Email"%> </p>
+</div>
+<div class="field">
+  <p> <small> (Must include lower case, upper case, and a number) </small><%= f.label :password %>
+  <%= f.password_field :password , placeholder: "Must be more than 6 characters"%> </p>
+</div>
 
-  <div class="field">
-    <p> <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, placeholder: "Must match Password" %> </p>
-  </div>
-  
+<div class="field">
+  <p> <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, placeholder: "Must match Password" %> </p>
+</div>
 
-  <div class="field">
-    <p> <%= f.label :phone_number, "Text-enabled Phone Number" %>
-    <%= f.telephone_field :phone_number, placeholder: "Without brackets and spaces" %> </p>
-  </div>
-  <div class="field">
-    <p> <%= f.label :carrier_id, "Phone Carrier" %>
-      <%= f.select( :carrier_id,  Carrier.all.map {|u| [u.carrier_name,u.id]}, {:include_blank => "Select a Carrier"}) %> </p>
-  </div>
+
+<div class="field">
+  <%= f.hidden_field :phone_number, :class => 'full_phone' %> </p>
+  <p id='pn'> <%= f.label :phone_number, "Text-enabled Phone Number" %>
+  <%= text_field_tag :phone_number1, '1', :class => 'tel areacode' %> 
+  <%= text_field_tag :phone_number2, '2', :class => 'tel exchange' %>
+  <%= text_field_tag :phone_number3, '3', :class => 'tel subscriber' %> </p>
+</div>
+<div class="field">
+  <p> <%= f.label :carrier_id, "Phone Carrier" %>
+  <%= f.select( :carrier_id,  Carrier.all.map {|u| [u.carrier_name,u.id]}, {:include_blank => "Select a Carrier"}) %> </p>
+</div>
+
+<script>
+
+  $(function(){
+    $('.tel').keyup(function (event) {
+      var phone = (String($(".tel").map(function(){return (parseInt($(this).val()));}).get())).split(",").join("");
+      $('.full_phone').val(phone); 
+      if ($(this).val().length==3)
+      $(this).next('.tel').focus();
+      return true;
+    });
+
+  });
+</script>
