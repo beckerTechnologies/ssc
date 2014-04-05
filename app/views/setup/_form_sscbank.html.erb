@@ -14,8 +14,8 @@
 <script type="text/javascript">
   $(function(){    
       lens = "<%= AuthOption.pluck(:length).join(',') %>".split(',');
-      ssnID = 1;//(AuthOption.find_by :name => 'SSN').id;
-      phoneID = 2; // safer option. but actually coming from db/seed
+      ssnID = 1;
+      phoneID = 2;
 
       $('.aoid').change(callback());
       $('.auth_value').keyup(callback());
@@ -34,9 +34,9 @@
       $('.aov').prop("disabled", false);
       var len = lens[parseInt($('.aoid').val())-1];
       if ($('.aov').val().length!= (len))
-      $('.aov').css('color','red');
+        $('.aov').css('color','red');
       else
-      $('.aov').css('color','black');
+        $('.aov').css('color','black');
       }
       }
       }

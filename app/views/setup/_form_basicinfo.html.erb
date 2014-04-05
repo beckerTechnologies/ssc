@@ -16,24 +16,34 @@
   </div>
   <div class="ssn_value">
     <p><%= f.label(:ssn, "Social Security Number")%>
-    <%= f.text_field :ssn, placeholder: "Enter SSN", :class => "ssnv" %> </p>
+    <%= f.text_field :ssn, placeholder: "Enter SSN", :class => "ssnv", :maxlength=>"15"  %> </p>
   </div>
 
 
-<script type="text/javascript">
-  $(function(){    
-      
-      $('.ssn_value').keyup(callback());
+  <script type="text/javascript">
+    $(function(){    
 
-      function callback(){
-      return function(){
-      
-      if ($('.ssnv').val().length!= (9))
-      $('.ssnv').css('color','red');
-      else
-      $('.ssnv').css('color','black');
-      }
-      }
+        if($('.ssnv').val().length==9){
+          var ssn = String($('.ssnv').val());
+          $('.ssnv').val(ssn.substring(0,3)+' - '+ssn.substring(3,6)+' - '+ssn.substring(6,10));}
+
+        $('.ssn_value').keyup(function(){
+
+        var ssn = (String($('.ssnv').val())).split(/[a-zA-Z() -]/).join('');
+        var len = ssn.length;
+
+        if (len!= (9))
+        $('.ssnv').css('color','red');
+        else
+        $('.ssnv').css('color','black');
+
+        if(len>3 && len <6)
+        $('.ssnv').val(ssn.substring(0,3)+' - '+ssn.substring(3,6));
+        else if (len>6)
+        $('.ssnv').val(ssn.substring(0,3)+' - '+ssn.substring(3,6)+' - '+ssn.substring(6,10));
+        return true;
+      });
 
   });
 </script>
+
