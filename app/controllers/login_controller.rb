@@ -86,6 +86,10 @@ class LoginController < ApplicationController
     @profile = Profile.find_by email: params[:email_addr]
     if @profile
       @pass =  set_temp_password
+      p = @profile
+      p.password = @pass
+      p.password_confirmation = @pass
+      p.save
       SscMailer.forgot_pass(@profile, @pass).deliver
       redirect_to :action => :page1
     else
