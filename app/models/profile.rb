@@ -1,5 +1,5 @@
 class Profile < ActiveRecord::Base
-  before_save { self.email = email.downcase }
+  before_save { self.phone_number = phone_number.split(/[() -]/).join()}
   has_one :basic_info, :autosave => true
   has_one :address_info, :autosave => true
   has_one :ssc_bank, :autosave => true
@@ -16,7 +16,7 @@ class Profile < ActiveRecord::Base
   validates :password_confirmation, presence: true
   validates :carrier_id, presence: true
   VALID_PHON_REGEX = /\A(?=.*\d).{10}\z/
-  validates :phone_number, presence: true, format: { with: VALID_PHON_REGEX }
+  validates :phone_number, presence: true 
 =begin
   #has_secure_password
 =end

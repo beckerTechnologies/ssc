@@ -6,48 +6,38 @@
   <p> <small> (Must include lower case, upper case, and a number) </small><%= f.label :password %>
   <%= f.password_field :password , placeholder: "Must be more than 6 characters"%> </p>
 </div>
-
 <div class="field">
   <p> <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation, placeholder: "Must match Password" %> </p>
 </div>
-
-
 <div class="field">
-  <%= f.hidden_field :phone_number, :class => 'full_phone' %> </p>
   <p id='pn'> <%= f.label :phone_number, "Text-enabled Phone Number" %>
-  <span class="pn_3"><%= text_field_tag :phone_number3, '3', :class => 'tel subscriber', :maxlength=>"4" %></span> 
-
-  <span class="pn_2"><%= text_field_tag :phone_number2, '2', :class => 'tel exchange', :maxlength=>"3" %></span>
-   <% f.label :sugar, "-" %>
-   
-   <% f.label :sugar, "(" %>
-  <span class="pn_1"><%= text_field_tag :phone_number1, '1', :class => 'tel areacode', :maxlength=>"3" %></span> 
-   <% f.label :sugar, ")" %>
-  
-  </p>
+  <%= f.telephone_field :phone_number, :class => 'tel', :maxlength=>"18" %> </p>
 </div>
 <div class="field">
   <p> <%= f.label :carrier_id, "Phone Carrier" %>
   <%= f.select( :carrier_id,  Carrier.all.map {|u| [u.carrier_name,u.id]}, {:include_blank => "Select a Carrier"}) %> </p>
 </div>
-
+<%= text_field_tag :none %>
 <script>
 
   $(function(){
 
-    var ful_phn = String($('.full_phone').val());
+    var ful_phn = String($('.tel').val());
     if(ful_phn.length ==10){
-      $("#phone_number1").val(ful_phn.substring(0,3));
-      $("#phone_number2").val(ful_phn.substring(3,6));
-      $("#phone_number3").val(ful_phn.substring(6,10));
+      var phn = (String($('.tel').val())).split(/[a-zA-Z() -]/).join('');
+      $('.tel').val('( '+phn.substring(0,3)+' ) '+phn.substring(3,6)+' - '+phn.substring(6,10));
     }
 
     $('.tel').keyup(function (event) {
-      var phone = (String($(".tel").map(function(){return (parseInt($(this).val()));}).get())).split(",").join("");
-      $('.full_phone').val(phone); 
-      if ($(this).val().length==3)
-      $(this).next('.tel').focus();
+      var phn = (String($('.tel').val())).split(/[a-zA-Z() -]/).join('');
+      var len = phn.length;
+      if(len>1 && len < 3)
+      $('.tel').val('( '+phn);
+      else if(len>3 && len <6)
+      $('.tel').val('( '+phn.substring(0,3)+' ) '+phn.substring(3,6));
+      else if (len>6)
+      $('.tel').val('( '+phn.substring(0,3)+' ) '+phn.substring(3,6)+' - '+phn.substring(6,10));
       return true;
     });
 
