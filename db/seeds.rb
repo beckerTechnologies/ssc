@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-AuthOption.create(id:1, name:'SSN', length:9)
+AuthOption.create(id:1, name:'Social Security Number', length:9)
 AuthOption.create(id:2, name:'Area Code and Phone Number', length:10)
 AuthOption.create(id:3, name:'Credit Card or Debit Card', length:16)
 AuthOption.create(id:4, name:'Driver License', length:20)
