@@ -66,7 +66,7 @@ class SetupController < ApplicationController
     @ssc_bank = SscBank.new(ssc_bank_params)
     @ssn = (BasicInfo.find_by profile_id: session[:pid]).ssn
     @phn = (Profile.find session[:pid]).phone_number
-    if (ssc_bank_params[:auth_option_id]).to_s == ((AuthOption.find_by :name => 'SSN').id).to_s
+    if (ssc_bank_params[:auth_option_id]).to_s == (1).to_s #((AuthOption.find_by :name => 'SSN').id).to_s
       @ssc_bank[:auth_value] = @ssn
     end
     if (ssc_bank_params[:auth_option_id]).to_s == (2).to_s

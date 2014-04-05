@@ -59,7 +59,7 @@ class LoginController < ApplicationController
     params[:profile][:address_info].permit!
     params[:profile][:ssc_bank].permit!
     @same_ssc = ((@ssc_bank.auth_value).to_s == (params[:profile][:ssc_bank][:auth_value]).to_s) && ((@ssc_bank.auth_option_id).to_s == (params[:profile][:ssc_bank][:auth_option_id]).to_s) 
-    @ssn_selected = (params[:profile][:ssc_bank][:auth_option_id]).to_s == ((AuthOption.find_by :name => 'SSN').id).to_s
+    @ssn_selected = (params[:profile][:ssc_bank][:auth_option_id]).to_s == (1).to_s #((AuthOption.find_by :name => 'SSN').id).to_s
     @phn_selected =  (params[:profile][:ssc_bank][:auth_option_id]).to_s == (2).to_s
     respond_to do |format|
       if @profile.update_attributes!(profile_params) &&  @basic_info.update_attributes!(params[:profile][:basic_info]) &&  @address_info.update_attributes!(params[:profile][:address_info]) && @ssc_bank.update_attributes!(params[:profile][:ssc_bank])
