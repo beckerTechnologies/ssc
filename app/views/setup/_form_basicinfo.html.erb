@@ -25,7 +25,7 @@
 
         if($('.ssnv').val().length==9){
           var ssn = String($('.ssnv').val());
-          $('.ssnv').val(ssn.substring(0,3)+' - '+ssn.substring(3,5)+' - '+ssn.substring(5,10));}
+          $('.ssnv').val(ssn.substring(0,3)+'-'+ssn.substring(3,5)+'-'+ssn.substring(5,10));}
 
         $('.ssn_value').keyup(function(){
 
@@ -38,9 +38,9 @@
         $('.ssnv').css('color','black');
 
         if(len>3 && len <5)
-        $('.ssnv').val(ssn.substring(0,3)+' - '+ssn.substring(3,5));
+        $('.ssnv').val(ssn.substring(0,3)+'-'+ssn.substring(3,5));
         else if (len>5)
-        $('.ssnv').val(ssn.substring(0,3)+' - '+ssn.substring(3,5)+' - '+ssn.substring(5,10));
+        $('.ssnv').val(ssn.substring(0,3)+'-'+ssn.substring(3,5)+'-'+ssn.substring(5,10));
         return true;
       });
 
