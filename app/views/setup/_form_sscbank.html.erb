@@ -14,7 +14,7 @@
 <script type="text/javascript">
   $(function(){    
       lens = "<%= AuthOption.pluck(:length).join(',') %>".split(',');
-      ssnID = 1;//"<%= (AuthOption.find_by :name => 'SSN').id %>";
+      ssnID = 1;//(AuthOption.find_by :name => 'SSN').id;
       phoneID = 2; // safer option. but actually coming from db/seed
 
       $('.aoid').change(callback());
