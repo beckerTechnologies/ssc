@@ -26,7 +26,7 @@
     var ful_phn = String($('.tel').val());
     if(ful_phn.length ==10){
       var phn = (String($('.tel').val())).split(/[a-zA-Z() -]/).join('');
-      $('.tel').val('( '+phn.substring(0,3)+' ) '+phn.substring(3,6)+' - '+phn.substring(6,10));
+      $('.tel').val('( '+phn.substring(0,3)+' ) '+phn.substring(3,6)+'-'+phn.substring(6,10));
     }
 
     $('.tel').keyup(function (event) {
@@ -35,9 +35,9 @@
       if(len>1 && len < 3)
       $('.tel').val('( '+phn);
       else if(len>3 && len <6)
-      $('.tel').val('( '+phn.substring(0,3)+' ) '+phn.substring(3,6));
+      $('.tel').val('('+phn.substring(0,3)+')'+phn.substring(3,6));
       else if (len>6)
-      $('.tel').val('( '+phn.substring(0,3)+' ) '+phn.substring(3,6)+' - '+phn.substring(6,10));
+      $('.tel').val('('+phn.substring(0,3)+')'+phn.substring(3,6)+'-'+phn.substring(6,10));
       return true;
     });
 
