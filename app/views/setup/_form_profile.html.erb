@@ -16,12 +16,16 @@
 <div class="field">
   <%= f.hidden_field :phone_number, :class => 'full_phone' %> </p>
   <p id='pn'> <%= f.label :phone_number, "Text-enabled Phone Number" %>
-   <% f.label :sugar, "(" %>
-  <%= text_field_tag :phone_number1, '1', :class => 'tel areacode', :maxlength=>"3" %> 
-   <% f.label :sugar, ")" %>
-  <%= text_field_tag :phone_number2, '2', :class => 'tel exchange', :maxlength=>"3" %>
+  <span class="pn_3"><%= text_field_tag :phone_number3, '3', :class => 'tel subscriber', :maxlength=>"4" %></span> 
+
+  <span class="pn_2"><%= text_field_tag :phone_number2, '2', :class => 'tel exchange', :maxlength=>"3" %></span>
    <% f.label :sugar, "-" %>
-  <%= text_field_tag :phone_number3, '3', :class => 'tel subscriber', :maxlength=>"4" %> </p>
+   
+   <% f.label :sugar, "(" %>
+  <span class="pn_1"><%= text_field_tag :phone_number1, '1', :class => 'tel areacode', :maxlength=>"3" %></span> 
+   <% f.label :sugar, ")" %>
+  
+  </p>
 </div>
 <div class="field">
   <p> <%= f.label :carrier_id, "Phone Carrier" %>
