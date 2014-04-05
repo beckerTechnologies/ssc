@@ -16,10 +16,8 @@
 	font-family: Geneva;
 }
 
-
 body {
 	height: 1000px;
-	/*background-color: #CEEBFB;*/
 	background-color: #F0ECEB;
 	margin: 0 auto 0 auto;
 	width: 100%;
@@ -114,7 +112,7 @@ h3 {
 }
 
 .home_page_text_title {
-	font-size: 250%;
+	font-size: 350%;
 	font-weight: bold;
 	background-color: #151B54;
 	color: white;
@@ -127,14 +125,6 @@ h3 {
 .background_color_gray {
 	background-color: #F0ECEB;
 	height: 8%;
-}
-
-.home_page_text_welcome {
-	font-size: 150%;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-	margin-bottom: 10%;
 }
 
 .background_color_red {
@@ -156,7 +146,7 @@ h3 {
 
 .home_page_text_about_plusone {
 	clear: both;
-	font-size: 150%;
+	font-size: 250%;
 	margin: 5% 8% 3% 8%;
 	padding: 0 2% 0 2%;
 	border-right: 3px solid #151B54;
@@ -169,7 +159,7 @@ h3 {
 }
 
 .home_page_text_about_website {
-	font-size: 150%;
+	font-size: 250%;
 	text-align: justify;
 }
 
@@ -194,7 +184,7 @@ h3 {
 }
 
 .home_page_text_get_started {
-	font-size: 150%;
+	font-size: 250%;
 	text-align: center;
 	padding: 3% 10% 5% 10%;
 	background-color: #151B54;
@@ -414,6 +404,42 @@ h3 {
 }
 
 
+.pn_1 input {
+	width: 8.3%;
+	display: block;
+	float: right;
+	text-align: center;
+}
+
+.pn_2 input {
+	width: 8.3%;
+	display: block;
+	float: right;
+	text-align: center;
+}
+
+.pn_3 input {
+	width: 8.3%;
+	display: block;
+	float: right;
+	text-align: center;
+}
+/*
+.pn_1 {
+	width: 80%;
+	display: block;
+}
+
+.pn_2 {
+	width: 80%;
+	display: block;
+}
+
+.pn_3 {
+	width: 80%;
+	display: block;
+}
+*/
 /*-------------------------------- Login Page --------------------------------*/
 
 .login_page {
