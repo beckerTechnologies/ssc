@@ -1,22 +1,90 @@
 <div class="setup_page">
 
+
+
+<span class="center_text">
+<p class="welcome_login_heading"> Enter <span class="underlined_text">your</span> <span class="green_text">SSC</span> </p> </span>
+
+
+<div class="ssc-gen">
+  <h4> Secret Security Code Generator </h4>
+  <small> (Use this generator to create your SSC to enter into the box below.) </small>
+
+  <form id='gen_form' >
+    <p>
+    <label>Insert your personal ID number</label>
+    <span class="input-wide">
+      <input type='text' id='numbers'>
+    </span>
+    </p>
+    <p>
+    <label>Insert your box positions</label>
+    <input maxlength ='2' size='2' id='first'>
+    <input maxlength ='2' size='2' id='second'>
+    <input maxlength ='2' size='2' id='third'>
+    </p>
+    <p>
+    <label>Insert your challenge Symbol</label>
+
+    <input id='ct_in'>
+
+    <div class="submit_btn2">
+    <%= form_tag("./page2" ) do %>
+        <%= hidden_field_tag 'sendnew', 'yes' %>
+        <%= submit_tag("Request new Challenge Symbol") %>
+      <% end %>
+    </div>
+
+    </p>
+    <div class="submit_btn">
+      <input type='button' id='gen_submit' value='Generate SSC'>
+    </div>
+    <p>
+    
+    <label class= "gen_output" hidden='true' for='ssc_out' >Your encoded SSC is: </input>
+      <span class="input-wide">
+
+        <input class = "gen_output" hidden='true' type='text' id='ssc_out'></input></span>
+      </p>
+    </form>
+  </div>
+
+
+
+
+<div class="login_page_text">
   <p>Please enter your SSC to proceed</p> 
-  </br>
   <%= form_tag("./page2") do %>
     <%= label_tag(:ssc, "SSC:") %>
     <%= text_field_tag(:ssc) %>
-    </br>
-    </br>
-    <div class="submit_btn">
 
-      <%= submit_tag("Login") %>
+    <div class="submit_btn">
+      <%= submit_tag("Proceed") %>
     </div>
-    </br>
-    </br>
+
   <% end %>
-  <%= form_tag("./page2" ) do %>
-    <%= hidden_field_tag 'sendnew', 'yes' %>
-    <%= submit_tag("Request new Challenge Symbol") %>
-  <% end %>
-  <%= render 'setup/form_sscgen' %>
+  
+  </div>
 </div>
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+    $(function() {
+        $("#gen_submit").click(function() {
+          var numbers = $('#numbers').val();
+          var ct = $('#ct_in').val();
+          var numbers_a = numbers.split('');
+          numbers_a[parseInt($('#first').val())-1] = ct;
+          numbers_a[parseInt($('#second').val())-1] = ct;
+          numbers_a[parseInt($('#third').val())-1] = ct;
+
+          var numbers_i = numbers_a.join('');
+
+          $('#ssc_out').val(numbers_i);
+          $('.gen_output').show();
+          return false;
+          })
+        })
+      </script>

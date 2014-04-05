@@ -12,7 +12,7 @@ class LoginController < ApplicationController
             raise "password mismatch"
           else
             session[:login] = @profile[:id]
-            redirect_to :action => :page2
+            redirect_to :action => :welcome_login
           end
         rescue 
           flash[:notice] = "Incorrect username or password."
@@ -21,6 +21,10 @@ class LoginController < ApplicationController
     else
       flash.clear
     end
+  end
+
+  def welcome_login
+
   end
 
   def page2

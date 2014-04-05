@@ -44,6 +44,7 @@ end
   get "view", :on => :collection
   get "forgot_pass", :on => :collection
   get "forgot_pass2", :on => :collection
+  get "welcome_login", :on => :collection
   post "page1", :on => :collection
   post "page2", :on => :collection
   post "page3", :on => :collection

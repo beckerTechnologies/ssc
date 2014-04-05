@@ -1,22 +1,18 @@
-<div class="setup_page_form">
+<div class="login_page">
 
-  <p>View Your Profile</p>
-  </br>
-  <%= form_tag(root_path, method: "get") do %>
-    <%= submit_tag("Back To Home") %>
-  <% end %>
+<p class="welcome_login_text"> Congratulations! </p>
 
-  <%= form_for(@profile, url: './update') do |f| %>
-    <%= render 'form_edit', :f => f %>
-  <% end %>
-  <%= form_tag('page3', method: "get") do %>
-    <%= submit_tag("Edit Profile") %>
-  <% end %>
-<script>
-$(function(){
-$("form *").attr('disabled', true);
-$("form :submit").attr('disabled', false);
-});
-</script>
+<p class="welcome_login_text">You correctly entered <span class="underlined_text">your</span> <span class="green_text">SSC</span>, verifying it's really you. You may now access <span class="underlined_text">your</span> tax information and edit <span class="underlined_text">your</span> <span class="italic_text">profile</span>. </p>
+
+  
+<div class="login_page_link_right">
+<%= button_to "Edit Profile", page3_login_index_path, :method => :get  %>
+</div>
+<div class="login_page_link_left">
+<%= button_to "Tax Information", view_login_index_path , :method => :get  %>
+</div>
+<div class="login_page_view_link">
+<%= button_to "Home", root_path, :method => :get  %>
+</div>
 
 </div>
