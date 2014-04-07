@@ -8,23 +8,23 @@
 
 <div class="ssc-gen">
   <h4> Secret Security Code Generator </h4>
-  <small> (Use this generator to create your SSC to enter into the box below.) </small>
+  <small> (Use this generator to create <span class="underlined_text">your</span> <span class="green_text">SSC</span> to enter into the box below.) </small>
 
   <form id='gen_form' >
     <p>
-    <label>Insert your personal ID number</label>
+    <label>Type in your <%= @a.name %>:</label>
     <span class="input-wide">
       <input type='text' id='numbers'>
     </span>
     </p>
     <p>
-    <label>Insert your box positions</label>
+    <label>Type in your Box Code:</label>
     <input maxlength ='2' size='2' id='first'>
     <input maxlength ='2' size='2' id='second'>
     <input maxlength ='2' size='2' id='third'>
     </p>
     <p>
-    <label>Insert your challenge Symbol</label>
+    <label>Type in your Challenge Symbol:</label>
 
     <input id='ct_in'>
 
@@ -53,7 +53,7 @@
 
 
 <div class="login_page_text">
-  <p>Please enter your SSC to proceed</p> 
+  <p>Please enter your <span class="green_text">SSC</span> to proceed</p> 
   <%= form_tag("./page2") do %>
     <%= label_tag(:ssc, "SSC:") %>
     <%= text_field_tag(:ssc) %>

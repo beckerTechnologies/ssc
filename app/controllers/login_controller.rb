@@ -29,6 +29,9 @@ class LoginController < ApplicationController
 
   def page2
     @pid = session[:login]
+    @option = SscBank.find_by profile_id: @pid
+    @ao = @option.auth_option_id
+    @a = AuthOption.find_by id: @ao
     if params[:sendnew].present?
       #RenewWorker.perform_async(@pid)
       mail_helper(@pid)
@@ -39,13 +42,13 @@ class LoginController < ApplicationController
         begin
           @sscVal = SscBank.find_by profile_id: @pid
           if @sscVal.ssc != @ssc || @sscVal[:expiry] < Time.now # ssc mismatched or expired
-            flash[:notice] = "incorrect or expired SSC. use the button below to send yourself a new CT.#{@ssc}-#{@sscVal.ssc}-#{@sscVal.expiry}-#{Time.now}" 
+            flash[:notice] = "Invalid SSC" 
             raise "ssc mismatch"
           else
             redirect_to :action => :view
           end
         rescue 
-          flash[:notice] = "incorrect or expired SSC. use the button below to send yourself a new CT.#{@ssc}-#{@sscVal.ssc}-#{@sscVal.expiry}-#{Time.now}" 
+          flash[:notice] = "Invalid SSC" 
         end
       end
     else

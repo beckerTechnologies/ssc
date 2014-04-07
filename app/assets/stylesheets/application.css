@@ -53,6 +53,17 @@ h3 {
 	font-weight: 900;
 }
 
+.alert {
+	text-align: center;
+	font-size: 150%;
+	color: red;
+}
+
+.notice {
+	text-align: center;
+	font-size: 150%;
+}
+
 /*-------------------------------- Navigation Bar --------------------------------*/
 
 
