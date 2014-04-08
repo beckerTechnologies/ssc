@@ -19,8 +19,6 @@
   <%= f.select( :carrier_id,  Carrier.all.map {|u| [u.carrier_name,u.id]}, {:include_blank => "Select a Carrier"}) %> </p>
 </div>
 
-<input type="file" capture="camera" accept="image/*" accept="video/*" id="cameraInput" name="cameraInput">
-
 <script>
 
   $(function(){
