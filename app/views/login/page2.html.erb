@@ -1,14 +1,14 @@
 <div class="setup_page">
 
 
-
 <span class="center_text">
 <p class="welcome_login_heading"> Enter <span class="underlined_text">your</span> <span class="green_text">SSC</span> </p> </span>
 
 
 <div class="ssc-gen">
   <h4> Secret Security Code Generator </h4>
-  <small> (Use this generator to create <span class="underlined_text">your</span> <span class="green_text">SSC</span> to enter into the box below.) </small>
+
+  <small> (Type the numbers in these boxes to show you <span class="underlined_text">your</span> <span class="green_text">SSC</span> that you will type in below!) </small>
 
   <form id='gen_form' >
     <p>
@@ -37,7 +37,7 @@
 
     </p>
     <div class="submit_btn">
-      <input type='button' id='gen_submit' value='Generate SSC'>
+      <input type='button' id='gen_submit' value='Show my SSC!'>
     </div>
     <p>
     
@@ -53,7 +53,7 @@
 
 
 <div class="login_page_text">
-  <p>Please enter your <span class="green_text">SSC</span> to proceed</p> 
+  <p>Please type in <span class="underlined_text">your</span> <span class="green_text">SSC!</span></p> 
   <%= form_tag("./page2") do %>
     <%= label_tag(:ssc, "SSC:") %>
     <%= text_field_tag(:ssc) %>
