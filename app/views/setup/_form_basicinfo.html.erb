@@ -12,7 +12,8 @@
   </div>
   <div class="dob_select">
     <p><%= f.label(:dob, "Date of Birth") %>
-    <%= f.text_field :dob,  placeholder: "Click to choose \"Date of Birth\"", :class => "dob",:readonly => true%>
+    <%= f.date_field :dob,  placeholder: "Click to choose \"Date of Birth\""%>
+    
   </div>
   <div class="ssn_value">
     <p><%= f.label(:ssn, "Social Security Number")%>
