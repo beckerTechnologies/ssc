@@ -870,17 +870,17 @@ body {
 .setup_page_form input {
 	width: 90%;
 	font-size: 80%;
-	margin-bottom: 10%;
+	margin-bottom: 5%;
 }
 
 .setup_page_form select {
-	width: 150%;
+	width: 90%;
 	font-size: 80%;
-	margin-bottom: 10%;
+	margin-bottom: 5%;
 }
 
 .setup_page .submit_btn input{
-	width: 50%;
+	width: 100%;
 	float: right;
 }
 
