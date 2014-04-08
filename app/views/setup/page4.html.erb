@@ -21,4 +21,14 @@
 	<%= button_to "Proceed", page5_setup_index_path, :method => :get %>
 </div>
 
+<script>
+$(function(){
+
+  $(".email-sms-link :submit").click(
+  function(){$(".email-sms-link :submit").prop('disabled', true); return true;}
+  );
+
+});
+</script>
+
 </div>
