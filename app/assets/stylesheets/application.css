@@ -151,7 +151,7 @@ h3 {
 	width: 560px;
 }
 
-.video video { 
+.video iframe { 
 	margin-top: -6%; 
 }
 
@@ -783,7 +783,7 @@ body {
 	width: 560px;
 }
 
-.video video { 
+.video iframe { 
 	margin-top: -6%; 
 }
 
