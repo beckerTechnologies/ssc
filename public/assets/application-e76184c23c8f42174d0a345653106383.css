@@ -8,9 +8,10 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require_tree .
+
+
  */
+
 
 * {
 	font-family: Geneva;
@@ -1010,18 +1011,11 @@ body {
 	font-size: 70%;
 }
 
-.login_page_text {
-	margin-bottom: 30%;
-}
-
-.login_page_text input{
-	font-size: 65%;
-	width: 90%;
-}
-
-.login_page_text .submit_btn {
-	width: 100%;
-	margin-top: 5%;
+.login_page_2_btn {
+	width: 400%;
+	margin: 0 auto 20% auto !important;
+	float: left;
+	clear: both;
 }
 
 .email-sms-link input {
@@ -1078,7 +1072,7 @@ body {
 .setup_page_get_started_link_new input{
 	width: 100%;
 	margin-top: 5%;
-	font-size: 200%
+	font-size: 100%
 }
 
 
@@ -1143,18 +1137,12 @@ body {
 .login_page_link_right  {
 	width: 100%;
 	font-size: 200%;
-	margin: 5% auto 4% auto;
+	margin: 5% auto 10% auto;
 }
 
 .login_page_link_left  {
 	width: 100% !important;
 	font-size: 200%;
-	margin: 5% auto 10% auto !important;
-}
-
-.login_page_view_link {
-	width: 100% !important;
-	font-size: 100%;
 	margin: 5% auto 10% auto !important;
 }
 

@@ -1,69 +1,64 @@
 <div class="setup_page">
 
 
-<span class="center_text">
-<p class="welcome_login_heading"> Enter <span class="underlined_text">your</span> <span class="green_text">SSC</span> </p> </span>
+  <span class="center_text">
+  <p class="welcome_login_heading"> Enter <span class="underlined_text">your</span> <span class="green_text">SSC</span> </p> </span>
 
 
-<div class="ssc-gen">
-  <h4> <span class="green_text">S</span>ecret <span class="green_text">S</span>ecurity <span class="green_text">C</span>ode Generator </h4>
+  <div class="ssc-gen">
+    <h4> <span class="green_text">S</span>ecret <span class="green_text">S</span>ecurity <span class="green_text">C</span>ode Generator </h4>
 
-  <small> (Type the numbers in these boxes to show you <span class="underlined_text">your</span> <span class="green_text">SSC</span> that you will type in below!) </small>
+    <small> (Type the numbers in these boxes to show you <span class="underlined_text">your</span> <span class="green_text">SSC</span> that you will type in below!) </small>
 
-  <form id='gen_form' >
-    <p>
-    <label>Type in your <%= @a.name %>:</label>
-    <span class="input-wide">
-      <input type='text' id='numbers'>
-    </span>
-    </p>
-    <p>
-    <label>Type in your Box Code:</label>
-    <input maxlength ='2' size='2' id='first'>
-    <input maxlength ='2' size='2' id='second'>
-    <input maxlength ='2' size='2' id='third'>
-    </p>
-    <p>
-    <label>Type in your Challenge Symbol:</label>
-
-    <input id='ct_in'>
-
-    <div class="submit_btn2">
-    <%= form_tag("./page2" ) do %>
-        <%= hidden_field_tag 'sendnew', 'yes' %>
-        <%= submit_tag("Request new Challenge Symbol") %>
-      <% end %>
-    </div>
-
-    </p>
-    <div class="submit_btn">
-      <input type='button' id='gen_submit' value='Show my SSC!'>
-    </div>
-    <p>
-    
-    <label class= "gen_output" hidden='true' for='ssc_out' >Your encoded SSC is: </input>
+    <form id='gen_form' >
+      <p>
+      <label>Type in your <%= @a.name %>:</label>
       <span class="input-wide">
-
-        <input class = "gen_output" hidden='true' type='text' id='ssc_out'></input></span>
+        <input type='text' id='numbers'>
+      </span>
       </p>
+      <p>
+      <label>Type in your Box Code:</label>
+      <input maxlength ='2' size='2' id='first'>
+      <input maxlength ='2' size='2' id='second'>
+      <input maxlength ='2' size='2' id='third'>
+      </p>
+      <p>
+      <label>Type in your Challenge Symbol:</label>
+
+      <input id='ct_in'>
+
+      <div class="submit_btn2">
+      <%= form_tag("./page2" ) do %>
+          <%= hidden_field_tag 'sendnew', 'yes' %>
+          <%= submit_tag("Request new Challenge Symbol") %>
+        <% end %>
+      </div>
+
+      </p>
+      <div class="submit_btn">
+        <input type='button' id='gen_submit' value='Show my SSC!'>
+      </div>
+      <p>
+      
+      <label class= "gen_output" hidden='true' for='ssc_out' >Your encoded SSC is: </input>
+        <span class="input-wide">
+
+          <input class = "gen_output" hidden='true' type='text' id='ssc_out'></input></span>
+        </p>
     </form>
   </div>
 
+  <div class="login_page_text">
+    <p>Please type in <span class="underlined_text">your</span> <span class="green_text">SSC!</span></p> 
+    <%= form_tag("./page2") do %>
+      <%= label_tag(:ssc, "SSC:") %>
+      <%= text_field_tag(:ssc) %>
 
-
-
-<div class="login_page_text">
-  <p>Please type in <span class="underlined_text">your</span> <span class="green_text">SSC!</span></p> 
-  <%= form_tag("./page2") do %>
-    <%= label_tag(:ssc, "SSC:") %>
-    <%= text_field_tag(:ssc) %>
-
-    <div class="submit_btn login_page_2_btn">
-      <%= submit_tag("Proceed") %>
-    </div>
-
-  <% end %>
-  
+      <div class="submit_btn">
+        <%= submit_tag("Proceed") %>
+      </div>
+    <% end %> 
   </div>
 </div>
 
@@ -87,4 +82,4 @@
           return false;
           })
         })
-      </script>
+</script>
