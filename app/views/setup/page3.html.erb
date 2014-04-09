@@ -8,16 +8,16 @@
     <%= hidden_field_tag :ct_mask %>
     <div class="boxes_positions">
       <p hidden='true' id='sscbutton' ></p>
-      <span class="box_positions_text"> Box Numbers: </span>
+      <!-- <span class="box_positions_text"> Box Numbers: </span>
       | <% @len.times do |x|%>
         <% if x < 9 %>
           <span class="box_positions_1"> <%= x+1 %> </span> |
         <% else %>
           <span class="box_positions_2"> <%= x+1 %> </span> |
         <% end %>
-      <% end %>
+      <% end %> -->
     </div>
-    <label id='ct_mask_label'></label>
+    <label id='ct_mask_label'></label><label id='ct_mask_label_values'></label>
     <div class="submit_btn">
       <input type='button' value='Proceed' onclick='checkSubmit()' />
     </div>
@@ -40,7 +40,7 @@
       d.appendChild(ce);
       var ce = document.createElement('label');
       $(ce).attr({
-        for:''+i+''
+        for:''+i+''        
       });
       $(ce).text(''+ssc[i]+'');
       $(ce).css('border-style','solid');
@@ -57,7 +57,9 @@
 
     $("#format").click(function(){
       var values = $("#format :checked").map(function(){return (parseInt($(this).attr('id'))+1);}).get();
-      $("#ct_mask_label").text("Your secret Box Code is: "+values);
+      $("#ct_mask_label").text("Your secret Box Code is:");
+      $("#ct_mask_label_values").text(values);
+      
     })
 
   }
