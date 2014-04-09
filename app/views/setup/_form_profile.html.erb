@@ -12,7 +12,7 @@
 </div>
 <div class="field">
   <p id='pn'> <%= f.label :phone_number, "Text-enabled Phone Number" %>
-  <%= f.telephone_field :phone_number, :class => 'tel', :maxlength=>"18" %> </p>
+  <%= f.telephone_field :phone_number, :class => 'tel', :maxlength=>"13" %> </p>
 </div>
 <div class="field">
   <p> <%= f.label :carrier_id, "Phone Carrier" %>
@@ -30,6 +30,7 @@
     }
 
     $('.tel').keyup(function (event) {
+      //TODO track cursor
       var phn = (String($('.tel').val())).split(/[a-zA-Z() -]/).join('');
       var len = phn.length;
       if(len>1 && len < 3)

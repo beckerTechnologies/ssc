@@ -1,34 +1,39 @@
 <div class="setup_page">
 
-<div class="center_text">
-	<h2>3. Receive your Challenge Symbol by email and text message!</h2>
+  <div class="center_text">
+    <h2>3. Receive your Challenge Symbol by email and text message!</h2>
 
 
-<div class="email-sms-link">
-	<%= form_tag("./page4") do %>
-	  <%= hidden_field_tag 'sendnew', 'yes' %>
-	  <%= submit_tag("Click here to receive your Challenge Symbol!") %>
-	<% end %>
-</div>
+    <div class="email-sms-link">
+      <%= form_tag("./page4") do %>
+        <%= hidden_field_tag 'sendnew', 'yes' %>
+        <%= submit_tag("Click here to receive your Challenge Symbol!") %>
+      <% end %>
+    </div>
 
 
-<p>Check your email and phone for your Challenge Symbol.</p>
-<p>When you have received your Challenge Symbol, click proceed.</p>
+    <p>Check your email and phone for your Challenge Symbol.</p>
+    <p>When you have received your Challenge Symbol, click proceed.</p>
 
-</div>
+  </div>
 
-<div class="page_4_submit_btn">
-	<%= button_to "Proceed", page5_setup_index_path, :method => :get %>
-</div>
+  <div class="page_4_submit_btn">
+    <%= button_to "Proceed", page5_setup_index_path, :method => :get %>
+  </div>
 
-<script>
-$(function(){
-
-  $(".email-sms-link :submit").click(
-  function(){$(".email-sms-link :submit").prop('disabled', true); return true;}
-  );
-
-});
-</script>
+  <script>
+    $('.email-sms-link form').submit(function() {  
+      $(".email-sms-link :submit").prop('disabled', true);
+      var valuesToSubmit = $(this).serialize();
+      $.ajax({
+        url: $(this).attr('./page4'), 
+        data: valuesToSubmit,
+        dataType: "JSON" 
+        }).success(function(json){
+        //act on result.
+      });
+      return false; 
+    });
+  </script>
 
 </div>
