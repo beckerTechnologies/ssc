@@ -26,14 +26,14 @@
       <p>
       <label>Your Challenge Graphic:</label> <br/>
 
-      <input maxlength ='1' size='1' type='text' id='ct_in'> <br/>
-
       <div class="submit_btn2">
       <%= form_tag("./sendNewCT" ) do %>
           <%= hidden_field_tag 'sendnew', 'yes' %>
           <%= submit_tag("Request new Challenge Symbol") %>
         <% end %>
       </div>
+
+      <input maxlength ='1' size='1' type='text' id='ct_in'> <br/>
 
       </p>
   </div>

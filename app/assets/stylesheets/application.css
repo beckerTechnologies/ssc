@@ -390,8 +390,8 @@ h3 {
 }
 
 .ssc-gen .submit_btn2 input{
-	font-size: 80%;
-	width: 70%;
+	font-size: 45%;
+	width: 45%;
 	margin-bottom: 5%;
 	margin-top: -7%;
 }
@@ -556,12 +556,13 @@ h3 {
 .login_page .submit_btn input{
 	padding: 1% 7% 1% 7%;
 	border-radius: 10px;
-	font-size: 100%;
+	font-size: 90%;
 	cursor: pointer;
 	text-align: center;
 	margin: 0 auto 0 auto;
 	background-color: #A3D6F5;
 	margin-top: 7%;
+	width: 40%;
 }
 
 
