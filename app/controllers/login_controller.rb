@@ -5,11 +5,16 @@ class LoginController < ApplicationController
   layout :layout_by_resource
 
     def layout_by_resource
-      if action_name == 'checkSSC' or action_name == 'checkBoxCode' or action_name == 'checkCT' or action_name == 'sendNewCT'
+      if action_name == 'checkSSC' or action_name == 'checkBoxCode' or action_name == 'checkCT' or action_name == 'sendNewCT' or action_name == 'true_resp' or action_name == 'false_resp'
         "empty"
       else
         "login"
       end
+    end
+
+    def true_resp
+    end
+    def false_resp
     end
 
   def page1
