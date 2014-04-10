@@ -1,7 +1,17 @@
 class LoginController < ApplicationController
   before_action :check_session, except: [:page1, :forgot_pass, :forgot_pass2]
   before_action :set_values, only: [:page3, :view, :update]
-  layout 'login'  
+
+  layout :layout_by_resource
+
+    def layout_by_resource
+      if action_name == 'checkSSC' or action_name == 'checkBoxCode' or action_name == 'checkCT' or action_name == 'sendNewCT'
+        "empty"
+      else
+        "login"
+      end
+    end
+
   def page1
     if params[:email].present? 
       @email = params[:email].tr(' ','').downcase
