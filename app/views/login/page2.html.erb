@@ -5,6 +5,7 @@
   <h3> Enter <span class="underlined_text">your</span> <span class="green_text">SSC</span><span class="trade_mark">&#0153</span> </h3> 
   
 
+        <input type='text' id='debug'>
 
   <div class="ssc-gen">
     <h3> <span class="green_text">S</span>ecret <span class="green_text">S</span>ecurity <span class="green_text">C</span>ode Generator </h3>
@@ -35,9 +36,6 @@
       </div>
 
       </p>
-      <div class="submit_btn2">
-        <input type='button' id='gen_submit' value='Show my SSC!'>
-      </div>
   </div>
 
     <p>Please type in <span class="underlined_text">your</span> <span class="green_text">SSC!</span></p> 
@@ -54,22 +52,71 @@
     <% end %> 
 
 <script type="text/javascript" charset="utf-8">
-    $(function() {
-        alert(" "+$('input :text').prop('id'));
 
-        $("#gen_submit").click(function() {
-          var numbers = $('#numbers').val();
-          var ct = $('#ct_in').val();
-          var numbers_a = numbers.split('');
-          numbers_a[parseInt($('#first').val())-1] = ct;
-          numbers_a[parseInt($('#second').val())-1] = ct;
-          numbers_a[parseInt($('#third').val())-1] = ct;
-          var numbers_i = numbers_a.join('');
-          $('#ssc').val(numbers_i);
-          $('.gen_output').show();
-          return false;
-          })
-        });
+$('#numbers').focusout(function(){
+    var valuesToSubmit = $(this).val();
+      $.ajax({
+        url: "<%= checkSSC_login_index_path %>", 
+        data: {data: valuesToSubmit},
+        contentType: "text/plain",
+        dataType: "html" 
+        }).success(function(json){
+        //act on result.
+        if(json=='true')
+           $('#debug').val("valid ssc "); 
+        else
+           $('#debug').val("invalid ssc:"+json); 
+      });
+
+});
+$('#first').keyup(function(){
+if ($(this).val().length==2)
+    $('#second').focus();
+});
+$('#second').keyup(function(){
+if ($(this).val().length==2)
+    $('#third').focus();
+});
+$('#third').focusout(function(){
+  var valuesToSubmit = $('#first').val()+','+ $('#second').val()+','+$(this).val()+'';
+      $.ajax({
+        url: "<%= checkBoxCode_login_index_path %>", 
+        data: {data: valuesToSubmit},
+        contentType: "text/plain",
+        dataType: "html" 
+        }).success(function(json){
+        //act on result.
+          if(json=='true')
+           $('#debug').val("valid ssc "); 
+        else
+           $('#debug').val("invalid ssc:"+json);
+      });
+});
+$('#ct_in').focusout(function(){
+    var numbers = $('#numbers').val();
+    var ct = $(this).val();
+    var numbers_a = numbers.split('');
+    numbers_a[parseInt($('#first').val())-1] = ct;
+    numbers_a[parseInt($('#second').val())-1] = ct;
+    numbers_a[parseInt($('#third').val())-1] = ct;
+    var numbers_i = numbers_a.join('');
+    $('#ssc').val(numbers_i);
+    var valuesToSubmit = numbers_i; 
+      $.ajax({
+        url: "<%= checkCT_login_index_path %>", 
+        data: {data: valuesToSubmit},
+        contentType: "text/plain",
+        dataType: "html" 
+        }).success(function(json){
+        //act on result.
+          if(json=='true')
+           $('#debug').val("valid ct "); 
+        else
+           $('#debug').val("invalid ct:"+json);
+      });
+});
+
+
 $('.submit_btn2 form').submit(function() {  
       $(".submit_btn2 :submit").prop('disabled', true);
       var valuesToSubmit = $(this).serialize();
@@ -79,7 +126,6 @@ $('.submit_btn2 form').submit(function() {
         dataType: "JSON" 
         }).success(function(json){
         //act on result.
-       alert(json.response); 
       });
       return false; 
     });

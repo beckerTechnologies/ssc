@@ -43,6 +43,8 @@ end
   get "page2", :on => :collection
   get "page3", :on => :collection
   get "view", :on => :collection
+  get "false_resp", :on => :collection
+  get "true_resp", :on => :collection
   get "forgot_pass", :on => :collection
   get "forgot_pass2", :on => :collection
   get "welcome_login", :on => :collection

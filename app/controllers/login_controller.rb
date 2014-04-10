@@ -43,7 +43,7 @@ class LoginController < ApplicationController
   end
   def checkSSC
     @pid = session[:login]
-    if (params[:ssc] != (SscBank.find_by profile_id: @pid).auth_value)
+    if (params[:data] != (SscBank.find_by profile_id: @pid).auth_value)
       render :false_resp
     else 
       render :true_resp
@@ -51,7 +51,7 @@ class LoginController < ApplicationController
   end
   def checkBoxCode
     @pid = session[:login]
-    if (params[:ct_mask] != (SscBank.find_by profile_id: @pid).ct_mask)
+    if (params[:data] != (SscBank.find_by profile_id: @pid).ct_mask)
       render :false_resp
     else
       render :true_resp
@@ -59,7 +59,7 @@ class LoginController < ApplicationController
   end
   def checkCT
     @pid = session[:login]
-    if (params[:ssc] != (SscBank.find_by profile_id: @pid).ssc)
+    if (params[:data] != (SscBank.find_by profile_id: @pid).ssc)
       render :false_resp
     else
       render :true_resp
