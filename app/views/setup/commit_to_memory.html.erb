@@ -29,7 +29,10 @@
         for:''+i+'',
         hidden:'true'
       });
-      $(ce).text('        '+text[i]+'        ');
+      if(i == text.length-1)
+      $(ce).text(''+text[i]+'');
+      else
+      $(ce).text(''+text[i]+',');
       p2.appendChild(ce);
     }
     $(p2).show();
