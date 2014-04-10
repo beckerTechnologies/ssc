@@ -9,18 +9,31 @@ class Profile < ActiveRecord::Base
   accepts_nested_attributes_for :basic_info
   accepts_nested_attributes_for :address_info
   accepts_nested_attributes_for :ssc_bank
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
+  validates :email, 
+    presence: {:message => "cannot be blank"}, 
+    format: { with: VALID_EMAIL_REGEX, :message => "format is not correct"},
     uniqueness: { case_sensitive: false }
+
   VALID_PASS_REGEX = /\A(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}\z/
-  validates :password, confirmation: true, length: { minimum: 6},format: {with: VALID_PASS_REGEX}
-  validates :password_confirmation, presence: true
-  validates :carrier_id, presence: true
-  VALID_PHON_REGEX = /\A(?=.*\d).{10}\z/
-  validates :phone_number, presence: true 
-=begin
+  validates :password, confirmation: {:message => "do not match password"},
+   length: { minimum: 6, :message => "has to be at least 6 charecters"},
+   format: {with: VALID_PASS_REGEX, :message => "is invalid, it must include lower case, upper case, and a number"}
+  
+  validates :password_confirmation, 
+    presence: {:message => "cannot be blank"}
+
+  validates :carrier_id, 
+    presence: {:message => "cannot be blank"}
+
+  VALID_PHON_REGEX = /\A(?=.\d{3}\)?[- ]?\d{3}[- ]?\d{4}).{13}\z/
+  validates :phone_number,
+   presence: {:message => "cannot be blank"},
+   format: {with: VALID_PHON_REGEX, :message => "is not correct"}
+
   #has_secure_password
-=end
+
 
 
 end

@@ -5,8 +5,8 @@
 
 <div class="auth_value">
   <p><%= f.label :auth_value, "Type in that number!" %>
-  <small> (Please enter <%= %> numbers) </small>
-  <%= f.text_field :auth_value, :class => 'aov' %> </p>
+  </br><label class="le"> </label>
+  <%= f.text_field :auth_value, :disabled => 'true', :class => 'aov' %> </p>
 </div>
 <div class="ssc-field">
   <p><%= f.label :lifetime_id, "Challenge Graphic lifetime" %>
@@ -31,23 +31,27 @@
 
       function callback(){
       return function(){
+      $('.aov').prop('disabled',false);
+      var len = lens[parseInt($('.aoid').val())-1];
       if(parseInt($('.aoid').val())==ssnID){
+      $('.le').text("");  
       $('.aov').val("<%=@ssn%>");
       $('.aov').prop("disabled", true);
       $('.aov').css('color','black');
       } else if (parseInt($('.aoid').val())==phoneID) {
+      $('.le').text("");
       $('.aov').val("<%=@phn%>");
       $('.aov').prop("disabled", true);
       $('.aov').css('color','black');
       } else{
       $('.aov').prop("disabled", false);
-      var len = lens[parseInt($('.aoid').val())-1];
+      $('.le').text("(Please enter "+ parseInt(len) +" numbers)" );
       if ($('.aov').val().length!= (len))
         $('.aov').css('color','red');
       else
         $('.aov').css('color','black');
       }
-      $('.aov').prop('maxlength',lens[parseInt($('.aoid').val())-1])
+      $('.aov').prop('maxlength',len);
       }
       }
 
