@@ -1,5 +1,4 @@
 class SetupController < ApplicationController
-  before_action :reset_session, only: [:caution]
   before_action :check_session, except: [:caution, :welcome_setup,:new,:profile, :show]
   layout 'setup'
 
@@ -147,10 +146,6 @@ class SetupController < ApplicationController
   end
 
   private
-
-  def reset_session
-    session[:login] = nil
-  end
 
   def check_session
     if !session[:pid]
