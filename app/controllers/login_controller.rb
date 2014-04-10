@@ -115,7 +115,7 @@ class LoginController < ApplicationController
         @ssc_bank.update_attributes!(auth_value: @profile.phone_number) if @phn_selected
         if !@same_ssc
           session[:pid] = @profile.id
-          format.html {redirect_to :controller => :setup, :action => :page3, notice: "update ssc #{@ssn_selected}"}
+          format.html {redirect_to :controller => :setup, :action => :page3, notice: "update ssc"}
         else
           format.html {redirect_to :action => :view, notice: 'profile saved'}
         end
