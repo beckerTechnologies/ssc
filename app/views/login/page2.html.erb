@@ -2,31 +2,31 @@
 
 
   <span class="center_text">
-  <p class="welcome_login_heading"> Enter <span class="underlined_text">your</span> <span class="green_text">SSC</span> </p> </span>
+  <h3> Enter <span class="underlined_text">your</span> <span class="green_text">SSC</span><span class="trade_mark">&#0153</span> </h3> 
+  
 
 
   <div class="ssc-gen">
-    <h4> <span class="green_text">S</span>ecret <span class="green_text">S</span>ecurity <span class="green_text">C</span>ode Generator </h4>
+    <h3> <span class="green_text">S</span>ecret <span class="green_text">S</span>ecurity <span class="green_text">C</span>ode Generator </h3>
 
-    <small> (Type the numbers in these boxes to show you <span class="underlined_text">your</span> <span class="green_text">SSC</span> that you will type in below!) </small>
 
     <form id='gen_form' >
       <p>
-      <label>Type in your <%= @a.name %>:</label>
+      <label>Your <%= @a.name %>:</label>
       <span class="input-wide">
         <input type='text' id='numbers'>
       </span>
       </p>
       <p>
-      <label>Type in your Box Code:</label>
+      <label>Your Box Code:</label> <br/>
       <input maxlength ='2' size='2' id='first'>
       <input maxlength ='2' size='2' id='second'>
       <input maxlength ='2' size='2' id='third'>
       </p>
       <p>
-      <label>Type in your Challenge Symbol:</label>
+      <label>Your Challenge Graphic:</label> <br/>
 
-      <input id='ct_in'>
+      <input id='ct_in'> <br/>
 
       <div class="submit_btn2">
       <%= form_tag("./page2" ) do %>
@@ -36,12 +36,12 @@
       </div>
 
       </p>
-      <div class="submit_btn">
+      <div class="submit_btn2">
         <input type='button' id='gen_submit' value='Show my SSC!'>
       </div>
       <p>
       
-      <label class= "gen_output" hidden='true' for='ssc_out' >Your encoded SSC is: </input>
+      <label class= "gen_output" hidden='true' for='ssc_out' >Your SSC is: </input>
         <span class="input-wide">
 
           <input class = "gen_output" hidden='true' type='text' id='ssc_out'></input></span>
@@ -49,21 +49,20 @@
     </form>
   </div>
 
-  <div class="login_page_text">
     <p>Please type in <span class="underlined_text">your</span> <span class="green_text">SSC!</span></p> 
     <%= form_tag("./page2") do %>
       <%= label_tag(:ssc, "SSC:") %>
       <%= text_field_tag(:ssc) %>
 
-      <div class="submit_btn">
-        <%= submit_tag("Proceed") %>
-      </div>
-    <% end %> 
-  </div>
+      
 </div>
 
+</span>
 
-
+<div class="setup_page_get_started_link_new">
+        <%= submit_tag("Next") %>
+      </div>
+    <% end %> 
 
 <script type="text/javascript" charset="utf-8">
     $(function() {

@@ -1,18 +1,21 @@
 <div class="login_page">
 
-<p class="welcome_login_text"> Congratulations! </p>
+<span class="fireworks2 center_text">
+  <img src="/assets/fireworks.gif"/> Congratulations! <img src="/assets/fireworks2.gif"/>
+  </span>
 
-<p class="welcome_login_text">You correctly entered <span class="underlined_text">your</span> <span class="green_text">SSC</span>, verifying it's really you. You may now access <span class="underlined_text">your</span> tax information and edit <span class="underlined_text">your</span> <span class="italic_text">profile</span>. </p>
+<p class="welcome_login_text">You correctly entered <span class="underlined_text">your</span> <span class="green_text">SSC</span><span class="trade_mark">&#0153</span>, verifying it's really you. You may now access <span class="underlined_text">your</span> tax information and edit <span class="underlined_text">your</span> <span class="italic_text">profile</span>. </p>
 
   
 <div class="login_page_link_right">
 <%= button_to "Edit Profile", page3_login_index_path, :method => :get  %>
 </div>
 <div class="login_page_link_left">
-<%= button_to "Tax Information", view_login_index_path , :method => :get  %>
+<%= button_to "Taxes", view_login_index_path , :method => :get  %>
 </div>
+<br/><br/><br/><br/>
 <div class="login_page_view_link">
-<%= button_to "Home", root_path, :method => :get  %>
+<%= link_to "Log-Out and Go Home", root_path %>
 </div>
 
 </div>

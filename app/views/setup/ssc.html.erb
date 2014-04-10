@@ -1,7 +1,7 @@
 <div class="setup_page_ssc">
 
 <div class="center_text">
-<h3>1. Choose a category and type in your number!</h3>
+<h1>1. Choose a category and type in your number!</h1>
 </div>
 
   <%= form_for(@ssc_bank, :url => "./ssc" ) do |f| %>
@@ -17,9 +17,10 @@
       </div>
     <% end %>
     <%= render 'form_sscbank', :f => f%>
-    <div class="submit_btn">
-      <%= f.submit("Proceed") %>
+    
+</div>
+
+    <div class="setup_page_get_started_link_new">
+      <%= f.submit("Next") %>
     </div>
   <% end %>
-
-</div>

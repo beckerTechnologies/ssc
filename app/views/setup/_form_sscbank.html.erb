@@ -1,13 +1,15 @@
 <div class="auth_option_id">
-  <p><%= f.label :auth_option_id, "Choose one category:" %></br>
+  <p><%= f.label :auth_option_id, "Choose one category" %>
   <%= f.select( :auth_option_id,  AuthOption.all.map {|u| [u.name,u.id]}, {:include_blank => "Select Category"}, :class => 'aoid' )%> </p>
 </div>
+
 <div class="auth_value">
-  <p><%= f.label :auth_value, "Type in that number!" %></br>
+  <p><%= f.label :auth_value, "Type in that number!" %>
+  <small> (Please enter <%= %> numbers) </small>
   <%= f.text_field :auth_value, :class => 'aov' %> </p>
 </div>
 <div class="ssc-field">
-  <p><%= f.label :lifetime_id, "Lifetime for your selection (how long it will remain active)" %></br>
+  <p><%= f.label :lifetime_id, "Challenge Graphic lifetime" %>
   <%= f.select( :lifetime_id,  Lifetime.all.map {|u| [u.name,u.id]}, {:include_blank => "Select Personal Identification Number Lifetime"}, :class => 'lifetime') %> </p>
 </div>
 

@@ -1,7 +1,7 @@
 <div class="setup_page_3">
 
 <div class="center_text">
-<h2>Your secret Box Code is: </h2>
+<h1>Your secret Box Code is: </h1>
 </div>
 
 <p id='mem'></p>
@@ -10,13 +10,12 @@
 <h4>Write this number down so that you do not forget it!</h4>
 </div>
 
-
- <% if session[:login] %> 
-  <div class="submit_btn"> <%= button_to "Proceed", view_login_index_path, :method => :get  %> </div>
-<% else %>
-  <div class="submit_btn"> <%= button_to "Proceed", page4_setup_index_path, :method => :get  %> </div>
-<% end %>
 </div>
+ <% if session[:login] %> 
+  <div class="setup_page_get_started_link_new"> <%= button_to "Next", view_login_index_path, :method => :get  %> </div>
+<% else %>
+  <div class="setup_page_get_started_link_new"> <%= button_to "Next", page4_setup_index_path, :method => :get  %> </div>
+<% end %>
 
 <script>
   $(function(){

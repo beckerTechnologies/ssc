@@ -12,7 +12,7 @@
   </div>
   <div class="dob_select">
     <p><%= f.label(:dob, "Date of Birth") %>
-    <%= f.text_field :dob,  placeholder: "MM/DD/YYYY", :class => "dob"%>
+    <%= f.date_field :dob,  placeholder: "MM/DD/YYYY", :class => "dob"%>
 
   </div>
   <div class="ssn_value">
@@ -20,8 +20,6 @@
     <%= f.text_field :ssn, placeholder: "Enter SSN", :class => "ssnv", :maxlength=>"11"  %> </p>
   </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
-<script src="js/jquery-ui.js"></script>
 
   <script type="text/javascript">
     $(function(){    
@@ -46,15 +44,6 @@
         $('.ssnv').val(ssn.substring(0,3)+'-'+ssn.substring(3,5)+'-'+ssn.substring(5,10));
         return true;
       });
-
-
-
-      var elem = document.createElement('input');
-      elem.setAttribute('type', 'date');
- 
-      if ( elem.type === 'text' ) {
-         $('.dob').datepicker(); 
-      }
 
 
             });

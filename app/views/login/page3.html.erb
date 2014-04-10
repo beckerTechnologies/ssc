@@ -1,7 +1,7 @@
 <div class="setup_page_form">
 
 <div class="center_text">
-<p class="welcome_login_heading"> Edit Your Profile</p>
+<h2> Edit Your Profile</h2>
 </div>
 
 
@@ -13,7 +13,7 @@
 
   <%= form_for(@profile, url: './update') do |f| %>
     <%= render 'form_edit', :f => f %>
-    <div class="submit_btn">
+    <div class="login_page_3_btn">
       <%= f.submit("Update Profile") %>
     </div>
   <% end %>

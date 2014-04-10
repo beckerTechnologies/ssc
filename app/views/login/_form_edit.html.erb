@@ -9,7 +9,10 @@
       <%= render 'setup/form_addressinfo', :f => b%>
     <% end %>
 
+    <span class="login_page_3_txt">
+
     <%= f.fields_for(@ssc_bank) do |s| %>
       <%= render 'setup/form_sscbank', :f => s%>
     <% end %>
+    </span>
 

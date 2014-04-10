@@ -1,25 +1,22 @@
 <div class="setup_page">
 
   <div class="center_text">
-    <h2>3. Receive your Challenge Symbol by email and text message!</h2>
+    <h3>3. Receive your Challenge Graphic by email and text message!</h3>
 
 
     <div class="email-sms-link">
       <%= form_tag("./page4") do %>
         <%= hidden_field_tag 'sendnew', 'yes' %>
-        <%= submit_tag("Click here to receive your Challenge Symbol!") %>
+        <%= submit_tag("Click here to receive your Challenge Graphic!") %>
       <% end %>
     </div>
 
 
-    <p>Check your email and phone for your Challenge Symbol.</p>
-    <p>When you have received your Challenge Symbol, click proceed.</p>
+    <p class="setup_page_4_txt">Check your email and phone for your Challenge Graphic.</p>
+    <p class="setup_page_4_txt">When you have received your Challenge Graphic, click next.</p>
 
   </div>
 
-  <div class="page_4_submit_btn">
-    <%= button_to "Proceed", page5_setup_index_path, :method => :get %>
-  </div>
 
   <script>
     $('.email-sms-link form').submit(function() {  
@@ -37,3 +34,7 @@
   </script>
 
 </div>
+
+  <div class="setup_page_get_started_link_new">
+    <%= button_to "Next", page5_setup_index_path, :method => :get %>
+  </div>

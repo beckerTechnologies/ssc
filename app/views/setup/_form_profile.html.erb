@@ -3,21 +3,23 @@
   <%= f.email_field :email, placeholder: "Enter your Email"%> </p>
 </div>
 <div class="field">
-  <p> <small> (Must include lower case, upper case, and a number) </small><%= f.label :password %>
-  <%= f.password_field :password , placeholder: "Must be more than 6 characters"%> </p>
+  <%= f.label :password %>
+  <%= f.password_field :password , placeholder: "More than 6 characters"%>
 </div>
+<small> (Must include lower case, upper case, and a number) </small>
 <div class="field">
   <p> <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation, placeholder: "Must match Password" %> </p>
 </div>
 <div class="field">
-  <p id='pn'> <%= f.label :phone_number, "Text-enabled Phone Number" %>
+  <p id='pn'> <%= f.label :phone_number, "Cell Phone Number" %>
   <%= f.telephone_field :phone_number, :class => 'tel', :maxlength=>"13" %> </p>
 </div>
 <div class="field">
-  <p> <%= f.label :carrier_id, "Phone Carrier" %>
-  <%= f.select( :carrier_id,  Carrier.all.map {|u| [u.carrier_name,u.id]}, {:include_blank => "Select a Carrier"}) %> </p>
+  <%= f.label :carrier_id, "Phone Carrier" %>
+  <%= f.select( :carrier_id,  Carrier.all.map {|u| [u.carrier_name,u.id]}, {:include_blank => "Select a Carrier"}) %>
 </div>
+<small> (Needed to send you a text message!) </small>
 
 <script>
 

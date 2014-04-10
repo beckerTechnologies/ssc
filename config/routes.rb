@@ -33,6 +33,7 @@ resources :setup do
   get "welcome_setup", :on => :collection
   get "welcome_ssc", :on => :collection
   get "commit_to_memory", :on => :collection
+  get "caution", :on => :collection
 end
 
  resources :form_wizard

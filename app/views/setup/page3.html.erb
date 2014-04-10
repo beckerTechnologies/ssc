@@ -1,7 +1,7 @@
 <div class="setup_page_3">
 
 <div class="center_text">
-<h3>2. Click three boxes to create your secret "Box Code"!</h3>
+<h1>2. Click <span class="red_text">three</span> boxes to create your secret "Box Code"!</h1>
 </div>
 
   <%= form_tag :url => "./page3" do |p| %>
@@ -18,11 +18,13 @@
       <% end %> -->
     </div>
     <label id='ct_mask_label'></label><label id='ct_mask_label_values'></label>
-    <div class="submit_btn">
-      <input type='button' value='Proceed' onclick='checkSubmit()' />
+    
+</div>
+
+<div class="setup_page_get_started_link_new">
+      <input type='button' value='Next' onclick='checkSubmit()' />
     </div>
   <% end %>
-</div>
 
 <script>
   window.onload = function(){

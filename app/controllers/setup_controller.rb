@@ -1,9 +1,14 @@
 class SetupController < ApplicationController
-  before_action :reset_session, only: [:welcome_setup]
-  before_action :check_session, except: [:welcome_setup,:new,:profile, :show]
+  before_action :reset_session, only: [:caution]
+  before_action :check_session, except: [:caution, :welcome_setup,:new,:profile, :show]
   layout 'setup'
+
+  def caution
+  end
+
   def welcome_setup
   end
+
   def new
     @profile = Profile.new
     render  :profile
