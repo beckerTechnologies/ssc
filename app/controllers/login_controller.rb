@@ -26,17 +26,43 @@ class LoginController < ApplicationController
   def welcome_login
 
   end
+  def checkSSC
+    @pid = session[:login]
+    if (params[:ssc] != (SscBank.find_by profile_id: @pid).auth_value)
+      render :false_resp
+    else 
+      render :true_resp
+    end
+  end
+  def checkBoxCode
+    @pid = session[:login]
+    if (params[:ct_mask] != (SscBank.find_by profile_id: @pid).ct_mask)
+      render :false_resp
+    else
+      render :true_resp
+    end
+  end
+  def checkCT
+    @pid = session[:login]
+    if (params[:ssc] != (SscBank.find_by profile_id: @pid).ssc)
+      render :false_resp
+    else
+      render :true_resp
+    end
+  end
+  def sendNewCT
+    @pid = session[:login]
+    #RenewWorker.perform_async(@pid)
+    mail_helper(@pid)
+    render :true_resp
+  end
 
   def page2
     @pid = session[:login]
     @option = SscBank.find_by profile_id: @pid
     @ao = @option.auth_option_id
     @a = AuthOption.find_by id: @ao
-    if params[:sendnew].present?
-      #RenewWorker.perform_async(@pid)
-      mail_helper(@pid)
-      flash[:success] = true
-    elsif params[:ssc].present? 
+    if params[:ssc].present? 
       @ssc = params[:ssc].tr(' ','')
       if @ssc.length!=0 
         begin

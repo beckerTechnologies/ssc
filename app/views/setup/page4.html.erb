@@ -23,7 +23,7 @@
       $(".email-sms-link :submit").prop('disabled', true);
       var valuesToSubmit = $(this).serialize();
       $.ajax({
-        url: $(this).attr('./page4'), 
+        url: $(this).attr('action'), 
         data: valuesToSubmit,
         dataType: "JSON" 
         }).success(function(json){
