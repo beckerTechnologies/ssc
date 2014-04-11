@@ -31,7 +31,7 @@ class LoginController < ApplicationController
             redirect_to :action => :welcome_login
           end
         rescue 
-          flash[:notice] = "Incorrect username or password."
+          flash[:notice] = "Your email or password is incorrect. Please correct this in order to continue."  
         end
       end
     else
@@ -140,7 +140,7 @@ class LoginController < ApplicationController
       p.password_confirmation = @pass
       p.save
       SscMailer.forgot_pass(@profile, @pass).deliver
-      flash[:notice] = "Check your email for new password."
+      flash[:notice] = "A new password has been sent! Please check your email for your new password."
       redirect_to :action => :page1
     else
       flash[:notice] = "The email you entered is not valid!"
