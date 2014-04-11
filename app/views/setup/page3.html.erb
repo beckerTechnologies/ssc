@@ -43,9 +43,10 @@
       var ce = document.createElement('label');
       var bn = document.createElement('font');
       $(bn).text(parseInt(i+1)).prop('size','5');
+      var br = document.createElement('wbr');
       var bv = document.createElement('font');
       $(bv).text(' '+parseInt(ssc[i])).prop('size','10');
-      $(ce).append(bn).append(bv);
+      $(ce).append(bn).append(br).append(bv);
       $(ce).attr({
         for:''+i+''        
       });
@@ -71,10 +72,7 @@
       'float':'left',
       'letter-spacing':'2px',
       'word-spacing':'22px',
-      'width' : '80%',
-      'word-break':'keep-all',//'break-all',
-      'word-wrap':'normal',//'break-word'
-      'height':'100%'
+      'width' : '80%'
     });
     $(p2).show();
 
