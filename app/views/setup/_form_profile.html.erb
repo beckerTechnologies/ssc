@@ -3,12 +3,12 @@
   <%= f.email_field :email, placeholder: "Enter your Email"%> </p>
 </div>
 <div class="field">
-  <%= f.label :password %>
+  <%= f.label :password, :class => "passwrd"%>
   <%= f.password_field :password , placeholder: "More than 6 characters", :class => "passwrd"%>
 </div>
-<small> (Must include lower case, upper case, and a number) </small>
+<small class = "passwrd"> (Must include lower case, upper case, and a number) </small>
 <div class="field">
-  <p> <%= f.label :password_confirmation %>
+  <p> <%= f.label :password_confirmation,:class => "passwrd" %>
   <%= f.password_field :password_confirmation, placeholder: "Must match Password", :class => "passwrd" %> </p>
 </div>
 <div class="field">
@@ -30,9 +30,11 @@
       var phn = (String($('.tel').val())).split(/[a-zA-Z() -]/).join('');
       $('.tel').val('('+phn.substring(0,3)+')'+phn.substring(3,6)+'-'+phn.substring(6,10));
     }
-    if(<%= session[:login].present? %>)
+    if(<%= session[:login].present? %>){
       $('.passwrd').prop('disabled','true');
-
+      $('.passwrd').prop('hidden','true');
+      
+    }
     $('.tel').keyup(function (event) {
       //TODO track cursor
       var phn = (String($('.tel').val())).split(/[a-zA-Z() -]/).join('');
