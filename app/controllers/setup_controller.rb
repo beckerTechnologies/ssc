@@ -1,5 +1,6 @@
 class SetupController < ApplicationController
   before_action :check_session, except: [:caution, :welcome_setup,:new,:profile, :show]
+  skip_before_filter :verify_authenticity_token
   layout 'setup'
 
   def caution

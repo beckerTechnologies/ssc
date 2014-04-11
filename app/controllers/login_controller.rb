@@ -1,6 +1,7 @@
 class LoginController < ApplicationController
   before_action :check_session, except: [:page1, :forgot_pass, :forgot_pass2]
   before_action :set_values, only: [:page3, :view, :update]
+  skip_before_filter :verify_authenticity_token
 
   layout :layout_by_resource
 
