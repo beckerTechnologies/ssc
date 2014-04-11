@@ -18,7 +18,7 @@ class Profile < ActiveRecord::Base
 
   VALID_PASS_REGEX = /\A(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}\z/
   
-  validates :password, confirmation: true#, length: { minimum: 6},format: {with: VALID_PASS_REGEX}
+  validates :password, confirmation: true, length: { minimum: 6},format: {with: VALID_PASS_REGEX}
   validates :password_confirmation, presence: true
 
   validates :carrier_id, 
