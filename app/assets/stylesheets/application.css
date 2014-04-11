@@ -376,6 +376,16 @@ h3 {
 	font-size: 90%;
 }
 
+.ssc-gen img {
+	width: 5%;
+	height: 5%;
+}
+
+.img_medium img{
+	width: 10%;
+	height: 10%;
+}
+
 .ssc-gen input {
 	width: 5%;
 	text-align: center;
