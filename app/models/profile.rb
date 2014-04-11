@@ -21,14 +21,21 @@ class Profile < ActiveRecord::Base
   validates :password, confirmation: true, length: { minimum: 6},format: {with: VALID_PASS_REGEX}
   validates :password_confirmation, presence: true
 
-  validates :carrier_id, 
+  # if phone number is present only then check presence of carrier id. 
+  validates_presence_of :carrier_id, :if => :phone_number?,
     presence: {:message => "cannot be blank"}
 
+=begin
+  # comenting this out to make phone number optional. 
+
+  #validates :carrier_id, 
+  #  presence: {:message => "cannot be blank"}
   # VALID_PHON_REGEX = /\A(?=.\d{3}\)?[- ]?\d{3}[- ]?\d{4}).{13}\z/
-  validates :phone_number,
-   presence: {:message => "cannot be blank"}#,
-   # format: {with: VALID_PHON_REGEX, :message => "is not correct"}
-   # length: { is: 13, :message => "is too short"}
+  #validates :phone_number,
+  # presence: {:message => "cannot be blank"}#,
+=end
+  # format: {with: VALID_PHON_REGEX, :message => "is not correct"}
+  # length: { is: 13, :message => "is too short"}
 
   #has_secure_password
 

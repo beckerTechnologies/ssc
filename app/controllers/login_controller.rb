@@ -35,7 +35,7 @@ class LoginController < ApplicationController
         end
       end
     else
-      flash.clear
+      #flash.clear
     end
   end
 
@@ -140,6 +140,7 @@ class LoginController < ApplicationController
       p.password_confirmation = @pass
       p.save
       SscMailer.forgot_pass(@profile, @pass).deliver
+      flash[:notice] = "Check your email for new password."
       redirect_to :action => :page1
     else
       flash[:notice] = "The email you entered is not valid!"
@@ -167,7 +168,7 @@ class LoginController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:email, :password, :password_confirmation, :phone_number, :carrier_id, basic_info_attributes: [:first_name, :middle_name, :last_name, :dob, :ssn], address_info_attributes: [:street_addr, :apartment_no, :city, :state, :zip_code, :country], ssc_bank_attributes: [ :auth_option_id, :ssc, :ct_mask, :auth_value, :expiry, :lifetime_id])
+    params.require(:profile).permit(:email, :phone_number, :carrier_id, basic_info_attributes: [:first_name, :middle_name, :last_name, :dob, :ssn], address_info_attributes: [:street_addr, :apartment_no, :city, :state, :zip_code, :country], ssc_bank_attributes: [ :auth_option_id, :ssc, :ct_mask, :auth_value, :expiry, :lifetime_id])
   end
 
 end
