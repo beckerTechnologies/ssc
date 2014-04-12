@@ -6,10 +6,10 @@
   
 
         <input hidden='true' type='text' id='debug'>
-  <p>Beware of who is watching while you enter this information </p>
   <div class="ssc-gen">
     <h3> <span class="green_text">S</span>ecret <span class="green_text">S</span>ecurity <span class="green_text">C</span>ode Automatic Generator </h3>
 
+  <small>(Beware of who is watching while you enter this information) </small>
 
       <p>
       <label>Your <%= @a.name %>:</label>
@@ -29,7 +29,6 @@
 
       <img src="/assets/plus.png"/>
 
-      <p>
 
       <div class="submit_btn2">
       <%= form_tag("./sendNewCT" ) do %>
@@ -38,18 +37,20 @@
         <% end %>
       </div>
 
+      <div class="submit_btn2">
       <label>Your Challenge Graphic:</label> <br/>
+      </div>
 
-      <input maxlength ='1' size='1' type='text' id='ct_in'> <br/>
+      <input maxlength ='1' size='1' type='text' id='ct_in'>
+      <br/>
+      <div class="submit_btn2">
+      <input type='submit' id='gen' value="Generate SSC">
+      </div>
 
-      </p>
-
-      <!-- <span class="img_medium"><img src="/assets/equal.png"/></span>-->
   </div>
 
-    <!-- <p>Please type in <span class="underlined_text">your</span> <span class="green_text">SSC!</span></p> --> 
     <%= form_tag("./page2") do %>
-      <%= label_tag(:ssc, "SSC:") %>
+      <%= label_tag(:ssc, "Your SSC:") %>
       <%= text_field_tag(:ssc) %>
 </div>
 
@@ -108,8 +109,7 @@ $('#ct_in').focusout(function(){
     numbers_a[parseInt($('#first').val())-1] = ct;
     numbers_a[parseInt($('#second').val())-1] = ct;
     numbers_a[parseInt($('#third').val())-1] = ct;
-    var numbers_i = numbers_a.join('');
-    $('#ssc').val(numbers_i);
+    numbers_i = numbers_a.join('');
     var valuesToSubmit = numbers_i; 
       $.ajax({
         url: "<%= checkCT_login_index_path %>", 
@@ -124,6 +124,17 @@ $('#ct_in').focusout(function(){
            $('#debug').val("invalid ct:"+json);
       });
 });
+
+$('#gen').click(function(){
+    if (typeof numbers_i === 'undefined'){
+    } else {
+    $('#ssc').val(numbers_i);
+    $("label[for='ssc']").text("Your Computed SSC:");
+    $("label[for='ssc']").css("text-decoration", "blink");
+    }
+    });
+
+$('#ssc').keyup(function(){$("label[for='ssc']").text("Your SSC:");});
 
 
 $('.submit_btn2 form').submit(function() {  
