@@ -4,9 +4,24 @@
   <img src="/assets/fireworks.gif"/> Congratulations! <img src="/assets/fireworks.gif"/>
   </span>
 
-<p class="welcome_login_text">You correctly entered <span class="underlined_text">your</span> <span class="green_text">SSC</span><span class="trade_mark">&#0153</span>, verifying it's really you. You may now access <span class="underlined_text">your</span> tax information and/or edit <span class="underlined_text">your</span> <span class="italic_text">profile</span>. </p>
+<p>for debugging only, <%= session[:opt] %></p>
 
-  
+<% if session[:opt] == 1 %>
+<p class="welcome_login_text">You successfully setup <span class="underlined_text">your</span> <span class="green_text">SSC</span><span class="trade_mark">&#0153</span>, use it to verify your identity in future. </p>
+
+<% elsif session[:opt] == 2 %>
+<p class="welcome_login_text">You have successfully updated <span class="underlined_text">your</span> <span class="green_text">SSC</span><span class="trade_mark">&#0153</span> and/or your Profile. </p>
+
+<% elsif session[:opt] == 3 %>
+<p class="welcome_login_text">You successfully updated <span class="underlined_text">your</span> Profile. </p>
+
+<% elsif session[:opt] == 4 %>
+<p class="welcome_login_text">You correctly entered <span class="underlined_text">your</span> <span class="green_text">SSC</span><span class="trade_mark">&#0153</span>, verifying it's really you. </p>
+
+<% end %>  
+
+<p class="welcome_login_text">You may now access <span class="underlined_text">your</span> tax information and/or edit <span class="underlined_text">your</span> <span class="italic_text">profile</span>. </p>
+
 <div class="login_page_link_right">
 <%= button_to "Edit Profile", page3_login_index_path, :method => :get  %>
 </div>

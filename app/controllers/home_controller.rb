@@ -9,6 +9,8 @@ class HomeController < ApplicationController
 
   def reset_session
     session[:login] = nil
+    session[:pid] = nil
+    session[:opt] = nil
   end
   
 end

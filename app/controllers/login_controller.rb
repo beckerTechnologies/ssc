@@ -44,6 +44,7 @@ class LoginController < ApplicationController
     @option = SscBank.find_by profile_id: @pid
     if(!@option) # ssc is nowqdzsetup alreay. 
       session[:pid] = session[:login]
+      session[:opt] = 1 # 1. ssc is setup
       redirect_to :controller => :setup, :action => :welcome_ssc
     end  
 end
@@ -92,6 +93,7 @@ end
             flash.now[:notice] = "Invalid SSC" 
             raise "ssc mismatch"
           else
+            session[:opt] = 4 # 4. ssc entered.
             redirect_to :action => :view
           end
         rescue 
@@ -103,6 +105,12 @@ end
     end
   end
   def view
+    # 1. ssc is setup
+    # 2. ssc is updated
+    session[:pid] = nil
+
+    # 3. profile is updated
+    # 4. ssc entered. 
   end
   def page3
   end
@@ -121,8 +129,10 @@ end
         @ssc_bank.update_attributes!(auth_value: @profile.phone_number) if @phn_selected
         if !@same_ssc
           session[:pid] = @profile.id
+          session[:opt] = 2 # 2. ssc is updated
           format.html {redirect_to :controller => :setup, :action => :page3, notice: "update ssc"}
         else
+          session[:opt] = 3 # 3. profile is updated
           format.html {redirect_to :action => :view, notice: 'profile saved'}
         end
       else

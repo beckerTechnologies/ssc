@@ -21,8 +21,8 @@
       ssnID = 1;
       phoneID = 2;
 
-      var sesn = ("<%= session[:login]%>").trim();
-      if(sesn == ""){
+      var sesn = ("<%= session[:pid]%>").trim();
+      if(sesn != ""){
         $('.ssc-field *').hide();
         $('.lifetime').val(2); // default 24 hours 
       }
