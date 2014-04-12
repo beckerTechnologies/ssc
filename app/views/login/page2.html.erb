@@ -50,7 +50,9 @@
   </div>
 
     <%= form_tag("./page2") do %>
-      <%= label_tag(:ssc, "Your SSC:") %>
+      <div class="center_text">
+        <%= label_tag(:ssc, "Your SSC is:") %> 
+      </div>
       <%= text_field_tag(:ssc) %>
 </div>
 
@@ -129,12 +131,24 @@ $('#gen').click(function(){
     if (typeof numbers_i === 'undefined'){
     } else {
     $('#ssc').val(numbers_i);
-    $("label[for='ssc']").text("Your Computed SSC:");
-    $("label[for='ssc']").css("text-decoration", "blink");
-    }
+    $("label[for='ssc']").text("Your Computed SSC is:");
+    var a = 300;
+    //tm = setTimeout( 'meme()', 20); 
+   }
+
     });
 
-$('#ssc').keyup(function(){$("label[for='ssc']").text("Your SSC:");});
+function meme(){
+    var a = 50;
+
+    $("label[for='ssc']").fadeIn(a*5).fadeOut(a);
+    tm = setTimeout( 'meme()', (150));
+  }
+
+$('#ssc').keyup(function(){
+  $("label[for='ssc']").text("Your SSC is:");
+  //clearTimeout(tm);  
+});
 
 
 $('.submit_btn2 form').submit(function() {  
