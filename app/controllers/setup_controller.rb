@@ -87,7 +87,7 @@ class SetupController < ApplicationController
         end
       end
     else 
-      flash[:notice] = "You entered #{@ssc_bank.auth_value.length} digits, while #{AuthOption.find(@ssc_bank.auth_option_id).name} should be #{AuthOption.find(@ssc_bank.auth_option_id).length} digits long" # TODO figure out what to do ?
+      flash.now[:notice] = "You entered #{@ssc_bank.auth_value.length} digits, while #{AuthOption.find(@ssc_bank.auth_option_id).name} should be #{AuthOption.find(@ssc_bank.auth_option_id).length} digits long" 
     end
   end
 

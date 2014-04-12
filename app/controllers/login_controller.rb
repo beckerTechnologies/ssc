@@ -5,18 +5,18 @@ class LoginController < ApplicationController
 
   layout :layout_by_resource
 
-    def layout_by_resource
-      if action_name == 'checkSSC' or action_name == 'checkBoxCode' or action_name == 'checkCT' or action_name == 'sendNewCT' or action_name == 'true_resp' or action_name == 'false_resp'
-        "empty"
-      else
-        "login"
-      end
+  def layout_by_resource
+    if action_name == 'checkSSC' or action_name == 'checkBoxCode' or action_name == 'checkCT' or action_name == 'sendNewCT' or action_name == 'true_resp' or action_name == 'false_resp'
+      "empty"
+    else
+      "login"
     end
+  end
 
-    def true_resp
-    end
-    def false_resp
-    end
+  def true_resp
+  end
+  def false_resp
+  end
 
   def page1
     if params[:email].present? 
@@ -31,7 +31,7 @@ class LoginController < ApplicationController
             redirect_to :action => :welcome_login
           end
         rescue 
-          flash[:notice] = "Your email or password is incorrect. Please correct this in order to continue."  
+          flash.now[:notice] = "Your email or password is incorrect. Please correct this in order to continue."  
         end
       end
     else
@@ -84,13 +84,13 @@ class LoginController < ApplicationController
         begin
           @sscVal = SscBank.find_by profile_id: @pid
           if @sscVal.ssc != @ssc || @sscVal[:expiry] < Time.now # ssc mismatched or expired
-            flash[:notice] = "Invalid SSC" 
+            flash.now[:notice] = "Invalid SSC" 
             raise "ssc mismatch"
           else
             redirect_to :action => :view
           end
         rescue 
-          flash[:notice] = "Invalid SSC" 
+          flash.now[:notice] = "Invalid SSC" 
         end
       end
     else
@@ -143,7 +143,7 @@ class LoginController < ApplicationController
       flash[:notice] = "A new password has been sent! Please check your email for your new password."
       redirect_to :action => :page1
     else
-      flash[:notice] = "The email you entered is not valid!"
+      flash.now[:notice] = "The email you entered is not registered!"
       render :forgot_pass
     end
   end
