@@ -9,12 +9,16 @@ class SscMailer < ActionMailer::Base
     @ssc = SscBank.find_by profile_id: @user
     @lifetime_id = @ssc.lifetime_id
     @lifetime = Lifetime.find_by id: @lifetime_id
-    @carrier_id = @profile.carrier_id
-    @carrier = Carrier.find(@carrier_id)
     @ct = ct
     mail(to: @profile.email, subject: 'New Plus-One Challenge Symbol')
-    easy = SMSEasy::Client.new
-    easy.deliver(@profile.phone_number, @carrier.carrier_value, "Thank you for using Plus-One! Your CS is #{@ct}. This expires in #{@lifetime.hours} hours.")
+
+    if @profile.carrier_id != nil
+      @carrier_id = @profile.carrier_id
+      @carrier = Carrier.find(@carrier_id)
+      easy = SMSEasy::Client.new
+      easy.deliver(@profile.phone_number, @carrier.carrier_value, "Thank you for using Plus-One! Your CS is #{@ct}. This expires in #{@lifetime.hours} hours.")
+    end
+    
   end
 
   def forgot_pass(profile, pass)
