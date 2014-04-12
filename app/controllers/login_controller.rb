@@ -40,8 +40,13 @@ class LoginController < ApplicationController
   end
 
   def welcome_login
-
-  end
+    @pid = session[:login]
+    @option = SscBank.find_by profile_id: @pid
+    if(!@option) # ssc is nowqdzsetup alreay. 
+      session[:pid] = session[:login]
+      redirect_to :controller => :setup, :action => :welcome_ssc
+    end  
+end
   def checkSSC
     @pid = session[:login]
     if (params[:data] != (SscBank.find_by profile_id: @pid).auth_value)
