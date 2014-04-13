@@ -54,6 +54,7 @@ end
   get "checkBoxCode", :on => :collection
   get "checkCT", :on => :collection
   get "reset_password", :on => :collection
+  get "taxes", :on => :collection
   post "page1", :on => :collection
   post "page2", :on => :collection
   post "page3", :on => :collection
