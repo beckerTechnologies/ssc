@@ -1,6 +1,6 @@
 <div class="auth_option_id">
-  <p><%= f.label :auth_option_id, "Choose one category" %>
-  <%= f.select( :auth_option_id,  AuthOption.all.map {|u| [u.name,u.id]}, {:include_blank => "Select Category"}, :class => 'aoid' )%> </p>
+  <p><%= f.label :auth_option_id, "Choose one personal ID number from the list" %>
+  <%= f.select( :auth_option_id,  AuthOption.all.map {|u| [u.name,u.id]}, {:include_blank => "Click here to select Category"}, :class => 'aoid' )%> </p>
 </div>
 
 <div class="auth_value">

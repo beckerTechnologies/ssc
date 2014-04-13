@@ -12,6 +12,10 @@
   <%= f.password_field :password_confirmation, placeholder: "Must match Password", :class => "passwrd" %> </p>
 </div>
 <div class="field">
+  <p id='pn'> <%= f.label :home_phone_number, "Home Phone Number" %>
+  <%= f.telephone_field :home_phone_number, :class => 'tel', :maxlength=>"13" %> </p>
+</div>
+<div class="field">
   <p id='pn'> <%= f.label :phone_number, "Cell Phone Number" %>
   <%= f.telephone_field :phone_number, :class => 'tel', :maxlength=>"13" %> </p>
 </div>

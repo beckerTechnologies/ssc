@@ -3,6 +3,7 @@ class CreateProfiles < ActiveRecord::Migration
     create_table :profiles do |t|
       t.text :email
       t.text :password
+      t.text :home_phone_number
       t.text :phone_number
       t.integer :carrier_id
       t.timestamps
