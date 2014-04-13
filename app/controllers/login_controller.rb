@@ -41,11 +41,23 @@ class LoginController < ApplicationController
 
   def welcome_login
     @pid = session[:login]
-    @option = SscBank.find_by profile_id: @pid
-    if(!@option) # ssc is nowqdzsetup alreay. 
+    @opt = nil
+    @opt = 7 unless (SscBank.find_by profile_id: @pid)
+    @opt = 8 unless (AddressInfo.find_by profile_id: @pid)
+    @opt = 9 unless (BasicInfo.find_by profile_id: @pid)
+    if(@opt) # ssc is nowqdzsetup alreay. 
       session[:pid] = session[:login]
       session[:opt] = 1 # 1. ssc is setup
-      redirect_to :controller => :setup, :action => :welcome_ssc
+      case @opt
+      when 7
+        redirect_to :controller => :setup, :action => :welcome_ssc
+      when 8
+        flash[:notice] = "Please Enter your valid usa address. "
+        redirect_to :controller => :setup, :action => :new_addr_info
+      when 9
+        flash[:notice] = "Please Set up your personal information. "
+        redirect_to :controller => :setup, :action => :new_info
+      end
     end  
 end
   def checkSSC
