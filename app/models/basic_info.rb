@@ -14,5 +14,5 @@ class BasicInfo < ActiveRecord::Base
   	uniqueness: {:message => "is already in use. Please use another social security number."}
 
   validates :profile_id, 
-  	presence: {:message => "Basic Info Already Exists"},
+  	presence: {:message => "Basic Info Already Exists"}
 end
