@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20140404012251) do
   create_table "profiles", force: true do |t|
     t.text     "email"
     t.text     "password"
+    t.text     "home_phone_number"
     t.text     "phone_number"
     t.integer  "carrier_id"
     t.datetime "created_at"

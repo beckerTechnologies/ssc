@@ -147,7 +147,7 @@ class SetupController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:email, :password, :password_confirmation, :phone_number, :carrier_id )
+    params.require(:profile).permit(:email, :password, :password_confirmation, :home_phone_number, :phone_number, :carrier_id )
   end
 
   def basic_info_params
