@@ -17,7 +17,7 @@
 </div><br/>
 <div class="field">
   <span id='pn'> <%= f.label :phone_number, "Cell Phone Number" %>
-  <%= f.telephone_field :phone_number, :class => 'tel', :maxlength=>"13" %> </span>
+  <%= f.telephone_field :phone_number, :class => 'tel mobile', :maxlength=>"13" %> </span>
   <br/><small class="passwrd"> (Text messages will be sent to this number) </small>
 </div><br/>
 
@@ -44,6 +44,10 @@
     }
     $('.tel').keyup(function (event) {
       //TODO track cursor
+      if($(this).hasClass('mobile'))
+        $("[id$=carrier_id]").val('');
+
+      
       var phn = (String($(this).val())).split(/[a-zA-Z() -]/).join('');
       var len = phn.length;
       if(len>1 && len < 3)
