@@ -10,4 +10,7 @@ class SscBank < ActiveRecord::Base
 
   validates :lifetime, 
   	presence: {:message => "cannot be blank"}
+
+  validates :profile_id, 
+  	presence: {:message => "SSC profile Already Exists"},
 end

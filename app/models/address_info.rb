@@ -9,4 +9,6 @@ class AddressInfo < ActiveRecord::Base
   validates :state, presence: true
   validates :country, presence: true
 =end
+  validates :profile_id, 
+  	presence: {:message => "Address Info Already Exists"},
 end
