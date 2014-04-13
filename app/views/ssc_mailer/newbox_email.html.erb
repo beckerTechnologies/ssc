@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p><%= @basic_info.first_name %>, </p>
+    <p>
+    Thank you for using the Plus-One Anti-Fraud Security System.<br/>
+    </p>
+    <p>
+	Your new "Box Code" is <%= @boxcode %>. Your new SSC will expire in <%= @lifetime.hours %> hours.
+    </p>
+    <p>
+	Access your profile at <a href="http://sscbeta.herokuapp.com/"> this link </a>to Login or to request a new Challenge Symbol.
+    </p>
+  </body>
+</html>
