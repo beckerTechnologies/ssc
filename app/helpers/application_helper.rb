@@ -16,9 +16,10 @@ module ApplicationHelper
   def set_temp_boxcode (len)
     str = []
     while str.length<3 do
-      temp = rand(len)
+      temp = rand(len-1)+1 # or use Random.new.rand(1..len)
       str.push(temp) unless str.include? temp  
     end
+    str.sort!
     boxcode = str.join ','
     return boxcode
   end
@@ -44,12 +45,13 @@ module ApplicationHelper
   def mail_boxcode_helper(pid)
     ssc_bank = SscBank.find_by profile_id: pid
     # get new box code.
-    len = ssc_bank.ssc.length
+    len = ssc_bank.auth_value.length
     new_box_code = set_temp_boxcode len
     # decode the old ct. 
-    ssc = (ssc_bank.ssc).split
+    ssc = (ssc_bank.ssc).split ''
     box = (ssc_bank.ct_mask).split(',')
-    ct = ssc[box[0]]
+    ind = box[0].to_i
+    ct = ssc[ind]
     # set new ssc
     new_ssc = set_ssc(ct, ssc_bank[:auth_value], new_box_code)
     # set new expiry

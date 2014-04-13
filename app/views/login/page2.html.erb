@@ -26,7 +26,7 @@
       
 
        <div class="submit_btn2">
-      <%= form_tag("./sendNewCT" ) do %>
+      <%= form_tag("./sendNewBC" ) do %>
           <%= hidden_field_tag 'sendnew', 'yes' %>
           <%= submit_tag("Request new Box Code") %>
         <% end %>
@@ -161,7 +161,7 @@ function meme(){
 
 
 $('.submit_btn2 form').submit(function() {  
-      $(".submit_btn2 form :submit").prop('disabled', true);
+      $(this).children('*').prop('disabled', true);
       var valuesToSubmit = $(this).serialize();
       $.ajax({
         url: $(this).attr('action'), 

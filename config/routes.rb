@@ -49,6 +49,7 @@ end
   get "forgot_pass2", :on => :collection
   get "welcome_login", :on => :collection
   get "sendNewCT", :on => :collection
+  get "sendNewBC", :on => :collection
   get "checkSSC", :on => :collection
   get "checkBoxCode", :on => :collection
   get "checkCT", :on => :collection
