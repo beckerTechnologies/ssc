@@ -120,7 +120,13 @@ class SetupController < ApplicationController
     @ssc_bank = SscBank.find_by profile_id: @pid
     @ct_mask = @ssc_bank.ct_mask
   end
-  def page5
+  def page4
+    @pid = session[:pid]
+    if params[:sendnew].present?
+      #RenewWorker.perform_async(@pid)
+      mail_ct_helper(@pid)
+      flash[:success] = true
+    end
   end
   
   def show
