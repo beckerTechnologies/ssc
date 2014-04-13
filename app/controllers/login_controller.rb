@@ -198,10 +198,11 @@ end
     @profile = Profile.find session[:login]
     if(params[:password])
       p = @profile
-      p.password = @pass
-      p.password_confirmation = @pass
+      p.password = params[:password]
+      p.password_confirmation = params[:password_confirmation]
       p.updating_password = true
-      if (p.save)
+      if (p.valid?)
+        p.save
         flash[:notice] = "Password successfully updated."
         redirect_to :action => :view
       else
