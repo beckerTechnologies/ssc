@@ -11,6 +11,6 @@ class BasicInfo < ActiveRecord::Base
 
   validates :ssn, 
   	presence: {:message => "cannot be blank"},
-  	uniqueness: {:message => "is already used, please use another one"}
+  	uniqueness: {:message => "is already in use. Please use another social security number."}
 
 end

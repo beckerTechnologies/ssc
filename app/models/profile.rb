@@ -12,18 +12,18 @@ class Profile < ActiveRecord::Base
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, 
-    presence: {:message => "cannot be blank"}, 
-    format: { with: VALID_EMAIL_REGEX, :message => "format is not correct"},
-    uniqueness: { case_sensitive: false }
+    presence: {:message => "cannot be blank."}, 
+    format: { with: VALID_EMAIL_REGEX, :message => "must have an uppercase, lowercase, and number."},
+    uniqueness: { case_sensitive: false, :message => "is already in use. Please use another email address." }
 
   VALID_PASS_REGEX = /\A(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}\z/
   
-  validates :password, confirmation: true, length: { minimum: 6},format: {with: VALID_PASS_REGEX}, on: :create
+  validates :password, confirmation: {:message => "must be the same as your password."}, length: { minimum: 6},format: {with: VALID_PASS_REGEX}, on: :create
   validates_presence_of :password_confirmation, :if => :password?, on: :create
 
   # if phone number is present only then check presence of carrier id. 
   validates_presence_of :carrier_id, :if => :phone_number?,
-    presence: {:message => "cannot be blank"}
+    presence: {:message => "needed to send you text messages."}
 
 =begin
   # comenting this out to make phone number optional. 

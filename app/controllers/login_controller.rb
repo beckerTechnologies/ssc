@@ -59,6 +59,24 @@ class LoginController < ApplicationController
         redirect_to :controller => :setup, :action => :new_info
       end
     end  
+
+    if params[:ssc].present? 
+      @ssc = params[:ssc].tr(' ','')
+      if @ssc.length!=0 
+        begin
+          @sscVal = SscBank.find_by profile_id: @pid
+          if @sscVal.ssc != @ssc || @sscVal[:expiry] < Time.now # ssc mismatched or expired
+            flash.now[:notice] = "Invalid SSC" 
+            raise "ssc mismatch"
+          else
+            session[:opt] = 4 # 4. ssc entered.
+            redirect_to :action => :view
+          end
+        rescue 
+          flash.now[:notice] = "Invalid SSC" 
+        end
+      end
+    end
 end
   def checkSSC
     @pid = session[:login]
