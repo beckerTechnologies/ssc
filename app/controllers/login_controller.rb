@@ -50,10 +50,10 @@ class LoginController < ApplicationController
       when 7
         redirect_to :controller => :setup, :action => :welcome_ssc
       when 8
-        flash[:notice] = "Please Enter your valid usa address. "
+        flash[:notice] = "Please enter your valid usa address. "
         redirect_to :controller => :setup, :action => :new_addr_info
       when 9
-        flash[:notice] = "Please Set up your personal information. "
+        flash[:notice] = "Please set up your personal information. "
         redirect_to :controller => :setup, :action => :new_info
       end
     end  
