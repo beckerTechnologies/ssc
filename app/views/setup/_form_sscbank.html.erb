@@ -6,7 +6,7 @@
 <div class="auth_value">
   <p><%= f.label :auth_value, "Type in that number!" %>
   <label class="le"> </label>
-  <%= f.text_field :auth_value, :readonly => 'true', :class => 'aov' %> </p>
+  <%= f.text_field :auth_value, :class => 'aov' %> </p>
 </div>
 <div class="ssc-field">
   <p><%= f.label :lifetime_id, "Challenge Graphic lifetime" %>
@@ -18,6 +18,7 @@
 <script type="text/javascript">
   $(function(){    
       lens = "<%= AuthOption.pluck(:length).join(',') %>".split(',');
+      len = 0;
       ssnID = 1;
       phoneID = 2;
 
@@ -26,32 +27,48 @@
         $('.ssc-field *').hide();
         $('.lifetime').val(2); // default 24 hours 
       }
-      $('.aoid').change(callback());
-      $('.auth_value').keyup(callback());
+      $('.aoid').change(callback_change());
+      $('.auth_value').keyup(callback_keypress());
 
-      function callback(){
+      function callback_change(){
       return function(){
-      $('.aov').prop('readonly',false);
-      var len = lens[parseInt($('.aoid').val())-1];
+      //$('.aov').prop('readonly',false);
+      if($('.aoid').val()=='')
+      {
+        $('.le').text("");
+        $('.aov').css('color','black');
+      }
+      else {
+      len = lens[parseInt($('.aoid').val())-1];
+      $('.le').text("(Enter "+ parseInt(len) +" digits)" );
+      $('.aov').prop('maxlength',len);
       if(parseInt($('.aoid').val())==ssnID){
-      $('.le').text("");  
       $('.aov').val("<%=@ssn%>");
-      $('.aov').prop('readonly', true);
       $('.aov').css('color','black');
       } else if (parseInt($('.aoid').val())==phoneID) {
-      $('.le').text("");
       $('.aov').val("<%=@phn%>");
-      $('.aov').prop('readonly', true);
       $('.aov').css('color','black');
       } else{
-      $('.aov').prop('readonly', false);
-      $('.le').text("(Enter "+ parseInt(len) +" numbers)" );
       if ($('.aov').val().length!= (len))
         $('.aov').css('color','red');
       else
         $('.aov').css('color','black');
       }
-      $('.aov').prop('maxlength',len);
+      }
+      }
+      }
+      function callback_keypress(){
+      return function(){
+      if($('.aoid').val()=='')
+      {
+        $('.aov').css('color','black');
+      }
+      else {
+      if ($('.aov').val().length!= (len))
+        $('.aov').css('color','red');
+      else
+        $('.aov').css('color','black');
+      }
       }
       }
 
