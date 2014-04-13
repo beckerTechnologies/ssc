@@ -385,6 +385,7 @@ h3 {
 }
 
 .ssc-gen {
+	font-family: Helvetica;
 	border: 1px solid black;
 	background-color: #CEEBFB;
 	margin-top: 5%;
@@ -463,6 +464,12 @@ h3 {
 	font-size: 45%;
 	width: 45%;
 	margin-bottom: 2%;
+}
+
+.ssc_input input {
+	width: 30%;
+	font-size: 100%;
+	text-align: center;
 }
 
 .input-wide input {
