@@ -152,7 +152,7 @@ $('#ssc').keyup(function(){
 
 
 $('.submit_btn2 form').submit(function() {  
-      $(".submit_btn2 :submit").prop('disabled', true);
+      $(".submit_btn2 form :submit").prop('disabled', true);
       var valuesToSubmit = $(this).serialize();
       $.ajax({
         url: $(this).attr('action'), 
