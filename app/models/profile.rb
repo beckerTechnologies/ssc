@@ -18,8 +18,14 @@ class Profile < ActiveRecord::Base
 
   VALID_PASS_REGEX = /\A(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}\z/
   
-  validates :password, confirmation: {:message => "must be the same as your password."}, length: { minimum: 6},format: {with: VALID_PASS_REGEX}, on: :create
-  validates_presence_of :password_confirmation, :if => :password?, on: :create
+  validates :password, confirmation: true, length: { minimum: 6},format: {with: VALID_PASS_REGEX}, :if => :should_validate_password?
+  validates_presence_of :password_confirmation, :if => :password?, :if => :should_validate_password?
+  attr_accessor :updating_password
+  def should_validate_password?
+    updating_password || new_record?
+  end
+
+
 
   # if phone number is present only then check presence of carrier id. 
   validates_presence_of :carrier_id, :if => :phone_number?,

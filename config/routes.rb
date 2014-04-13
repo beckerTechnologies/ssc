@@ -52,16 +52,19 @@ end
   get "checkSSC", :on => :collection
   get "checkBoxCode", :on => :collection
   get "checkCT", :on => :collection
+  get "reset_password", :on => :collection
   post "page1", :on => :collection
   post "page2", :on => :collection
   post "page3", :on => :collection
   post "view", :on => :collection
   post "forgot_pass", :on => :collection
   post "forgot_pass2", :on => :collection
+  post "reset_password", :on => :collection
   put "page1", :on => :collection
   put "page2", :on => :collection
   put "page3", :on => :collection
   put "view", :on => :collection
+  put "reset_password", :on => :collection
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

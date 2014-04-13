@@ -193,6 +193,23 @@ end
     end
   end
 
+
+  def reset_password
+    @profile = Profile.find session[:login]
+    if(params[:password])
+      p = @profile
+      p.password = @pass
+      p.password_confirmation = @pass
+      p.updating_password = true
+      if (p.save)
+        flash[:notice] = "Password successfully updated."
+        redirect_to :action => :view
+      else
+        flash[:notice] = "Password needds to be atleasdhjwgrfrefyqugfew blah blah."
+      end
+    end
+  end
+
   private
   def check_session
     if !session[:login]
