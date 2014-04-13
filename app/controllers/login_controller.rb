@@ -208,7 +208,7 @@ end
       if (p.valid?)
         p.save
         flash[:notice] = "Password successfully updated."
-        redirect_to :action => :view
+        redirect_to :action => :page3
       else
         flash[:notice] = "Password needds to be atleasdhjwgrfrefyqugfew blah blah."
       end

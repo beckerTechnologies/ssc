@@ -1,5 +1,6 @@
 class Profile < ActiveRecord::Base
   before_save { self.phone_number = phone_number.split(/[() -]/).join()}
+  before_save { self.home_phone_number = home_phone_number.split(/[() -]/).join()}
   before_save {self.email = email.downcase } 
   has_one :basic_info, :autosave => true
   has_one :address_info, :autosave => true
