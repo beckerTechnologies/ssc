@@ -1,11 +1,13 @@
 <div class="login_page">
 
-<p class="welcome_login_text"> Next you will enter <span class="underlined_text">your</span> <span class="green_text">SSC</span><span class="trade_mark">&#0153</span> to file and see <span class="underlined_text">your</span> taxes! </p>
+<p class="welcome_login_text"> Enter <span class="underlined_text">your</span> <span class="green_text">SSC</span><span class="trade_mark">&#0153</span> to file and see <span class="underlined_text">your</span> taxes! </p>
 
 	<div class="login_ssc">
+
 		<%= form_tag("./welcome_login") do %>
-	        <%= label_tag(:ssc, "Enter Your SSC:") %> 
+	      <%= label_tag(:ssc, "Your SSC:") %> 
 	      <%= text_field_tag(:ssc) %>
+
 	      <div class="login_ssc_btn">
 	        <%= submit_tag("Next") %>
 	      </div>
@@ -14,8 +16,10 @@
 
 	<p class="or_text"> OR </p>
 
+	<span> Use our easy <span class="green_text">SSC</span><span class="trade_mark">&#0153</span> generator </span>
+
 <div class="login_ssc_btn">
-<%= button_to "Use SSC Generator", page2_login_index_path, :method => :get  %>
+<%= button_to "Generator", page2_login_index_path, :method => :get  %>
 </div>
 
 </div>

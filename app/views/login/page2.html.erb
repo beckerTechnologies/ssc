@@ -3,13 +3,17 @@
 
   <span class="center_text">
   <!-- <h3> Enter <span class="underlined_text">your</span> <span class="green_text">SSC</span><span class="trade_mark">&#0153</span> </h3> --> 
-  
+
 
         <input hidden='true' type='text' id='debug'>
+
+        <div class="center_img">
+          <img src="/assets/badguy.jpg"/>
+        </div>
+        <p class="no_margin"><span class="red_text">Beware</span> of who is watching while you enter this information</p>
+
   <div class="ssc-gen">
     <h3> <span class="green_text">S</span>ecret <span class="green_text">S</span>ecurity <span class="green_text">C</span>ode Automatic Generator </h3>
-
-  <small>(Beware of who is watching while you enter this information) </small>
 
       <p>
       <label>Your <%= @a.name %>:</label>
@@ -20,8 +24,17 @@
 
       <img src="/assets/plus.png"/>
       
+
+       <div class="submit_btn2">
+      <%= form_tag("./sendNewCT" ) do %>
+          <%= hidden_field_tag 'sendnew', 'yes' %>
+          <%= submit_tag("Request new Box Code") %>
+        <% end %>
+      </div>
+
       <p>
       <label>Your Box Code:</label> <br/>
+
       <input maxlength ='2' size='2' type='text' id='first'>
       <input maxlength ='2' size='2' type='text' id='second'>
       <input maxlength ='2' size='2' type='text' id='third'>
@@ -38,7 +51,7 @@
       </div>
 
       <div class="submit_btn2">
-      <label>Your Challenge Graphic:</label> <br/>
+      <label>Your Challenge Graphic:</label>
       </div>
 
       <input maxlength ='1' size='1' type='text' id='ct_in'>
