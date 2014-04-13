@@ -71,24 +71,25 @@ class SetupController < ApplicationController
     @ssc_bank = SscBank.new(ssc_bank_params)
     @ssn = (BasicInfo.find_by profile_id: session[:pid]).ssn
     @phn = (Profile.find session[:pid]).phone_number
-    if (ssc_bank_params[:auth_option_id]).to_s == (1).to_s #((AuthOption.find_by :name => 'SSN').id).to_s
-      @ssc_bank[:auth_value] = @ssn
-    end
-    if (ssc_bank_params[:auth_option_id]).to_s == (2).to_s
-      @ssc_bank[:auth_value] = @phn
-    end
-    if @ssc_bank.auth_value && AuthOption.find(@ssc_bank.auth_option_id).length==@ssc_bank.auth_value.length
-      @ssc_bank.profile_id = session[:pid]
-      respond_to do |format|
-        if @ssc_bank.save
-          format.html{ redirect_to :action => :page3}
-        else
-          format.html{ render :action => :ssc}
+    begin
+    if @ssc_bank.auth_value && AuthOption.find(@ssc_bank.auth_option_id).length 
+      if AuthOption.find(@ssc_bank.auth_option_id).length==@ssc_bank.auth_value.length
+        @ssc_bank.profile_id = session[:pid]
+        respond_to do |format|
+          if @ssc_bank.save
+            format.html{ redirect_to :action => :page3}
+          else
+            format.html{ render :action => :ssc}
+          end
         end
+      else 
+        flash.now[:notice] = "Please enter a valid value for Personal Identifier"  
       end
-    else 
-      flash.now[:notice] = "You entered #{@ssc_bank.auth_value.length} digits, while #{AuthOption.find(@ssc_bank.auth_option_id).name} should be #{AuthOption.find(@ssc_bank.auth_option_id).length} digits long" 
     end
+    rescue
+      flash.now[:notice] = "Invalid selection"
+    end
+    #flash.now[:notice] = "You entered noooooo" #{@ssc_bank.auth_value.length} digits, while #{AuthOption.find(@ssc_bank.auth_option_id).name} should be #{AuthOption.find(@ssc_bank.auth_option_id).length} digits long" 
   end
   def page3
     @pid = session[:pid]
@@ -128,7 +129,7 @@ class SetupController < ApplicationController
       flash[:success] = true
     end
   end
-  
+
   def show
     @profiles = Profile.all
     @basic = BasicInfo.all
