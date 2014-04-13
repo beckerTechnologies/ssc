@@ -20,6 +20,16 @@ class SscMailer < ActionMailer::Base
     end
     
   end
+  def newbox_email(user, boxcode)
+    @user = user
+    @profile = Profile.find(@user)
+    @basic_info = BasicInfo.find_by profile_id: @user
+    @ssc = SscBank.find_by profile_id: @user
+    @lifetime_id = @ssc.lifetime_id
+    @lifetime = Lifetime.find_by id: @lifetime_id
+    @boxcode = boxcode
+    mail(to: @profile.email, subject: 'New Plus-One Box Code')
+  end
 
   def forgot_pass(profile, pass)
     @profile = profile

@@ -10,7 +10,17 @@ module ApplicationHelper
     str.push( w[rand(w.length)])
     str.push( d[rand(d.length)]) 
     pass = str.join
-    
+    # not using SecureRandom.base64(12) 
+    # because docs contain the word "may" where we wanted to see "will"
+  end
+  def set_temp_boxcode (len)
+    str = []
+    while str.length<3 do
+      temp = rand(len)
+      str.push(temp) unless str.include? temp  
+    end
+    boxcode = str.join ','
+    return boxcode
   end
 
   def set_ct
@@ -31,7 +41,34 @@ module ApplicationHelper
     return (Time.now + (60*60* lifetime))
   end
 
-  def mail_helper(pid)
+  def mail_boxcode_helper(pid)
+    ssc_bank = SscBank.find_by profile_id: pid
+    # get new box code.
+    len = ssc_bank.ssc.length
+    new_box_code = set_temp_boxcode len
+    # decode the old ct. 
+    ssc = (ssc_bank.ssc).split
+    box = (ssc_bank.ct_mask).split(',')
+    ct = ssc[box[0]]
+    # set new ssc
+    new_ssc = set_ssc(ct, ssc_bank[:auth_value], new_box_code)
+    # set new expiry
+    lifetime = Lifetime.find(ssc_bank.lifetime_id)
+    expiry = set_expiry(lifetime[:hours])
+    # put every new thing in 
+    ssc_bank[:expiry] = expiry
+    ssc_bank[:ssc] = new_ssc
+    ssc_bank[:ct_mask] = new_box_code
+    ssc_bank.valid?
+    if ssc_bank.errors.present?
+      #TODO figure out what should we do in this case?
+    else
+      ssc_bank.save!
+      SscMailer.newbox_email(pid, new_box_code).deliver
+    end
+  end
+
+  def mail_ct_helper(pid)
     ssc_bank = SscBank.find_by profile_id: pid
     ct = set_ct
     ssc = set_ssc(ct, ssc_bank[:ssc], ssc_bank[:ct_mask])

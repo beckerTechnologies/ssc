@@ -90,12 +90,7 @@ class SetupController < ApplicationController
       flash.now[:notice] = "You entered #{@ssc_bank.auth_value.length} digits, while #{AuthOption.find(@ssc_bank.auth_option_id).name} should be #{AuthOption.find(@ssc_bank.auth_option_id).length} digits long" 
     end
   end
-
-  def page2
-    session[:pid] = 1 #@profile[:id] # remove this after testing.
-  end
   def page3
-
     @pid = session[:pid]
     @ssc_bank = SscBank.find_by profile_id: @pid
     @len = (AuthOption.find(@ssc_bank[:auth_option_id]))[:length] # for the view
@@ -125,18 +120,7 @@ class SetupController < ApplicationController
     @ssc_bank = SscBank.find_by profile_id: @pid
     @ct_mask = @ssc_bank.ct_mask
   end
-  
-  def page4
-    @pid = session[:pid]
-    if params[:sendnew].present?
-      #RenewWorker.perform_async(@pid)
-      mail_helper(@pid)
-      flash[:success] = true
-    end
-  end
-
   def page5
-    
   end
   
   def show

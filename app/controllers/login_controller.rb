@@ -6,7 +6,7 @@ class LoginController < ApplicationController
   layout :layout_by_resource
 
   def layout_by_resource
-    if action_name == 'checkSSC' or action_name == 'checkBoxCode' or action_name == 'checkCT' or action_name == 'sendNewCT' or action_name == 'true_resp' or action_name == 'false_resp'
+    if action_name == 'true_resp' or action_name == 'false_resp'
       "empty"
     else
       "login"
@@ -34,8 +34,6 @@ class LoginController < ApplicationController
           flash.now[:notice] = "Your email or password is incorrect. Please correct this in order to continue."  
         end
       end
-    else
-      #flash.clear
     end
   end
 
@@ -105,7 +103,13 @@ end
   def sendNewCT
     @pid = session[:login]
     #RenewWorker.perform_async(@pid)
-    mail_helper(@pid)
+    mail_ct_helper(@pid)
+    render :true_resp
+  end
+  def sendNewBC
+    @pid = session[:login]
+    #RenewWorker.perform_async(@pid)
+    mail_boxcode_helper(@pid)
     render :true_resp
   end
 
