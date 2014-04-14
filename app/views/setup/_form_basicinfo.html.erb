@@ -12,7 +12,7 @@
   </div>
   <div class="dob_select">
     <p><%= f.label(:dob, "Date of Birth") %>
-    <%= f.date_field :dob,  placeholder: "YYYY-MM-DD", :class => "dob"%>
+    <%= f.text_field :dob,  placeholder: "YYYY-MM-DD", :class => "dob"%>
 
   </div>
   <div class="ssn_value">
@@ -28,24 +28,45 @@
           var ssn = String($('.ssnv').val());
           $('.ssnv').val(ssn.substring(0,3)+'-'+ssn.substring(3,5)+'-'+ssn.substring(5,10));}
 
-        $('.ssn_value').keyup(function(){
+          $('.ssn_value').keyup(function(){
 
-        var ssn = (String($('.ssnv').val())).split(/[a-zA-Z() -]/).join('');
-        var len = ssn.length;
+            var ssn = (String($('.ssnv').val())).split(/[a-zA-Z() -]/).join('');
+            var len = ssn.length;
 
-        if (len!= (9))
-        $('.ssnv').css('color','red');
-        else
-        $('.ssnv').css('color','black');
+            if (len!= (9))
+            $('.ssnv').css('color','red');
+            else
+            $('.ssnv').css('color','black');
 
-        if(len>3 && len <5)
-        $('.ssnv').val(ssn.substring(0,3)+'-'+ssn.substring(3,5));
-        else if (len>5)
-        $('.ssnv').val(ssn.substring(0,3)+'-'+ssn.substring(3,5)+'-'+ssn.substring(5,10));
-        return true;
-      });
-
-
+            if(len>3 && len <5)
+            $('.ssnv').val(ssn.substring(0,3)+'-'+ssn.substring(3,5));
+            else if (len>5)
+            $('.ssnv').val(ssn.substring(0,3)+'-'+ssn.substring(3,5)+'-'+ssn.substring(5,10));
+            return true;
             });
-          </script>
+
+          if($('.dob').val().length ==10){
+            var dob = (String($('.dob').val())).split(/[a-zA-Z() -]/).join('');
+            $('.dob').val(dob.substring(0,4)+'-'+dob.substring(4,6)+'-'+dob.substring(6,8));
+          }
+
+          $('.dob').keyup(function (event) {
+              //TODO track cursor
+              var dob = (String($(this).val())).split(/[a-zA-Z() -]/).join('');
+              var len = dob.length;
+              if(len>4 && len <6)
+              $(this).val(dob.substring(0,4)+'-'+dob.substring(4,6));
+              else if (len>6)
+              $(this).val(dob.substring(0,4)+'-'+dob.substring(4,6)+'-'+dob.substring(6,8));
+              return true;
+              });
+
+
+
+
+
+
+    });
+
+</script>
 
