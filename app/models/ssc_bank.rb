@@ -12,5 +12,5 @@ class SscBank < ActiveRecord::Base
   	presence: {:message => "cannot be blank"}
 
   validates :profile_id, 
-  	presence: {:message => "SSC profile Already Exists"}
+    uniqueness: {:message => "SSC profile Already Exists"}
 end
