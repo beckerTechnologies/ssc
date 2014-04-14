@@ -118,11 +118,11 @@ end
         mail_boxcode_helper(@pid, key_ct)
         flash[:notice] = "Email has been sent with new Box Code"
         redirect_to :action => :page2
+      elsif (params[:ct]) == nil
+        flash[:alert] = "Please enter Challenge Graphic!"        
       else
         flash.now[:alert] = "Incorrect Challenge Graphic! Please try again"
       end
-    else
-      flash[:alert] = "Please enter Challenge Graphic!"
     end
   end
 
