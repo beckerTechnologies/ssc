@@ -16,7 +16,7 @@ class SscMailer < ActionMailer::Base
       @carrier_id = @profile.carrier_id
       @carrier = Carrier.find(@carrier_id)
       easy = SMSEasy::Client.new
-      easy.deliver(@profile.phone_number, @carrier.carrier_value, "Thank you for using Plus-One! Your CS is #{@ct}. This expires in #{@lifetime.hours} hours.")
+      easy.deliver(@profile.phone_number, @carrier.carrier_value, "Plus-One: Your Challenge Graphic for the next #{@lifetime.hours} hours is #{@ct}.")
     end
     
   end

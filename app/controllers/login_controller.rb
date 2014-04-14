@@ -41,6 +41,9 @@ class LoginController < ApplicationController
     @pid = session[:login]
     @opt = nil
     @opt = 7 unless (SscBank.find_by profile_id: @pid)
+    if(@opt != 7)
+      @opt = 7 if ((SscBank.find_by profile_id: @pid).ssc==nil)
+    end
     @opt = 8 unless (AddressInfo.find_by profile_id: @pid)
     @opt = 9 unless (BasicInfo.find_by profile_id: @pid)
     if(@opt) # ssc is nowqdzsetup alreay. 
