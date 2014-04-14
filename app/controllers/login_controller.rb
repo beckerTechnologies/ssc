@@ -117,12 +117,12 @@ end
       if check_ct?(@pid, key_ct)
         mail_boxcode_helper(@pid, key_ct)
         flash[:notice] = "Email has been sent with new Box Code"
-        redirect_to :action => :page2
-      elsif (params[:ct]).empty?
-        flash.now[:alert] = "Please enter your Challenge Graphic!"        
+        redirect_to :action => :page2   
       else
         flash.now[:alert] = "Incorrect Challenge Graphic! Please try again"
       end
+    elsif (params[:ct]) == ""
+        flash.now[:alert] = "Please enter your Challenge Graphic!"     
     end
   end
 
