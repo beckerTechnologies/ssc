@@ -121,6 +121,8 @@ end
       else
         flash.now[:alert] = "Incorrect Challenge Graphic! Please try again"
       end
+    else
+      flash.now[:alert] = "Please enter Challenge Graphic!"
     end
   end
 
