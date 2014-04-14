@@ -106,11 +106,19 @@ end
     mail_ct_helper(@pid)
     render :true_resp
   end
+  
   def sendNewBC
     @pid = session[:login]
-    #RenewWorker.perform_async(@pid)
-    mail_boxcode_helper(@pid)
-    render :true_resp
+    if (params[:ct]).present?
+      key_ct = params[:ct].strip
+      if check_ct?(@pid, key_ct)
+        mail_boxcode_helper(@pid, key_ct)
+        flash[:notice] = "Email has been sent with new Box Code"
+        redirect_to :action => :page2
+      else
+        flash.now[:alert] = "Incorrect Challenge Graphic! Please try again"
+      end
+    end
   end
 
   def page2
@@ -210,7 +218,7 @@ end
         flash[:notice] = "Password successfully updated."
         redirect_to :action => :page3
       else
-        flash[:notice] = "Password needds to be atleasdhjwgrfrefyqugfew blah blah."
+        flash[:notice] = "Password needds to be 6 charecters and must have an uppercase, lowercase, and number."
       end
     end
   end

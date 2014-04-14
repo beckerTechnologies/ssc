@@ -25,11 +25,10 @@
       <img src="/assets/plus.png"/>
       
 
-       <div class="submit_btn2">
-      <%= form_tag("./sendNewBC" ) do %>
-          <%= hidden_field_tag 'sendnew', 'yes' %>
-          <%= submit_tag("Request new Box Code") %>
-        <% end %>
+       <div class="submit_btn3">
+
+        <%= button_to "Request new Box Code", sendNewBC_login_index_path, :method => :get  %>
+
       </div>
 
       <p>

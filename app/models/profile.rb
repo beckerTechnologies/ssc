@@ -14,12 +14,12 @@ class Profile < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, 
     presence: {:message => "cannot be blank."}, 
-    format: { with: VALID_EMAIL_REGEX, :message => "must have an uppercase, lowercase, and number."},
+    format: { with: VALID_EMAIL_REGEX},
     uniqueness: { case_sensitive: false, :message => "is already in use. Please use another email address." }
 
   VALID_PASS_REGEX = /\A(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}\z/
   
-  validates :password, confirmation: true, length: { minimum: 6},format: {with: VALID_PASS_REGEX}, :if => :should_validate_password?
+  validates :password, confirmation: true, length: { minimum: 6},format: {with: VALID_PASS_REGEX, :message => "must have an uppercase, lowercase, and number."}, :if => :should_validate_password?
   validates_presence_of :password_confirmation, :if => :password?, :if => :should_validate_password?
   attr_accessor :updating_password
   def should_validate_password?

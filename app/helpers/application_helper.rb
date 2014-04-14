@@ -40,18 +40,27 @@ module ApplicationHelper
 
   def set_expiry (lifetime)
     return (Time.now + (60*60* lifetime))
+  end 
+  
+  def pull_ct (pid)
+    ssc_bank = SscBank.find_by profile_id: pid
+    # decode the old ct. 
+    ssc = (ssc_bank.ssc).split ''
+    box = (ssc_bank.ct_mask).split(',')
+    ind = (box[0].to_i)-1
+    return ssc[ind]
   end
 
-  def mail_boxcode_helper(pid)
+  def check_ct?(pid, key_ct)
+    ct = pull_ct pid
+    return ct==key_ct
+  end
+
+  def mail_boxcode_helper(pid, ct)
     ssc_bank = SscBank.find_by profile_id: pid
     # get new box code.
     len = ssc_bank.auth_value.length
     new_box_code = set_temp_boxcode len
-    # decode the old ct. 
-    ssc = (ssc_bank.ssc).split ''
-    box = (ssc_bank.ct_mask).split(',')
-    ind = box[0].to_i
-    ct = ssc[ind]
     # set new ssc
     new_ssc = set_ssc(ct, ssc_bank[:auth_value], new_box_code)
     # set new expiry

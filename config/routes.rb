@@ -63,6 +63,7 @@ end
   post "forgot_pass2", :on => :collection
   post "reset_password", :on => :collection
   post "welcome_login", :on => :collection
+  post "sendNewBC", :on => :collection
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

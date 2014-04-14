@@ -1,0 +1,22 @@
+<div class="login_page">
+
+
+
+	<%= form_tag("./sendNewBC" ) do %>
+
+		<%= label_tag(:ct, "Enter your Challenge Graphic:") %>
+	    <%= text_field_tag(:ct) %></br>
+
+		<%= hidden_field_tag 'sendnew', 'yes' %>
+
+		<div class="taxes_page_link">
+		<%= submit_tag("Request new Box Code") %>
+		</div>
+
+	<% end %>
+
+	<div class="taxes_page_link">
+		<%= button_to "Back to Generator", page2_login_index_path, :method => :get  %>
+	</div>
+
+</div>
