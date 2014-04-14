@@ -145,8 +145,6 @@ end
           flash.now[:notice] = "Invalid SSC" 
         end
       end
-    else
-      flash.clear
     end
   end
   def view

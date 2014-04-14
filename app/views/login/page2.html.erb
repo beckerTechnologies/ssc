@@ -164,6 +164,7 @@ function meme(){
 $('.submit_btn2 form').submit(function() {  
       $(this).children('*').prop('disabled', true);
       var valuesToSubmit = $(this).serialize();
+      alert('Email has been sent with new Challenge Graphic');
       $.ajax({
         url: $(this).attr('action'), 
         data: valuesToSubmit,
