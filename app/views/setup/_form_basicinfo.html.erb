@@ -11,8 +11,8 @@
     <%= f.text_field :last_name, placeholder: "Enter Your Last Name" %> </p>
   </div>
   <div class="dob_select">
-    <p><%= f.label(:dob, "Date of Birth") %>
-    <%= f.text_field :dob,  placeholder: "YYYY-MM-DD", :class => "dob"%>
+    <p><%= f.label(:dob, "Date of Birth (YYYY-MM-DD)") %>
+    <%= f.text_field :dob,  placeholder: "YYYY-MM-DD", :class => "dob", :maxlength=>"10"%>
 
   </div>
   <div class="ssn_value">
@@ -50,13 +50,13 @@
             $('.dob').val(dob.substring(0,4)+'-'+dob.substring(4,6)+'-'+dob.substring(6,8));
           }
 
-          $('.dob').keyup(function (event) {
+          $('.dob').keypress(function (event) {
               //TODO track cursor
               var dob = (String($(this).val())).split(/[a-zA-Z() -]/).join('');
               var len = dob.length;
-              if(len>4 && len <6)
-              $(this).val(dob.substring(0,4)+'-'+dob.substring(4,6));
-              else if (len>6)
+              if(len==4)
+              $(this).val(dob.substring(0,4)+'-');
+              else if (len>5)
               $(this).val(dob.substring(0,4)+'-'+dob.substring(4,6)+'-'+dob.substring(6,8));
               return true;
               });
