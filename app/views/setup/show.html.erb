@@ -11,7 +11,7 @@
   </thead>
 
   <tbody>
-    <% @profiles.each do |profile| %>
+    <% @profiles.order("id asc").each do |profile| %>
       <tr>
         <td><%= profile.id %></td>
         <td><%= profile.email %></td>
@@ -39,7 +39,7 @@
   </thead>
 
   <tbody>
-    <% @basic.each do |basic| %>
+    <% @basic.order("profile_id asc").each do |basic| %>
       <tr>
         <td><%= basic.id %></td>
         <td><%= basic.profile_id %></td>
@@ -60,6 +60,8 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
+      <th>profile_id</th>
       <th>Street addr</th>
       <th>Apartment no</th>
       <th>City</th>
@@ -70,14 +72,16 @@
   </thead>
 
   <tbody>
-    <% @address_infos.each do |profile| %>
+    <% @address_infos.order("profile_id asc").each do |addr| %>
       <tr>
-        <td><%= profile.street_addr %></td>
-        <td><%= profile.apartment_no %></td>
-        <td><%= profile.city %></td>
-        <td><%= profile.zip_code %></td>
-        <td><%= profile.state %></td>
-        <td><%= profile.country %></td>
+        <td><%= addr.id %></td>
+        <td><%= addr.profile_id %></td>
+        <td><%= addr.street_addr %></td>
+        <td><%= addr.apartment_no %></td>
+        <td><%= addr.city %></td>
+        <td><%= addr.zip_code %></td>
+        <td><%= addr.state %></td>
+        <td><%= addr.country %></td>
       </tr>
     <% end %>
   </tbody>
@@ -100,7 +104,7 @@
   </thead>
 
   <tbody>
-    <% @sscbank.each do |bank| %>
+    <% @sscbank.order("profile_id asc").each do |bank| %>
       <tr>
         <td><%= bank.id %></td>
         <td><%= bank.profile_id %></td>
