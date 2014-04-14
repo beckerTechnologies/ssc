@@ -119,7 +119,7 @@ end
         flash[:notice] = "Email has been sent with new Box Code"
         redirect_to :action => :page2
       elsif (params[:ct]).empty?
-        flash[:alert] = "Please enter Challenge Graphic!"        
+        flash.now[:alert] = "Please enter your Challenge Graphic!"        
       else
         flash.now[:alert] = "Incorrect Challenge Graphic! Please try again"
       end
